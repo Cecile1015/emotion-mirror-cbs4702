@@ -75,3 +75,7 @@ def ensure_dirs() -> None:
     """Create the output folders if they do not exist yet."""
     for path in (DATA_DIR, MODELS_DIR, FIG_DIR, METRICS_DIR, PRED_DIR):
         path.mkdir(parents=True, exist_ok=True)
+        
+# Maximum sequence lengths, chosen in 01_eda §3 (no text is truncated).
+MAX_LEN_LSTM = 66    # word tokens; equals the longest training text
+MAX_LEN_BERT = 128   # WordPiece tokens including [CLS] and [SEP]
