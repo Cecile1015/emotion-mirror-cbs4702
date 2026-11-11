@@ -13,12 +13,14 @@ made accessible through an interactive web application.
 emotion-mirror-cbs4702/
 ├── data/                 cached dataset splits (downloaded automatically, not committed)
 ├── notebooks/            one notebook per project stage
-│   └── 01_eda.ipynb      exploratory data analysis
+│   ├── 01_eda.ipynb      exploratory data analysis
+│   └── 02_baselines.ipynb  bag-of-words baselines (Naive Bayes, logistic regression, TF-IDF)
 ├── src/                  code shared by all notebooks and the web service
 │   ├── config.py         paths, label set, colours, random seed
 │   ├── data.py           dataset loading and caching
 │   └── evaluate.py       metrics, summary tables, confusion matrices, significance tests
 ├── models/               saved model files
+│   └── baselines/        fitted scikit-learn pipelines (*.joblib, vectoriser + classifier)
 ├── results/
 │   ├── figures/          figures used in the report and the web app
 │   ├── metrics/          one JSON file per model and split
@@ -52,10 +54,26 @@ notebook directly from GitHub:
 | Notebook | Colab |
 |---|---|
 | `01_eda.ipynb` | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Cecile1015/emotion-mirror-cbs4702/blob/main/notebooks/01_eda.ipynb) |
+| `02_baselines.ipynb` | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Cecile1015/emotion-mirror-cbs4702/blob/main/notebooks/02_baselines.ipynb) |
 
 The repository must be public for Colab to clone it without credentials.
 Files written on Colab (figures, metrics, models) are lost when the runtime
 disconnects; download them or commit them back to the repository.
+
+## Results so far
+
+Test split (2,000 texts); hyper-parameters selected by validation macro-F1.
+
+| Model | Features | Classifier | Accuracy | Macro-F1 |
+|---|---|---|---|---|
+| `bow_nb` | word counts | Multinomial Naive Bayes (alpha = 0.3) | 0.802 | 0.695 |
+| `bow_lr` | word counts | Softmax logistic regression (C = 10) | 0.883 | 0.831 |
+| `tfidf_lr` | TF-IDF | Softmax logistic regression (C = 30) | 0.882 | 0.832 |
+
+Logistic regression is significantly better than Naive Bayes on the same features
+(McNemar p < 1e-19); counts vs. TF-IDF makes no significant difference in accuracy
+(p = 0.81), but TF-IDF + LR gives better-calibrated probabilities.
+See `notebooks/02_baselines.ipynb` §7 for the discussion.
 
 ## Reproducibility
 
