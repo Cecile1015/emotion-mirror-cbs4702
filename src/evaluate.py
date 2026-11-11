@@ -198,6 +198,7 @@ def plot_confusion_matrix(
     if ax is None:
         _, ax = plt.subplots(figsize=(6.2, 5.2))
     im = ax.imshow(cm, cmap="Blues", vmin=0, vmax=1 if normalize else None)
+    ax.grid(False)  # the seaborn whitegrid style would otherwise draw lines through the cells
     ax.set_xticks(LABEL_IDS, LABELS, rotation=35, ha="right")
     ax.set_yticks(LABEL_IDS, LABELS)
     ax.set_xlabel("Predicted label")

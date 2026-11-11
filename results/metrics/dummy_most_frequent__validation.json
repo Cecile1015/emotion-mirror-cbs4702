@@ -1,0 +1,98 @@
+{
+  "model": "dummy_most_frequent",
+  "split": "validation",
+  "notes": "DummyClassifier(strategy='most_frequent'); sanity check",
+  "created": "2026-11-11T09:02:36+00:00",
+  "n": 2000,
+  "accuracy": 0.352,
+  "macro_f1": 0.08678500986193294,
+  "weighted_f1": 0.18328994082840236,
+  "per_class": {
+    "sadness": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "support": 550
+    },
+    "joy": {
+      "precision": 0.352,
+      "recall": 1.0,
+      "f1": 0.5207100591715976,
+      "support": 704
+    },
+    "love": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "support": 178
+    },
+    "anger": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "support": 275
+    },
+    "fear": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "support": 212
+    },
+    "surprise": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "support": 81
+    }
+  },
+  "confusion_matrix": [
+    [
+      0,
+      550,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      704,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      178,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      275,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      212,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      81,
+      0,
+      0,
+      0,
+      0
+    ]
+  ]
+}
