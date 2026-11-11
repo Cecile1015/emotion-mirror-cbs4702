@@ -20,7 +20,7 @@ emotion-mirror-cbs4702/
 │   ├── data.py           dataset loading and caching
 │   └── evaluate.py       metrics, summary tables, confusion matrices, significance tests
 ├── models/               saved model files
-│   └── baselines/        fitted scikit-learn pipelines (*.joblib, vectoriser + classifier)
+│   └── classical/        fitted scikit-learn pipelines (*.joblib, vectoriser + classifier)
 ├── results/
 │   ├── figures/          figures used in the report and the web app
 │   ├── metrics/          one JSON file per model and split

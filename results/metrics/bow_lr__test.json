@@ -2,7 +2,7 @@
   "model": "bow_lr",
   "split": "test",
   "notes": "CountVectorizer (unigrams, default settings) + LogisticRegression (C=10); selected by validation macro-F1",
-  "created": "2026-11-11T15:20:15+00:00",
+  "created": "2026-11-11T17:13:09+00:00",
   "n": 2000,
   "accuracy": 0.883,
   "macro_f1": 0.8313156958516527,

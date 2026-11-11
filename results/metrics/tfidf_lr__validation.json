@@ -2,7 +2,7 @@
   "model": "tfidf_lr",
   "split": "validation",
   "notes": "TfidfVectorizer (unigrams, default settings) + LogisticRegression (C=30); selected by validation macro-F1",
-  "created": "2026-11-11T15:20:17+00:00",
+  "created": "2026-11-11T17:13:11+00:00",
   "n": 2000,
   "accuracy": 0.8945,
   "macro_f1": 0.8650224568462815,
