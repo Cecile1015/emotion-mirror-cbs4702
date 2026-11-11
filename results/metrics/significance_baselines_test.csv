@@ -1,0 +1,3 @@
+comparison (A → B),question,b (only A correct),c (only B correct),McNemar p,Δ macro-F1,95% CI of Δ
+BoW + NB → BoW + LR,generative → discriminative (same BoW features),64,239,1.586153286741887e-23,0.14168801720465674,"[+0.110, +0.173]"
+BoW + LR → TF-IDF + LR,raw counts → TF-IDF (same LR classifier),41,26,0.08719706449021136,-0.0076550687200311884,"[-0.021, +0.006]"
