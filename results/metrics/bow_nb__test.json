@@ -2,7 +2,7 @@
   "model": "bow_nb",
   "split": "test",
   "notes": "CountVectorizer (unigrams, default settings) + MultinomialNB (alpha=0.3); selected by validation macro-F1",
-  "created": "2026-11-11T15:00:30+00:00",
+  "created": "2026-11-11T15:20:13+00:00",
   "n": 2000,
   "accuracy": 0.8015,
   "macro_f1": 0.6948886906053504,
