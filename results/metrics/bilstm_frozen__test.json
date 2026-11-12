@@ -1,0 +1,98 @@
+{
+  "model": "bilstm_frozen",
+  "split": "test",
+  "notes": "BiLSTM (1 layer, H=128 per direction, dropout 0.5) on wiki300 GloVe, frozen embeddings; class-weighted cross-entropy; Adam lr=0.001; early stopping on validation macro-F1 (best epoch 27); seed 42",
+  "created": "2026-11-12T05:40:01+00:00",
+  "n": 2000,
+  "accuracy": 0.9215,
+  "macro_f1": 0.8876310791145356,
+  "weighted_f1": 0.9235583497821721,
+  "per_class": {
+    "sadness": {
+      "precision": 0.9750889679715302,
+      "recall": 0.9432013769363167,
+      "f1": 0.9588801399825022,
+      "support": 581
+    },
+    "joy": {
+      "precision": 0.9798136645962733,
+      "recall": 0.9079136690647482,
+      "f1": 0.9424943988050785,
+      "support": 695
+    },
+    "love": {
+      "precision": 0.7425742574257426,
+      "recall": 0.9433962264150944,
+      "f1": 0.8310249307479224,
+      "support": 159
+    },
+    "anger": {
+      "precision": 0.9055944055944056,
+      "recall": 0.9418181818181818,
+      "f1": 0.9233511586452763,
+      "support": 275
+    },
+    "fear": {
+      "precision": 0.8899082568807339,
+      "recall": 0.8660714285714286,
+      "f1": 0.8778280542986425,
+      "support": 224
+    },
+    "surprise": {
+      "precision": 0.6931818181818182,
+      "recall": 0.9242424242424242,
+      "f1": 0.7922077922077922,
+      "support": 66
+    }
+  },
+  "confusion_matrix": [
+    [
+      548,
+      5,
+      2,
+      17,
+      9,
+      0
+    ],
+    [
+      4,
+      631,
+      50,
+      2,
+      2,
+      6
+    ],
+    [
+      0,
+      6,
+      150,
+      1,
+      0,
+      2
+    ],
+    [
+      4,
+      1,
+      0,
+      259,
+      11,
+      0
+    ],
+    [
+      4,
+      0,
+      0,
+      7,
+      194,
+      19
+    ],
+    [
+      2,
+      1,
+      0,
+      0,
+      2,
+      61
+    ]
+  ]
+}

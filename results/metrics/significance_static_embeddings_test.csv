@@ -1,0 +1,4 @@
+comparison (A → B),question,b (only A correct),c (only B correct),McNemar p,Δ macro-F1,Holm p,95% CI of Δ
+GloVe-Twitter-200 + LR → GloVe-Wiki-300 + LR,pre-training corpus: Twitter-200 → Wiki-300 (same averaging + LR),237,276,0.09339767452879295,0.034104866479746754,0.09339767452879295,"[+0.004, +0.066]"
+TF-IDF + LR (Step 2) → GloVe + LR (Wiki-Gigaword-300),sparse TF-IDF (Step 2) → dense averaged GloVe (same LR),474,60,1.939814817166839e-71,-0.23055593855443168,5.819444451500517e-71,"[-0.259, -0.199]"
+Improved sparse LR (Step 3) → GloVe + LR (Wiki-Gigaword-300),best sparse model (Step 3) → dense averaged GloVe,497,76,6.409904078510163e-69,-0.24137148134710906,1.2819808157020327e-68,"[-0.270, -0.211]"

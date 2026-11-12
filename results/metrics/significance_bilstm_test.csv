@@ -1,0 +1,4 @@
+comparison (A → B),question,b (only A correct),c (only B correct),McNemar p,Δ macro-F1,Holm p,95% CI of Δ
+BiLSTM (frozen GloVe) → BiLSTM (fine-tuned GloVe),frozen → fine-tuned GloVe (same BiLSTM),43,63,0.06497310279379155,0.006247466039400851,0.06497310279379155,"[-0.009, +0.022]"
+GloVe + LR → BiLSTM (frozen GloVe),averaged → BiLSTM-composed GloVe (same frozen vectors): word order + learned composition,63,557,3.0152096979988897e-87,0.2861370850109831,9.04562909399667e-87,"[+0.256, +0.315]"
+Improved sparse LR → BiLSTM [selected: fine-tuned],best sparse model (Step 3) → selected BiLSTM,32,125,2.097983070701674e-13,0.051013069703274905,4.195966141403348e-13,"[+0.036, +0.068]"

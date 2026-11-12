@@ -1,0 +1,98 @@
+{
+  "model": "glove_twitter_lr",
+  "split": "test",
+  "notes": "mean of GloVe Twitter-200 vectors (project tokenizer, unknown words skipped) + StandardScaler + LogisticRegression(C=0.1, class_weight=none); selected by validation macro-F1",
+  "created": "2026-11-12T05:23:08+00:00",
+  "n": 2000,
+  "accuracy": 0.655,
+  "macro_f1": 0.5673891276238058,
+  "weighted_f1": 0.6461582827871819,
+  "per_class": {
+    "sadness": {
+      "precision": 0.6750418760469011,
+      "recall": 0.693631669535284,
+      "f1": 0.6842105263157895,
+      "support": 581
+    },
+    "joy": {
+      "precision": 0.6912832929782082,
+      "recall": 0.8215827338129497,
+      "f1": 0.7508218277449047,
+      "support": 695
+    },
+    "love": {
+      "precision": 0.5486725663716814,
+      "recall": 0.389937106918239,
+      "f1": 0.45588235294117646,
+      "support": 159
+    },
+    "anger": {
+      "precision": 0.6116071428571429,
+      "recall": 0.49818181818181817,
+      "f1": 0.5490981963927856,
+      "support": 275
+    },
+    "fear": {
+      "precision": 0.5885416666666666,
+      "recall": 0.5044642857142857,
+      "f1": 0.5432692307692307,
+      "support": 224
+    },
+    "surprise": {
+      "precision": 0.5,
+      "recall": 0.36363636363636365,
+      "f1": 0.42105263157894735,
+      "support": 66
+    }
+  },
+  "confusion_matrix": [
+    [
+      403,
+      89,
+      9,
+      47,
+      29,
+      4
+    ],
+    [
+      47,
+      571,
+      36,
+      14,
+      22,
+      5
+    ],
+    [
+      14,
+      74,
+      62,
+      6,
+      3,
+      0
+    ],
+    [
+      74,
+      36,
+      6,
+      137,
+      18,
+      4
+    ],
+    [
+      51,
+      31,
+      0,
+      18,
+      113,
+      11
+    ],
+    [
+      8,
+      25,
+      0,
+      2,
+      7,
+      24
+    ]
+  ]
+}

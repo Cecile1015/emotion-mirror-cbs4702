@@ -1,0 +1,7 @@
+variant,pooling,C,val_macro_f1
+GloVe Twitter-200,mean (selected),0.1,0.5839820108379908
+GloVe Twitter-200,idf-weighted mean,1.0,0.5682767103970782
+GloVe Twitter-200,mean ⊕ max,0.03,0.6442880148555897
+GloVe Wiki-Gigaword-300,mean (selected),3.0,0.6432493281342074
+GloVe Wiki-Gigaword-300,idf-weighted mean,10.0,0.6301048930977945
+GloVe Wiki-Gigaword-300,mean ⊕ max,100.0,0.6692906731312824

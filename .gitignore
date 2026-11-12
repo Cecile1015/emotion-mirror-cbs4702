@@ -4,9 +4,11 @@ __pycache__/
 venv/
 .ipynb_checkpoints/
 data/*.parquet
+data/embeddings/
 models/**/*.safetensors
 models/**/*.bin
 models/**/*.pt
+!models/bilstm/bilstm.pt
 .env
 .env.local
 node_modules/

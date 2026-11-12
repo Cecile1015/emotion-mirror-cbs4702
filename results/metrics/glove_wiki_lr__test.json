@@ -1,0 +1,98 @@
+{
+  "model": "glove_wiki_lr",
+  "split": "test",
+  "notes": "mean of GloVe Wiki-Gigaword-300 vectors (project tokenizer, unknown words skipped) + StandardScaler + LogisticRegression(C=3, class_weight=none); selected by validation macro-F1",
+  "created": "2026-11-12T05:23:09+00:00",
+  "n": 2000,
+  "accuracy": 0.6745,
+  "macro_f1": 0.6014939941035525,
+  "weighted_f1": 0.6709643564830542,
+  "per_class": {
+    "sadness": {
+      "precision": 0.6965174129353234,
+      "recall": 0.7228915662650602,
+      "f1": 0.7094594594594594,
+      "support": 581
+    },
+    "joy": {
+      "precision": 0.7071895424836602,
+      "recall": 0.7784172661870503,
+      "f1": 0.7410958904109589,
+      "support": 695
+    },
+    "love": {
+      "precision": 0.539568345323741,
+      "recall": 0.4716981132075472,
+      "f1": 0.5033557046979866,
+      "support": 159
+    },
+    "anger": {
+      "precision": 0.6888888888888889,
+      "recall": 0.5636363636363636,
+      "f1": 0.62,
+      "support": 275
+    },
+    "fear": {
+      "precision": 0.6298076923076923,
+      "recall": 0.5848214285714286,
+      "f1": 0.6064814814814815,
+      "support": 224
+    },
+    "surprise": {
+      "precision": 0.45,
+      "recall": 0.4090909090909091,
+      "f1": 0.42857142857142855,
+      "support": 66
+    }
+  },
+  "confusion_matrix": [
+    [
+      420,
+      86,
+      11,
+      32,
+      28,
+      4
+    ],
+    [
+      55,
+      541,
+      49,
+      21,
+      17,
+      12
+    ],
+    [
+      19,
+      59,
+      75,
+      2,
+      4,
+      0
+    ],
+    [
+      62,
+      35,
+      2,
+      155,
+      16,
+      5
+    ],
+    [
+      42,
+      25,
+      2,
+      12,
+      131,
+      12
+    ],
+    [
+      5,
+      19,
+      0,
+      3,
+      12,
+      27
+    ]
+  ]
+}

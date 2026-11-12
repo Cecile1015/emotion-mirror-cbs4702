@@ -1,0 +1,10 @@
+{
+  "selected_variant": "wiki300",
+  "model_id": "glove_wiki_lr",
+  "C": 3.0,
+  "class_weight": "none",
+  "val_macro_f1": {
+    "glove_twitter_lr": 0.5839820108379908,
+    "glove_wiki_lr": 0.6432493281342074
+  }
+}
