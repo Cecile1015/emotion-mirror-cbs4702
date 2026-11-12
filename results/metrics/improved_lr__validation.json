@@ -1,0 +1,98 @@
+{
+  "model": "improved_lr",
+  "split": "validation",
+  "notes": "Selected Improvement 1 model (= unigram_lr_cw): TF-IDF word (1,1)-grams, sublinear_tf=True + LogisticRegression(C=3, class_weight=balanced, tol=1e-6); selected by validation macro-F1 (PredefinedSplit)",
+  "created": "2026-11-12T00:51:07+00:00",
+  "n": 2000,
+  "accuracy": 0.899,
+  "macro_f1": 0.8777903059810237,
+  "weighted_f1": 0.9000951952890829,
+  "per_class": {
+    "sadness": {
+      "precision": 0.9364485981308411,
+      "recall": 0.9109090909090909,
+      "f1": 0.9235023041474655,
+      "support": 550
+    },
+    "joy": {
+      "precision": 0.9525993883792049,
+      "recall": 0.8849431818181818,
+      "f1": 0.9175257731958762,
+      "support": 704
+    },
+    "love": {
+      "precision": 0.7767441860465116,
+      "recall": 0.9382022471910112,
+      "f1": 0.8498727735368957,
+      "support": 178
+    },
+    "anger": {
+      "precision": 0.8908450704225352,
+      "recall": 0.92,
+      "f1": 0.9051878354203936,
+      "support": 275
+    },
+    "fear": {
+      "precision": 0.8379629629629629,
+      "recall": 0.8537735849056604,
+      "f1": 0.8457943925233645,
+      "support": 212
+    },
+    "surprise": {
+      "precision": 0.7604166666666666,
+      "recall": 0.9012345679012346,
+      "f1": 0.8248587570621468,
+      "support": 81
+    }
+  },
+  "confusion_matrix": [
+    [
+      501,
+      10,
+      5,
+      15,
+      14,
+      5
+    ],
+    [
+      16,
+      623,
+      42,
+      9,
+      7,
+      7
+    ],
+    [
+      1,
+      8,
+      167,
+      1,
+      1,
+      0
+    ],
+    [
+      7,
+      5,
+      1,
+      253,
+      9,
+      0
+    ],
+    [
+      8,
+      6,
+      0,
+      6,
+      181,
+      11
+    ],
+    [
+      2,
+      2,
+      0,
+      0,
+      4,
+      73
+    ]
+  ]
+}

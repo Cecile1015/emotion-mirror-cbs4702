@@ -1,0 +1,7 @@
+comparison (A → B),question,b (only A correct),c (only B correct),McNemar p,Δ macro-F1,Holm-adjusted p,95% CI of Δ,CI excludes 0
+ngram_lr_no_char → ngram_lr,ablation: + character n-grams,55,58,0.8507636337843976,0.010053859821455347,1.0,"[-0.006, +0.027]",False
+ngram_lr_no_cw → ngram_lr,ablation: + class weights,30,31,1.0,0.009084908227293464,1.0,"[-0.005, +0.023]",False
+ngram_lr_no_bigram → ngram_lr,ablation: + word bigrams,43,40,0.8262383659187281,-0.004513053446761006,1.0,"[-0.018, +0.009]",False
+tfidf_lr → ngram_lr,baseline → full model,71,67,0.7984319648086429,-0.003938725649244468,1.0,"[-0.022, +0.015]",False
+tfidf_lr → improved_lr,baseline → selected model,71,78,0.6230451676127869,0.01081554279267738,1.0,"[-0.010, +0.031]",False
+bow_nb → ngram_cnb,Multinomial NB → Complement NB (n-gram TF-IDF),69,211,3.565788246990442e-17,0.129319929100439,2.1394729481942653e-16,"[+0.097, +0.161]",True

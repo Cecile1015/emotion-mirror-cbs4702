@@ -14,11 +14,13 @@ emotion-mirror-cbs4702/
 ├── data/                 cached dataset splits (downloaded automatically, not committed)
 ├── notebooks/            one notebook per project stage
 │   ├── 01_eda.ipynb      exploratory data analysis
-│   └── 02_baselines.ipynb  bag-of-words baselines (Naive Bayes, logistic regression, TF-IDF)
+│   ├── 02_baselines.ipynb  bag-of-words baselines (Naive Bayes, logistic regression, TF-IDF)
+│   └── 03_improved_classical.ipynb  word + character n-gram TF-IDF, class weights, ablation study
 ├── src/                  code shared by all notebooks and the web service
 │   ├── config.py         paths, label set, colours, random seed
 │   ├── data.py           dataset loading and caching
-│   └── evaluate.py       metrics, summary tables, confusion matrices, significance tests
+│   ├── evaluate.py       metrics, summary tables, confusion matrices, significance tests
+│   └── slices.py         diagnostic subsets (unseen words, negation, 'feel' template)
 ├── models/               saved model files
 │   └── classical/        fitted scikit-learn pipelines (*.joblib, vectoriser + classifier)
 ├── results/
@@ -55,6 +57,7 @@ notebook directly from GitHub:
 |---|---|
 | `01_eda.ipynb` | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Cecile1015/emotion-mirror-cbs4702/blob/main/notebooks/01_eda.ipynb) |
 | `02_baselines.ipynb` | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Cecile1015/emotion-mirror-cbs4702/blob/main/notebooks/02_baselines.ipynb) |
+| `03_improved_classical.ipynb` | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Cecile1015/emotion-mirror-cbs4702/blob/main/notebooks/03_improved_classical.ipynb) |
 
 The repository must be public for Colab to clone it without credentials.
 Files written on Colab (figures, metrics, models) are lost when the runtime
@@ -69,11 +72,25 @@ Test split (2,000 texts); hyper-parameters selected by validation macro-F1.
 | `bow_nb` | word counts | Multinomial Naive Bayes (alpha = 0.3) | 0.802 | 0.695 |
 | `bow_lr` | word counts | Softmax logistic regression (C = 10) | 0.883 | 0.831 |
 | `tfidf_lr` | TF-IDF | Softmax logistic regression (C = 30) | 0.882 | 0.832 |
+| `ngram_cnb` | TF-IDF word 1–2 + char 2–5 grams | Complement Naive Bayes | 0.872 | 0.824 |
+| `ngram_lr` | TF-IDF word 1–2 + char 2–5 grams | Softmax LR, class weights (C = 30) | 0.880 | 0.828 |
+| `improved_lr` | TF-IDF unigrams (sublinear tf) | Softmax LR, class weights (C = 3) | 0.885 | 0.843 |
 
 Logistic regression is significantly better than Naive Bayes on the same features
 (McNemar p < 1e-19); counts vs. TF-IDF makes no significant difference in accuracy
 (p = 0.81), but TF-IDF + LR gives better-calibrated probabilities.
 See `notebooks/02_baselines.ipynb` §7 for the discussion.
+
+Improvement 1 (`03_improved_classical.ipynb`) tunes a word + character n-gram
+model with `PredefinedSplit` and runs a 2³ ablation (word bigrams × character
+n-grams × class weights) on the validation split. Class weights are the only
+component that helps consistently; the selected model (`improved_lr`) is the
+unigram model with class weights. No representation change is significant on
+the test set, but character n-grams halve the loss of macro-F1 when the test
+texts contain spelling mistakes (stress test, §7.3).
+
+Saved pipelines (`models/classical/`, accept raw strings): `bow_nb`, `bow_lr`,
+`tfidf_lr`, `improved_lr` and `ngram_lr` (13 MB, the typo-robust full model).
 
 ## Reproducibility
 

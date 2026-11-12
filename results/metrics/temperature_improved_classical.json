@@ -1,0 +1,7 @@
+{
+  "tfidf_lr": 0.8992,
+  "ngram_lr_no_cw": 1.4343,
+  "ngram_lr": 0.8543,
+  "improved_lr": 0.5111,
+  "ngram_cnb": 0.539
+}

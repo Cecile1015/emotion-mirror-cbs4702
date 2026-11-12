@@ -1,0 +1,98 @@
+{
+  "model": "ngram_lr_no_bigram",
+  "split": "test",
+  "notes": "TF-IDF word (1,1)-grams + char_wb (2,5)-grams (FeatureUnion), sublinear_tf=True + LogisticRegression(C=3, class_weight=balanced, tol=1e-6); selected by validation macro-F1 (PredefinedSplit)",
+  "created": "2026-11-12T00:51:07+00:00",
+  "n": 2000,
+  "accuracy": 0.881,
+  "macro_f1": 0.8326242604555008,
+  "weighted_f1": 0.8836112143648825,
+  "per_class": {
+    "sadness": {
+      "precision": 0.9455535390199638,
+      "recall": 0.8967297762478486,
+      "f1": 0.9204946996466431,
+      "support": 581
+    },
+    "joy": {
+      "precision": 0.9410876132930514,
+      "recall": 0.8964028776978418,
+      "f1": 0.918201915991157,
+      "support": 695
+    },
+    "love": {
+      "precision": 0.7035175879396985,
+      "recall": 0.8805031446540881,
+      "f1": 0.7821229050279329,
+      "support": 159
+    },
+    "anger": {
+      "precision": 0.8596491228070176,
+      "recall": 0.8909090909090909,
+      "f1": 0.875,
+      "support": 275
+    },
+    "fear": {
+      "precision": 0.8418604651162791,
+      "recall": 0.8080357142857143,
+      "f1": 0.8246013667425968,
+      "support": 224
+    },
+    "surprise": {
+      "precision": 0.5909090909090909,
+      "recall": 0.7878787878787878,
+      "f1": 0.6753246753246753,
+      "support": 66
+    }
+  },
+  "confusion_matrix": [
+    [
+      521,
+      15,
+      5,
+      21,
+      13,
+      6
+    ],
+    [
+      4,
+      623,
+      48,
+      3,
+      6,
+      11
+    ],
+    [
+      0,
+      14,
+      140,
+      3,
+      0,
+      2
+    ],
+    [
+      12,
+      5,
+      4,
+      245,
+      8,
+      1
+    ],
+    [
+      12,
+      2,
+      2,
+      11,
+      181,
+      16
+    ],
+    [
+      2,
+      3,
+      0,
+      2,
+      7,
+      52
+    ]
+  ]
+}
