@@ -1,0 +1,98 @@
+{
+  "model": "bert_frozen",
+  "split": "validation",
+  "notes": "bert-base-uncased frozen; only the linear layer on the pooled [CLS] vector trained; class-weighted CE; AdamW lr=3e-03; early stopping on validation macro-F1; seed 42",
+  "created": "2026-11-12T07:04:25+00:00",
+  "n": 2000,
+  "accuracy": 0.488,
+  "macro_f1": 0.41959007580113156,
+  "weighted_f1": 0.5087176212654507,
+  "per_class": {
+    "sadness": {
+      "precision": 0.6552567237163814,
+      "recall": 0.48727272727272725,
+      "f1": 0.5589155370177268,
+      "support": 550
+    },
+    "joy": {
+      "precision": 0.6910016977928692,
+      "recall": 0.578125,
+      "f1": 0.6295436968290796,
+      "support": 704
+    },
+    "love": {
+      "precision": 0.27699530516431925,
+      "recall": 0.33146067415730335,
+      "f1": 0.30179028132992325,
+      "support": 178
+    },
+    "anger": {
+      "precision": 0.4393305439330544,
+      "recall": 0.38181818181818183,
+      "f1": 0.4085603112840467,
+      "support": 275
+    },
+    "fear": {
+      "precision": 0.33220338983050846,
+      "recall": 0.46226415094339623,
+      "f1": 0.3865877712031558,
+      "support": 212
+    },
+    "surprise": {
+      "precision": 0.15294117647058825,
+      "recall": 0.48148148148148145,
+      "f1": 0.23214285714285715,
+      "support": 81
+    }
+  },
+  "confusion_matrix": [
+    [
+      268,
+      67,
+      34,
+      65,
+      64,
+      52
+    ],
+    [
+      42,
+      407,
+      86,
+      29,
+      59,
+      81
+    ],
+    [
+      16,
+      55,
+      59,
+      15,
+      13,
+      20
+    ],
+    [
+      53,
+      28,
+      15,
+      105,
+      49,
+      25
+    ],
+    [
+      25,
+      20,
+      11,
+      20,
+      98,
+      38
+    ],
+    [
+      5,
+      12,
+      8,
+      5,
+      12,
+      39
+    ]
+  ]
+}
