@@ -232,8 +232,9 @@ coin flip on them, while BERT is 98.9% accurate on the other texts, and 121 of B
 them. The annotation also ignores negation (94% of negated keywords keep their label). A rule-based
 coding scheme assigns each error to the annotation, lexical, syntactic-semantic, discourse or pragmatic
 level, and 18 errors are explained individually. In 60 hand-written behavioural tests (CheckList) no
-model handles negation or sarcasm, and probabilities do not reflect intensity; on negated sentences the
-models reproduce the annotation convention. All results for the web application are exported to
+trained model handles negation or sarcasm, and probabilities do not reflect intensity; on negated sentences
+they reproduce the annotation convention. The few-shot LLM passes 57 of 60 tests (6 of 7 negations, 10 of
+12 sarcastic sentences) — the reverse of its rank on the test split, whose labels follow the convention. All results for the web application are exported to
 `results/app/*.json`.
 
 ## Reproducibility
