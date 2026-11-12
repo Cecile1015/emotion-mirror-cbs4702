@@ -1,0 +1,9 @@
+comparison (A → B),question,texts,b (only A correct),c (only B correct),McNemar p,Δ macro-F1 (B − A),95% CI of Δ,Holm p,"significant (Holm, 0.05)"
+BoW+NB → BoW+LR,generative -> discriminative classifier (same counts),2000,75,238,5.3468245474153684e-20,0.13642700524630225,"[0.105, 0.169]",3.208094728449221e-19,yes
+BoW+LR → TF-IDF+LR,raw counts -> TF-IDF weights,2000,38,35,0.8149210911464686,0.0007342368063315563,"[-0.013, +0.014]",1.0,no
+TF-IDF+LR → Improved LR,+ sublinear tf and class weights,2000,71,78,0.6230451676127869,0.01081554279267738,"[-0.010, +0.031]",1.0,no
+Improved LR → GloVe+LR,sparse word identities -> averaged static vectors,2000,497,76,6.409904078510163e-69,-0.24137148134710906,"[-0.270, -0.211]",4.486932854957114e-68,yes
+GloVe+LR → BiLSTM,"+ word order (recurrent encoder), fine-tuned vectors",2000,47,561,3.907966110091793e-96,0.29238455105038397,"[0.262, 0.322]",3.1263728880734344e-95,yes
+BiLSTM → BERT,"+ contextual self-attention, pre-trained encoder",2000,55,52,0.8466869868023941,0.0023589276152353733,"[-0.013, +0.017]",1.0,no
+TF-IDF+LR → BERT,baseline -> best model (overall gain),2000,66,163,2.2408056385022774e-10,0.06418754011118766,"[0.040, 0.087]",8.96322255400911e-10,yes
+BERT → LLM (few-shot),fine-tuned encoder -> prompted decoder-only LLM,300,63,6,1.5664347812362473e-11,-0.21217903369883606,"[-0.284, -0.145]",7.832173906181236e-11,yes

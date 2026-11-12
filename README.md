@@ -12,6 +12,7 @@ made accessible through an interactive web application.
 ```
 emotion-mirror-cbs4702/
 ├── data/                 cached dataset splits and GloVe vectors (downloaded automatically, not committed)
+│   └── handcrafted/      hand-written test data: behavioural test suite, annotated error examples (committed)
 ├── notebooks/            one notebook per project stage
 │   ├── 01_eda.ipynb      exploratory data analysis
 │   ├── 02_baselines.ipynb  bag-of-words baselines (Naive Bayes, logistic regression, TF-IDF)
@@ -19,7 +20,8 @@ emotion-mirror-cbs4702/
 │   ├── 04_static_embeddings.ipynb   GloVe coverage, averaged word vectors + LR, Twitter vs Wikipedia GloVe
 │   ├── 05_bilstm.ipynb              bidirectional LSTM on GloVe, frozen vs fine-tuned embeddings
 │   ├── 06_bert.ipynb                fine-tuned bert-base-uncased (Colab GPU), frozen-BERT control, attention
-│   └── 07_llm_deepseek.ipynb        zero-/few-shot DeepSeek LLM vs all trained models on a 300-text test subset
+│   ├── 07_llm_deepseek.ipynb        zero-/few-shot DeepSeek LLM vs all trained models on a 300-text test subset
+│   └── 08_error_analysis.ipynb      final comparison, label-noise analysis, error coding, behavioural tests
 ├── src/                  code shared by all notebooks and the web service
 │   ├── config.py         paths, label set, colours, random seed
 │   ├── data.py           dataset loading and caching
@@ -28,12 +30,17 @@ emotion-mirror-cbs4702/
 │   ├── embeddings.py     GloVe download/cache and the averaged-vector transformer
 │   ├── bilstm.py         BiLSTM vocabulary, dataset, model, training loop, checkpoints
 │   ├── bert_infer.py     BERT loading (local or Hugging Face Hub), prediction, attention weights
-│   └── llm.py            DeepSeek prompts, output validation, cached API calls, token cost
+│   ├── llm.py            DeepSeek prompts, output validation, cached API calls, token cost
+│   ├── predictors.py     one loader for every trained model (raw strings in, probabilities out)
+│   ├── keywords.py       emotion keyword after 'feel', keyword lexicon, split keywords, look-up classifier
+│   ├── error_analysis.py error coding scheme, linear-model word contributions, occlusion
+│   └── behavioural.py    CheckList-style behavioural tests (MFT, INV, DIR)
 ├── models/               saved model files
 │   ├── classical/        fitted scikit-learn pipelines (*.joblib, vectoriser + classifier)
 │   ├── bilstm/           BiLSTM checkpoints (only bilstm.pt, the selected model, is committed)
 │   └── bert/             fine-tuned BERT (weights on the Hugging Face Hub; model card and training info committed)
 ├── results/
+│   ├── app/              JSON files read by the web application (ledger, predictions, errors, behavioural tests)
 │   ├── figures/          figures used in the report and the web app
 │   ├── llm/              evaluation subsets, selected prompts and the cache of every DeepSeek response
 │   ├── metrics/          one JSON file per model and split
@@ -211,6 +218,24 @@ negated texts, where that convention and the literal meaning diverge. At tempera
 returns one-hot log-probabilities, so the LLM gives no usable confidence. All API runs together cost
 about US$0.24.
 
+Step 7 (`08_error_analysis.ipynb`) compares all models along the representation ladder and
+analyses the remaining errors. Only three of the six steps up the ladder are significant (Holm-adjusted
+McNemar tests): logistic regression over Naive Bayes, the BiLSTM over averaged GloVe vectors, and —
+negatively — averaged GloVe vectors against sparse features; BERT is not significantly better than the
+BiLSTM (p = 0.85) but clearly better than TF-IDF + LR (Δ macro-F1 = +0.064 [+0.040, +0.087]).
+The labels of dair-ai/emotion were assigned by distant supervision, and the trace is visible: predicting
+the training label of the single word after *feel* is right for 90% of the test texts that have such a
+word, and 20 frequent emotion words (*overwhelmed*, *stressed*, *blessed*, *weird* ...) are labelled with
+one of two neighbouring emotions at random — a classifier that sees their context does no better than
+the majority baseline. These *split keywords* occur in 12.7% of the test texts; every model is near a
+coin flip on them, while BERT is 98.9% accurate on the other texts, and 121 of BERT's 140 errors fall on
+them. The annotation also ignores negation (94% of negated keywords keep their label). A rule-based
+coding scheme assigns each error to the annotation, lexical, syntactic-semantic, discourse or pragmatic
+level, and 18 errors are explained individually. In 60 hand-written behavioural tests (CheckList) no
+model handles negation or sarcasm, and probabilities do not reflect intensity; on negated sentences the
+models reproduce the annotation convention. All results for the web application are exported to
+`results/app/*.json`.
+
 ## Reproducibility
 
 * All randomness is controlled by `SEED = 42` in `src/config.py`.
@@ -237,6 +262,13 @@ Brown, T. B., et al. (2020). Language Models are Few-Shot Learners.
 
 Guo, C., Pleiss, G., Sun, Y., & Weinberger, K. Q. (2017). On Calibration of
 Modern Neural Networks. *Proceedings of ICML 2017*, 1321–1330.
+
+Ribeiro, M. T., Wu, T., Guestrin, C., & Singh, S. (2020). Beyond Accuracy:
+Behavioral Testing of NLP Models with CheckList. *Proceedings of ACL 2020*, 4902–4912.
+
+Saravia, E., Liu, H.-C. T., Huang, Y.-H., Wu, J., & Chen, Y.-S. (2018). CARER:
+Contextualized Affect Representations for Emotion Recognition. *Proceedings of
+EMNLP 2018*, 3687–3697.
 
 ## Data source
 

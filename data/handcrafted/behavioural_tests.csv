@@ -1,0 +1,61 @@
+test_id,capability,group,variant,text,expected,note
+N01a,negation,N01,affirmative,i feel happy today,joy,control: the emotion word without negation
+N01b,negation,N01,negated,i don t feel happy today,sadness,the negated emotion is reversed or absent
+N02a,negation,N02,affirmative,i feel excited about my future,joy,control: the emotion word without negation
+N02b,negation,N02,negated,i no longer feel excited about my future,sadness,the negated emotion is reversed or absent
+N03a,negation,N03,affirmative,i feel loved by my family,love,control: the emotion word without negation
+N03b,negation,N03,negated,i don t feel loved by my family anymore,sadness,the negated emotion is reversed or absent
+N04a,negation,N04,affirmative,i feel confident when i speak in class,joy,control: the emotion word without negation
+N04b,negation,N04,negated,i never feel confident when i speak in class,fear|sadness,the negated emotion is reversed or absent
+N05a,negation,N05,affirmative,i feel sad about leaving my hometown,sadness,control: the emotion word without negation
+N05b,negation,N05,negated,i do not feel sad about leaving my hometown anymore,joy,the negated emotion is reversed or absent
+N06a,negation,N06,affirmative,i feel scared when i walk home alone at night,fear,control: the emotion word without negation
+N06b,negation,N06,negated,i don t feel scared when i walk home alone at night anymore,joy,the negated emotion is reversed or absent
+N07a,negation,N07,affirmative,i feel lonely in this new city,sadness,control: the emotion word without negation
+N07b,negation,N07,negated,i no longer feel lonely in this new city,joy,the negated emotion is reversed or absent
+N08,negation,N08,"negation, emotion kept",i can t stop smiling since i heard the good news,joy,a negation word that does not reverse the emotion
+N09,negation,N09,"negation, emotion kept",i have never felt so loved in my whole life,love,a negation word that does not reverse the emotion
+N10,negation,N10,"negation, emotion kept",i could not be happier with how the day turned out,joy,a negation word that does not reverse the emotion
+N11,negation,N11,"negation, emotion kept",nothing scares me more than the thought of losing my mother,fear,a negation word that does not reverse the emotion
+N12,negation,N12,"negation, emotion kept",i can t help feeling nervous before every exam,fear,a negation word that does not reverse the emotion
+N13,negation,N13,"negation, emotion kept",i never knew i could feel this heartbroken,sadness,a negation word that does not reverse the emotion
+S01,sarcasm,S01,sarcastic,oh great another monday i just love being stuck in traffic for two hours,anger|sadness,"positive words, negative attitude: anger or sadness expected"
+S02,sarcasm,S02,sarcastic,thanks a lot for ruining my birthday i feel so loved,anger|sadness,"positive words, negative attitude: anger or sadness expected"
+S03,sarcasm,S03,sarcastic,wow what a wonderful surprise my flight got cancelled again,anger|sadness,"positive words, negative attitude: anger or sadness expected"
+S04,sarcasm,S04,sarcastic,i just love it when people ignore my messages for days,anger|sadness,"positive words, negative attitude: anger or sadness expected"
+S05,sarcasm,S05,sarcastic,fantastic my laptop crashed right before the deadline i feel so lucky,anger|sadness,"positive words, negative attitude: anger or sadness expected"
+S06,sarcasm,S06,sarcastic,perfect it is raining on the one day i planned a picnic how delightful,anger|sadness,"positive words, negative attitude: anger or sadness expected"
+S07,sarcasm,S07,sarcastic,i feel so blessed to be stuck at work on christmas eve,anger|sadness,"positive words, negative attitude: anger or sadness expected"
+S08,sarcasm,S08,sarcastic,yeah i am absolutely thrilled that my landlord raised the rent again,anger|sadness,"positive words, negative attitude: anger or sadness expected"
+S09,sarcasm,S09,sarcastic,nothing says i care like forgetting my birthday three years in a row,anger|sadness,"positive words, negative attitude: anger or sadness expected"
+S10,sarcasm,S10,sarcastic,i am so happy to spend my whole weekend doing paperwork for my boss,anger|sadness,"positive words, negative attitude: anger or sadness expected"
+S11,sarcasm,S11,sarcastic,lovely another bill in the mailbox just what i needed,anger|sadness,"positive words, negative attitude: anger or sadness expected"
+S12,sarcasm,S12,sarcastic,i feel very appreciated now that my boss took credit for my work,anger|sadness,"positive words, negative attitude: anger or sadness expected"
+I01a,intensity,I01,downtoned,i feel a little sad today,sadness,downtoner: label must not change
+I01b,intensity,I01,plain,i feel sad today,sadness,no degree modifier
+I01c,intensity,I01,intensified,i feel incredibly sad today,sadness,intensifier: label must not change
+I02a,intensity,I02,downtoned,i feel slightly happy about the result,joy,downtoner: label must not change
+I02b,intensity,I02,plain,i feel happy about the result,joy,no degree modifier
+I02c,intensity,I02,intensified,i feel extremely happy about the result,joy,intensifier: label must not change
+I03a,intensity,I03,downtoned,i feel a bit annoyed with my roommate,anger,downtoner: label must not change
+I03b,intensity,I03,plain,i feel annoyed with my roommate,anger,no degree modifier
+I03c,intensity,I03,intensified,i feel extremely annoyed with my roommate,anger,intensifier: label must not change
+I04a,intensity,I04,downtoned,i feel somewhat nervous about the interview,fear,downtoner: label must not change
+I04b,intensity,I04,plain,i feel nervous about the interview,fear,no degree modifier
+I04c,intensity,I04,intensified,i feel terribly nervous about the interview,fear,intensifier: label must not change
+I05a,intensity,I05,downtoned,i feel a little nostalgic about my childhood home,love,downtoner: label must not change
+I05b,intensity,I05,plain,i feel nostalgic about my childhood home,love,no degree modifier
+I05c,intensity,I05,intensified,i feel deeply nostalgic about my childhood home,love,intensifier: label must not change
+I06a,intensity,I06,downtoned,i feel slightly surprised by the news,surprise,downtoner: label must not change
+I06b,intensity,I06,plain,i feel surprised by the news,surprise,no degree modifier
+I06c,intensity,I06,intensified,i feel totally surprised by the news,surprise,intensifier: label must not change
+M01,mixed,M01,two emotions,i am excited but also terrified about moving abroad next month,joy|fear,two emotions: either label is accepted
+M02,mixed,M02,two emotions,i feel happy for her but also sad that she is leaving,joy|sadness,two emotions: either label is accepted
+M03,mixed,M03,two emotions,i was scared at first but now i feel really proud of myself,fear|joy,two emotions: either label is accepted
+M04,mixed,M04,two emotions,i love my brother but i am furious with him right now,love|anger,two emotions: either label is accepted
+M05,mixed,M05,two emotions,i feel nervous and excited about my first day at university,fear|joy,two emotions: either label is accepted
+M06,mixed,M06,two emotions,i was shocked and then deeply hurt by what she said,surprise|sadness,two emotions: either label is accepted
+M07,mixed,M07,two emotions,i feel grateful for my friends but lonely without my family here,joy|sadness,two emotions: either label is accepted
+M08,mixed,M08,two emotions,i am angry at myself and also really scared of what happens next,anger|fear,two emotions: either label is accepted
+M09,mixed,M09,two emotions,i adore my new puppy but i am terrified i will not take good care of him,love|fear,two emotions: either label is accepted
+M10,mixed,M10,two emotions,i felt surprised and absolutely delighted when they threw me a party,surprise|joy,two emotions: either label is accepted

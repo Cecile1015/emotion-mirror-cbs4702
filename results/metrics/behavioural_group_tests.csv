@@ -1,0 +1,233 @@
+model,capability,test,group,pass
+bow_nb,negation,DIR: negation lowers P(affirmed emotion),N01,False
+bow_nb,negation,DIR: negation lowers P(affirmed emotion),N02,False
+bow_nb,negation,DIR: negation lowers P(affirmed emotion),N03,True
+bow_nb,negation,DIR: negation lowers P(affirmed emotion),N04,False
+bow_nb,negation,DIR: negation lowers P(affirmed emotion),N05,False
+bow_nb,negation,DIR: negation lowers P(affirmed emotion),N06,False
+bow_nb,negation,DIR: negation lowers P(affirmed emotion),N07,False
+bow_nb,intensity,INV: same label across intensities,I01,True
+bow_nb,intensity,DIR: intensifier does not lower P(emotion),I01,True
+bow_nb,intensity,INV: same label across intensities,I02,True
+bow_nb,intensity,DIR: intensifier does not lower P(emotion),I02,True
+bow_nb,intensity,INV: same label across intensities,I03,True
+bow_nb,intensity,DIR: intensifier does not lower P(emotion),I03,True
+bow_nb,intensity,INV: same label across intensities,I04,True
+bow_nb,intensity,DIR: intensifier does not lower P(emotion),I04,False
+bow_nb,intensity,INV: same label across intensities,I05,True
+bow_nb,intensity,DIR: intensifier does not lower P(emotion),I05,True
+bow_nb,intensity,INV: same label across intensities,I06,True
+bow_nb,intensity,DIR: intensifier does not lower P(emotion),I06,True
+bow_nb,mixed,both emotions in the top two,M01,True
+bow_nb,mixed,both emotions in the top two,M02,True
+bow_nb,mixed,both emotions in the top two,M03,False
+bow_nb,mixed,both emotions in the top two,M04,False
+bow_nb,mixed,both emotions in the top two,M05,True
+bow_nb,mixed,both emotions in the top two,M06,True
+bow_nb,mixed,both emotions in the top two,M07,True
+bow_nb,mixed,both emotions in the top two,M08,True
+bow_nb,mixed,both emotions in the top two,M09,False
+bow_nb,mixed,both emotions in the top two,M10,True
+bow_lr,negation,DIR: negation lowers P(affirmed emotion),N01,False
+bow_lr,negation,DIR: negation lowers P(affirmed emotion),N02,False
+bow_lr,negation,DIR: negation lowers P(affirmed emotion),N03,False
+bow_lr,negation,DIR: negation lowers P(affirmed emotion),N04,False
+bow_lr,negation,DIR: negation lowers P(affirmed emotion),N05,False
+bow_lr,negation,DIR: negation lowers P(affirmed emotion),N06,False
+bow_lr,negation,DIR: negation lowers P(affirmed emotion),N07,False
+bow_lr,intensity,INV: same label across intensities,I01,True
+bow_lr,intensity,DIR: intensifier does not lower P(emotion),I01,True
+bow_lr,intensity,INV: same label across intensities,I02,True
+bow_lr,intensity,DIR: intensifier does not lower P(emotion),I02,True
+bow_lr,intensity,INV: same label across intensities,I03,True
+bow_lr,intensity,DIR: intensifier does not lower P(emotion),I03,True
+bow_lr,intensity,INV: same label across intensities,I04,True
+bow_lr,intensity,DIR: intensifier does not lower P(emotion),I04,False
+bow_lr,intensity,INV: same label across intensities,I05,True
+bow_lr,intensity,DIR: intensifier does not lower P(emotion),I05,False
+bow_lr,intensity,INV: same label across intensities,I06,True
+bow_lr,intensity,DIR: intensifier does not lower P(emotion),I06,False
+bow_lr,mixed,both emotions in the top two,M01,True
+bow_lr,mixed,both emotions in the top two,M02,True
+bow_lr,mixed,both emotions in the top two,M03,True
+bow_lr,mixed,both emotions in the top two,M04,False
+bow_lr,mixed,both emotions in the top two,M05,True
+bow_lr,mixed,both emotions in the top two,M06,True
+bow_lr,mixed,both emotions in the top two,M07,False
+bow_lr,mixed,both emotions in the top two,M08,True
+bow_lr,mixed,both emotions in the top two,M09,False
+bow_lr,mixed,both emotions in the top two,M10,True
+tfidf_lr,negation,DIR: negation lowers P(affirmed emotion),N01,False
+tfidf_lr,negation,DIR: negation lowers P(affirmed emotion),N02,False
+tfidf_lr,negation,DIR: negation lowers P(affirmed emotion),N03,True
+tfidf_lr,negation,DIR: negation lowers P(affirmed emotion),N04,False
+tfidf_lr,negation,DIR: negation lowers P(affirmed emotion),N05,False
+tfidf_lr,negation,DIR: negation lowers P(affirmed emotion),N06,False
+tfidf_lr,negation,DIR: negation lowers P(affirmed emotion),N07,False
+tfidf_lr,intensity,INV: same label across intensities,I01,True
+tfidf_lr,intensity,DIR: intensifier does not lower P(emotion),I01,False
+tfidf_lr,intensity,INV: same label across intensities,I02,True
+tfidf_lr,intensity,DIR: intensifier does not lower P(emotion),I02,True
+tfidf_lr,intensity,INV: same label across intensities,I03,True
+tfidf_lr,intensity,DIR: intensifier does not lower P(emotion),I03,True
+tfidf_lr,intensity,INV: same label across intensities,I04,True
+tfidf_lr,intensity,DIR: intensifier does not lower P(emotion),I04,False
+tfidf_lr,intensity,INV: same label across intensities,I05,True
+tfidf_lr,intensity,DIR: intensifier does not lower P(emotion),I05,False
+tfidf_lr,intensity,INV: same label across intensities,I06,True
+tfidf_lr,intensity,DIR: intensifier does not lower P(emotion),I06,True
+tfidf_lr,mixed,both emotions in the top two,M01,True
+tfidf_lr,mixed,both emotions in the top two,M02,True
+tfidf_lr,mixed,both emotions in the top two,M03,True
+tfidf_lr,mixed,both emotions in the top two,M04,False
+tfidf_lr,mixed,both emotions in the top two,M05,True
+tfidf_lr,mixed,both emotions in the top two,M06,True
+tfidf_lr,mixed,both emotions in the top two,M07,False
+tfidf_lr,mixed,both emotions in the top two,M08,True
+tfidf_lr,mixed,both emotions in the top two,M09,False
+tfidf_lr,mixed,both emotions in the top two,M10,True
+improved_lr,negation,DIR: negation lowers P(affirmed emotion),N01,False
+improved_lr,negation,DIR: negation lowers P(affirmed emotion),N02,False
+improved_lr,negation,DIR: negation lowers P(affirmed emotion),N03,True
+improved_lr,negation,DIR: negation lowers P(affirmed emotion),N04,False
+improved_lr,negation,DIR: negation lowers P(affirmed emotion),N05,False
+improved_lr,negation,DIR: negation lowers P(affirmed emotion),N06,False
+improved_lr,negation,DIR: negation lowers P(affirmed emotion),N07,False
+improved_lr,intensity,INV: same label across intensities,I01,True
+improved_lr,intensity,DIR: intensifier does not lower P(emotion),I01,True
+improved_lr,intensity,INV: same label across intensities,I02,True
+improved_lr,intensity,DIR: intensifier does not lower P(emotion),I02,True
+improved_lr,intensity,INV: same label across intensities,I03,True
+improved_lr,intensity,DIR: intensifier does not lower P(emotion),I03,True
+improved_lr,intensity,INV: same label across intensities,I04,True
+improved_lr,intensity,DIR: intensifier does not lower P(emotion),I04,False
+improved_lr,intensity,INV: same label across intensities,I05,True
+improved_lr,intensity,DIR: intensifier does not lower P(emotion),I05,False
+improved_lr,intensity,INV: same label across intensities,I06,True
+improved_lr,intensity,DIR: intensifier does not lower P(emotion),I06,True
+improved_lr,mixed,both emotions in the top two,M01,True
+improved_lr,mixed,both emotions in the top two,M02,True
+improved_lr,mixed,both emotions in the top two,M03,True
+improved_lr,mixed,both emotions in the top two,M04,False
+improved_lr,mixed,both emotions in the top two,M05,True
+improved_lr,mixed,both emotions in the top two,M06,True
+improved_lr,mixed,both emotions in the top two,M07,False
+improved_lr,mixed,both emotions in the top two,M08,True
+improved_lr,mixed,both emotions in the top two,M09,False
+improved_lr,mixed,both emotions in the top two,M10,True
+glove_lr,negation,DIR: negation lowers P(affirmed emotion),N01,False
+glove_lr,negation,DIR: negation lowers P(affirmed emotion),N02,True
+glove_lr,negation,DIR: negation lowers P(affirmed emotion),N03,True
+glove_lr,negation,DIR: negation lowers P(affirmed emotion),N04,False
+glove_lr,negation,DIR: negation lowers P(affirmed emotion),N05,False
+glove_lr,negation,DIR: negation lowers P(affirmed emotion),N06,False
+glove_lr,negation,DIR: negation lowers P(affirmed emotion),N07,True
+glove_lr,intensity,INV: same label across intensities,I01,True
+glove_lr,intensity,DIR: intensifier does not lower P(emotion),I01,False
+glove_lr,intensity,INV: same label across intensities,I02,True
+glove_lr,intensity,DIR: intensifier does not lower P(emotion),I02,True
+glove_lr,intensity,INV: same label across intensities,I03,True
+glove_lr,intensity,DIR: intensifier does not lower P(emotion),I03,True
+glove_lr,intensity,INV: same label across intensities,I04,True
+glove_lr,intensity,DIR: intensifier does not lower P(emotion),I04,False
+glove_lr,intensity,INV: same label across intensities,I05,False
+glove_lr,intensity,DIR: intensifier does not lower P(emotion),I05,False
+glove_lr,intensity,INV: same label across intensities,I06,True
+glove_lr,intensity,DIR: intensifier does not lower P(emotion),I06,False
+glove_lr,mixed,both emotions in the top two,M01,False
+glove_lr,mixed,both emotions in the top two,M02,True
+glove_lr,mixed,both emotions in the top two,M03,True
+glove_lr,mixed,both emotions in the top two,M04,False
+glove_lr,mixed,both emotions in the top two,M05,True
+glove_lr,mixed,both emotions in the top two,M06,True
+glove_lr,mixed,both emotions in the top two,M07,True
+glove_lr,mixed,both emotions in the top two,M08,True
+glove_lr,mixed,both emotions in the top two,M09,False
+glove_lr,mixed,both emotions in the top two,M10,True
+bilstm,negation,DIR: negation lowers P(affirmed emotion),N01,False
+bilstm,negation,DIR: negation lowers P(affirmed emotion),N02,False
+bilstm,negation,DIR: negation lowers P(affirmed emotion),N03,False
+bilstm,negation,DIR: negation lowers P(affirmed emotion),N04,False
+bilstm,negation,DIR: negation lowers P(affirmed emotion),N05,False
+bilstm,negation,DIR: negation lowers P(affirmed emotion),N06,False
+bilstm,negation,DIR: negation lowers P(affirmed emotion),N07,False
+bilstm,intensity,INV: same label across intensities,I01,True
+bilstm,intensity,DIR: intensifier does not lower P(emotion),I01,True
+bilstm,intensity,INV: same label across intensities,I02,True
+bilstm,intensity,DIR: intensifier does not lower P(emotion),I02,False
+bilstm,intensity,INV: same label across intensities,I03,True
+bilstm,intensity,DIR: intensifier does not lower P(emotion),I03,False
+bilstm,intensity,INV: same label across intensities,I04,True
+bilstm,intensity,DIR: intensifier does not lower P(emotion),I04,True
+bilstm,intensity,INV: same label across intensities,I05,True
+bilstm,intensity,DIR: intensifier does not lower P(emotion),I05,True
+bilstm,intensity,INV: same label across intensities,I06,True
+bilstm,intensity,DIR: intensifier does not lower P(emotion),I06,False
+bilstm,mixed,both emotions in the top two,M01,True
+bilstm,mixed,both emotions in the top two,M02,True
+bilstm,mixed,both emotions in the top two,M03,True
+bilstm,mixed,both emotions in the top two,M04,False
+bilstm,mixed,both emotions in the top two,M05,True
+bilstm,mixed,both emotions in the top two,M06,True
+bilstm,mixed,both emotions in the top two,M07,True
+bilstm,mixed,both emotions in the top two,M08,True
+bilstm,mixed,both emotions in the top two,M09,False
+bilstm,mixed,both emotions in the top two,M10,True
+bert,negation,DIR: negation lowers P(affirmed emotion),N01,False
+bert,negation,DIR: negation lowers P(affirmed emotion),N02,False
+bert,negation,DIR: negation lowers P(affirmed emotion),N03,False
+bert,negation,DIR: negation lowers P(affirmed emotion),N04,False
+bert,negation,DIR: negation lowers P(affirmed emotion),N05,False
+bert,negation,DIR: negation lowers P(affirmed emotion),N06,False
+bert,negation,DIR: negation lowers P(affirmed emotion),N07,False
+bert,intensity,INV: same label across intensities,I01,True
+bert,intensity,DIR: intensifier does not lower P(emotion),I01,True
+bert,intensity,INV: same label across intensities,I02,True
+bert,intensity,DIR: intensifier does not lower P(emotion),I02,True
+bert,intensity,INV: same label across intensities,I03,True
+bert,intensity,DIR: intensifier does not lower P(emotion),I03,True
+bert,intensity,INV: same label across intensities,I04,True
+bert,intensity,DIR: intensifier does not lower P(emotion),I04,True
+bert,intensity,INV: same label across intensities,I05,True
+bert,intensity,DIR: intensifier does not lower P(emotion),I05,True
+bert,intensity,INV: same label across intensities,I06,True
+bert,intensity,DIR: intensifier does not lower P(emotion),I06,False
+bert,mixed,both emotions in the top two,M01,True
+bert,mixed,both emotions in the top two,M02,False
+bert,mixed,both emotions in the top two,M03,False
+bert,mixed,both emotions in the top two,M04,False
+bert,mixed,both emotions in the top two,M05,False
+bert,mixed,both emotions in the top two,M06,False
+bert,mixed,both emotions in the top two,M07,False
+bert,mixed,both emotions in the top two,M08,True
+bert,mixed,both emotions in the top two,M09,False
+bert,mixed,both emotions in the top two,M10,True
+llm,negation,DIR: negation lowers P(affirmed emotion),N01,
+llm,negation,DIR: negation lowers P(affirmed emotion),N02,
+llm,negation,DIR: negation lowers P(affirmed emotion),N03,
+llm,negation,DIR: negation lowers P(affirmed emotion),N04,
+llm,negation,DIR: negation lowers P(affirmed emotion),N05,
+llm,negation,DIR: negation lowers P(affirmed emotion),N06,
+llm,negation,DIR: negation lowers P(affirmed emotion),N07,
+llm,intensity,INV: same label across intensities,I01,True
+llm,intensity,DIR: intensifier does not lower P(emotion),I01,
+llm,intensity,INV: same label across intensities,I02,True
+llm,intensity,DIR: intensifier does not lower P(emotion),I02,
+llm,intensity,INV: same label across intensities,I03,True
+llm,intensity,DIR: intensifier does not lower P(emotion),I03,
+llm,intensity,INV: same label across intensities,I04,True
+llm,intensity,DIR: intensifier does not lower P(emotion),I04,
+llm,intensity,INV: same label across intensities,I05,True
+llm,intensity,DIR: intensifier does not lower P(emotion),I05,
+llm,intensity,INV: same label across intensities,I06,True
+llm,intensity,DIR: intensifier does not lower P(emotion),I06,
+llm,mixed,both emotions in the top two,M01,
+llm,mixed,both emotions in the top two,M02,
+llm,mixed,both emotions in the top two,M03,
+llm,mixed,both emotions in the top two,M04,
+llm,mixed,both emotions in the top two,M05,
+llm,mixed,both emotions in the top two,M06,
+llm,mixed,both emotions in the top two,M07,
+llm,mixed,both emotions in the top two,M08,
+llm,mixed,both emotions in the top two,M09,
+llm,mixed,both emotions in the top two,M10,
