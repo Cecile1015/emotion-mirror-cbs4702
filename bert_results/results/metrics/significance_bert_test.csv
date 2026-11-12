@@ -1,4 +1,0 @@
-comparison (A → B),question,b (only A correct),c (only B correct),McNemar p,Δ macro-F1,Holm p,95% CI of Δ
-BERT frozen ([CLS] pooler) + linear → BERT fine-tuned,frozen → fine-tuned BERT (same architecture and classifier),49,943,7.735226740565882e-177,0.4778865030082156,2.3205680221697648e-176,"[+0.450, +0.503]"
-Improved sparse LR → BERT [selected: fine-tuned],best classical model (Step 3) → selected BERT,42,132,1.5085781503104962e-11,0.05337199731851028,3.0171563006209924e-11,"[+0.035, +0.072]"
-BiLSTM [selected] → BERT [selected: fine-tuned],BiLSTM on fine-tuned GloVe (Step 4) → selected BERT,55,52,0.8466869868023941,0.0023589276152353733,0.8466869868023941,"[-0.013, +0.017]"
