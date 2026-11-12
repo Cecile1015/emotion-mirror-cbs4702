@@ -69,8 +69,10 @@ BERT is fine-tuned on a Google Colab T4 GPU (about 30–40 minutes for the whole
 notebook). Before opening it in Colab, push the current `src/` to GitHub, because
 Colab clones the repository. The notebook mounts Google Drive to keep finished
 training runs (a disconnected runtime resumes from them), uploads the model to the
-Hugging Face Hub (§14, needs a `HF_TOKEN` Colab secret) and downloads
-`bert_results.zip` with all metrics, predictions and figures (§15).
+Hugging Face Hub (§14) and downloads `bert_results.zip` with all metrics,
+predictions and figures (§15). The upload needs a Hugging Face access token of
+type *Write* (huggingface.co → Settings → Access Tokens), stored in Colab under
+*Secrets* as `HF_TOKEN` with notebook access switched on.
 
 On the Mac, unzip the results in the project root and fetch the weights (about 440 MB):
 
@@ -121,6 +123,9 @@ Test split (2,000 texts); hyper-parameters selected by validation macro-F1.
 | `glove_wiki_lr` | mean of GloVe Wikipedia + Gigaword vectors (300-d) | Softmax LR (C = 3) | 0.674 | 0.601 |
 | `bilstm_frozen` | GloVe 300-d, frozen | BiLSTM (H = 128) + linear, class weights | 0.922 | 0.888 |
 | `bilstm_finetuned` | GloVe 300-d, fine-tuned | BiLSTM (H = 128) + linear, class weights | 0.932 | 0.894 |
+| `bert_frozen` | BERT-base, frozen, pooled `[CLS]` | linear layer only, class weights | 0.483 | 0.418 |
+| `bert_frozen_mean` | BERT-base, frozen, mean of token vectors | linear layer only, class weights | 0.608 | 0.530 |
+| `bert_finetuned` | BERT-base, fine-tuned (lr = 5e-5) | `[CLS]` → pooler → linear, class weights | 0.930 | 0.896 |
 
 Logistic regression is significantly better than Naive Bayes on the same features
 (McNemar p < 1e-19); counts vs. TF-IDF makes no significant difference in accuracy
@@ -161,11 +166,16 @@ Saved models, which accept raw strings:
   `models/bert/training_info.json`.
 
 Improvement 3 (`06_bert.ipynb`) fine-tunes `bert-base-uncased` following Case 1
-of Lecture 9 (`[CLS]` → linear classifier), selects the learning rate and the
-checkpoint by validation macro-F1, repeats the selected setting with three seeds,
-and compares full fine-tuning with a frozen BERT whose classification layer alone
-is trained. It is tested against `improved_lr` and the BiLSTM with McNemar's test
-and the paired bootstrap. *Test results are added after the Colab run.*
+of Lecture 9 (`[CLS]` → linear classifier); the learning rate (5e-5) and the
+checkpoint (epoch 3) were selected by validation macro-F1. BERT is significantly
+better than `improved_lr` (Δ macro-F1 = +0.053 [+0.035, +0.072], McNemar
+p ≈ 3e-11) but statistically tied with the BiLSTM (Δ = +0.002 [−0.013, +0.017],
+p = 0.85; seed means 0.894 vs 0.891). Fine-tuning the encoder is essential: a
+frozen BERT whose linear layer alone is trained reaches only 0.418 macro-F1
+(Δ = +0.478 for full fine-tuning). BERT gives the best-calibrated probabilities
+of all models (test log-loss 0.149 after temperature scaling) and is published
+on the Hugging Face Hub as
+[`Cecile1015/emotion-mirror-bert`](https://huggingface.co/Cecile1015/emotion-mirror-bert).
 
 ## Reproducibility
 
