@@ -2,7 +2,7 @@
   "model": "llm_zeroshot",
   "split": "validation_subset300",
   "notes": "DeepSeek deepseek-flash (served: deepseek-flash); prompt zs_lexicon; 0 demonstrations; temperature 0; JSON mode; stratified 300-text validation subset (seed 42); invalid answers scored as errors",
-  "created": "2026-11-12T14:39:13+00:00",
+  "created": "2026-11-12T14:56:22+00:00",
   "n": 300,
   "accuracy": 0.6566666666666666,
   "macro_f1": 0.6220484141741701,

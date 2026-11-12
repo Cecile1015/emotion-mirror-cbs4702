@@ -11,7 +11,9 @@ the left context, and the model generates a short JSON object
 * ``parse_label``           maps a raw completion to one of the six labels and
                             records how much repair was needed (validity status).
 * ``label_distribution``    class probabilities from the token log-probabilities
-                            at the position where the label is generated.
+                            at the position where the label is generated
+                            (``is_degenerate`` flags the one-hot values that the
+                            service returns at temperature 0).
 * ``DeepSeekClassifier``    cached, concurrent API calls with retries, a corrective
                             follow-up for invalid answers and token-usage logging.
 * ``estimate_cost``         converts the logged token usage into US dollars.
@@ -213,11 +215,23 @@ def parse_label(raw: str | None) -> ParseResult:
 # ---------------------------------------------------------------------------
 # Token probabilities
 # ---------------------------------------------------------------------------
-def _label_for_token(token: str) -> str | None:
-    """The single label whose name starts with this token (after removing quotes and spaces)."""
-    piece = token.strip().strip('"').strip().lower()
+def _clean_piece(token: str) -> str:
+    return token.strip().strip('"').strip().lower()
+
+
+def _label_for_token(token: str, piece_map: dict[str, str] | None = None) -> str | None:
+    """The label that a candidate token begins.
+
+    A piece that begins several labels (e.g. "s" for sadness and surprise) is
+    resolved with ``piece_map``: the first pieces that the model actually
+    generated for each label in the same run (e.g. "s" -> sadness when
+    "sadness" is tokenised as "s" + "adness" and "surprise" as "sur" + "prise").
+    """
+    piece = _clean_piece(token)
     if not piece:
         return None
+    if piece_map and piece in piece_map:
+        return piece_map[piece]
     matches = [lab for lab in LABELS if lab.startswith(piece) or piece.startswith(lab)]
     return matches[0] if len(matches) == 1 else None
 
@@ -241,11 +255,38 @@ def label_token_logprobs(raw: str, tokens: list[dict]) -> list[list] | None:
     return None
 
 
-def label_distribution(top: list[list] | None) -> tuple[np.ndarray | None, float]:
+def is_degenerate(top: list[list] | None, floor: float = -9000.0) -> bool:
+    """True if only the generated token has a finite log-probability.
+
+    With temperature 0 the service reports log-probability 0 for the chosen
+    token and -9999 for every alternative, i.e. a one-hot distribution that
+    carries no information about the model's uncertainty.
+    """
+    if not top:
+        return False
+    best = max(lp for _, lp in top)
+    return best > -1e-6 and all(lp <= floor for _, lp in top if lp != best)
+
+
+def first_piece_map(records: Iterable[dict]) -> dict[str, str]:
+    """Map each generated first piece to its label (e.g. {"s": "sadness", "sur": "surprise"})."""
+    votes: dict[str, dict[str, int]] = {}
+    for rec in records:
+        top, label = rec.get("label_top_logprobs"), rec.get("label")
+        if not top or label is None:
+            continue
+        generated = _clean_piece(max(top, key=lambda t: t[1])[0])
+        if generated:
+            votes.setdefault(generated, {}).setdefault(label, 0)
+            votes[generated][label] += 1
+    return {piece: max(v, key=v.get) for piece, v in votes.items()}
+
+
+def label_distribution(top: list[list] | None, piece_map: dict[str, str] | None = None) -> tuple[np.ndarray | None, float]:
     """Class probabilities from the top log-probabilities at the label position.
 
-    Each candidate token is assigned to the label whose name it begins (e.g. the
-    token "sad" to sadness); the probabilities of the six labels are renormalised.
+    Each candidate token is assigned to the label it begins (e.g. the token
+    "sur" to surprise); the probabilities of the six labels are renormalised.
     Returns the distribution and the probability mass that the six labels cover
     before renormalisation (close to 1 when the model is certain of the format).
     """
@@ -253,7 +294,7 @@ def label_distribution(top: list[list] | None) -> tuple[np.ndarray | None, float
         return None, 0.0
     proba = np.zeros(len(LABELS))
     for token, logprob in top:
-        label = _label_for_token(token)
+        label = _label_for_token(token, piece_map)
         if label is not None:
             proba[LABEL2ID[label]] += math.exp(logprob)
     mass = float(proba.sum())
@@ -500,8 +541,9 @@ class DeepSeekClassifier:
     @staticmethod
     def _to_frame(records: list[dict]) -> pd.DataFrame:
         rows = []
+        piece_map = first_piece_map(records)
         for rec in records:
-            proba, mass = label_distribution(rec.get("label_top_logprobs"))
+            proba, mass = label_distribution(rec.get("label_top_logprobs"), piece_map)
             row = {
                 "idx": rec["idx"],
                 "text": rec["text"],
@@ -518,6 +560,7 @@ class DeepSeekClassifier:
                 "completion_tokens": rec["completion_tokens"],
                 "served_model": rec["served_model"],
                 "label_mass": mass,
+                "degenerate_logprobs": is_degenerate(rec.get("label_top_logprobs")),
             }
             for i, name in enumerate(LABELS):
                 row[f"p_{name}"] = proba[i] if proba is not None else np.nan
@@ -583,6 +626,6 @@ def load_prompt(path: Path) -> PromptSpec:
 __all__: Iterable[str] = [
     "CACHE_DIR", "DEFAULT_MODEL", "INVALID_ID", "LLM_DIR", "PRICE_USD_PER_MILLION", "STATUS_ORDER",
     "DeepSeekClassifier", "ParseResult", "PromptSpec", "estimate_cost", "format_answer", "format_user_turn",
-    "label_distribution", "label_token_logprobs", "load_prompt", "parse_label", "probability_matrix",
+    "first_piece_map", "is_degenerate", "label_distribution", "label_token_logprobs", "load_prompt", "parse_label", "probability_matrix",
     "run_summary", "save_prompt",
 ]

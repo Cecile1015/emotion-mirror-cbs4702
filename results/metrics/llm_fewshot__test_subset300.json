@@ -2,7 +2,7 @@
   "model": "llm_fewshot",
   "split": "test_subset300",
   "notes": "DeepSeek deepseek-flash (served: deepseek-flash); prompt fs_random_k3; 18 demonstrations; temperature 0; JSON mode; stratified 300-text test subset (seed 42); invalid answers scored as errors",
-  "created": "2026-11-12T14:39:13+00:00",
+  "created": "2026-11-12T14:56:22+00:00",
   "n": 300,
   "accuracy": 0.7533333333333333,
   "macro_f1": 0.7129400836672843,

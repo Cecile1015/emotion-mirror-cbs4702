@@ -202,7 +202,14 @@ Step 6 (`07_llm_deepseek.ipynb`) prompts a decoder-only LLM (DeepSeek, temperatu
 JSON output) without any training: zero-shot with an instruction, and few-shot with labelled
 training texts as demonstrations. Prompts are developed on a stratified 300-text validation
 subset; all trained models are re-scored on the same stratified 300-text test subset and
-compared with McNemar's test and a paired bootstrap. Results: see the notebook (§11).
+compared with McNemar's test and a paired bootstrap. On the 300 test texts, DeepSeek reaches
+macro-F1 0.662 zero-shot and 0.713 with 18 demonstrations (Δ = +0.051, Holm p = 0.003), far below
+fine-tuned BERT on the same texts (0.925; Δ = −0.212 [−0.284, −0.145], p ≈ 8e-11) and also below
+TF-IDF + LR (0.836). The prompt that describes the dataset's labelling convention (the named feeling
+word decides) helps far more than everyday definitions of the emotions, and the LLM loses most on
+negated texts, where that convention and the literal meaning diverge. At temperature 0 the API
+returns one-hot log-probabilities, so the LLM gives no usable confidence. All API runs together cost
+about US$0.24.
 
 ## Reproducibility
 

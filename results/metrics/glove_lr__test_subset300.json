@@ -2,7 +2,7 @@
   "model": "glove_lr",
   "split": "test_subset300",
   "notes": "saved test predictions of glove_lr, restricted to the stratified 300-text test subset (seed 42)",
-  "created": "2026-11-12T14:39:13+00:00",
+  "created": "2026-11-12T14:56:23+00:00",
   "n": 300,
   "accuracy": 0.7066666666666667,
   "macro_f1": 0.6503402345889832,

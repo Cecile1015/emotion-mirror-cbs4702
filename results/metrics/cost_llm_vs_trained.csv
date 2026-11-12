@@ -1,6 +1,6 @@
 model,where it runs,task-specific training,labelled texts used,latency per text (ms),"USD per 1,000 texts"
-"TF-IDF (sublinear) + LR, class weights",local,seconds on a laptop CPU,"16,000",0.005229583281713228,0.0
-BiLSTM [selected],local,about 16 minutes on the Mac GPU for six runs (05_bilstm),"16,000",0.17566888670747477,0.0
-BERT [selected],local,about 4.4 minutes per run on a Colab T4 GPU (06_bert),"16,000",3.058268473444817,0.0
+"TF-IDF (sublinear) + LR, class weights",local,seconds on a laptop CPU,"16,000",0.004950000050788124,0.0
+BiLSTM [selected],local,about 16 minutes on the Mac GPU for six runs (05_bilstm),"16,000",0.2098215266596526,0.0
+BERT [selected],local,about 4.4 minutes per run on a Colab T4 GPU (06_bert),"16,000",1.9695305568166077,0.0
 DeepSeek zero-shot,remote API,none (prompt only),0,1110.9948120138142,0.07499267999999999
 DeepSeek few-shot,remote API,none (prompt only),18,1103.135667013703,0.0786364
