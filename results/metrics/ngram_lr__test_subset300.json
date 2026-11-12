@@ -1,0 +1,98 @@
+{
+  "model": "ngram_lr",
+  "split": "test_subset300",
+  "notes": "saved test predictions of ngram_lr, restricted to the stratified 300-text test subset (seed 42)",
+  "created": "2026-11-12T14:39:13+00:00",
+  "n": 300,
+  "accuracy": 0.9033333333333333,
+  "macro_f1": 0.8574081426137959,
+  "weighted_f1": 0.9038993405109331,
+  "per_class": {
+    "sadness": {
+      "precision": 0.9529411764705882,
+      "recall": 0.9310344827586207,
+      "f1": 0.9418604651162791,
+      "support": 87
+    },
+    "joy": {
+      "precision": 0.9065420560747663,
+      "recall": 0.9326923076923077,
+      "f1": 0.919431279620853,
+      "support": 104
+    },
+    "love": {
+      "precision": 0.7307692307692307,
+      "recall": 0.7916666666666666,
+      "f1": 0.76,
+      "support": 24
+    },
+    "anger": {
+      "precision": 0.9473684210526315,
+      "recall": 0.8780487804878049,
+      "f1": 0.9113924050632911,
+      "support": 41
+    },
+    "fear": {
+      "precision": 0.9117647058823529,
+      "recall": 0.9117647058823529,
+      "f1": 0.9117647058823529,
+      "support": 34
+    },
+    "surprise": {
+      "precision": 0.7,
+      "recall": 0.7,
+      "f1": 0.7,
+      "support": 10
+    }
+  },
+  "confusion_matrix": [
+    [
+      81,
+      2,
+      1,
+      2,
+      0,
+      1
+    ],
+    [
+      0,
+      97,
+      6,
+      0,
+      0,
+      1
+    ],
+    [
+      0,
+      5,
+      19,
+      0,
+      0,
+      0
+    ],
+    [
+      2,
+      2,
+      0,
+      36,
+      1,
+      0
+    ],
+    [
+      2,
+      0,
+      0,
+      0,
+      31,
+      1
+    ],
+    [
+      0,
+      1,
+      0,
+      0,
+      2,
+      7
+    ]
+  ]
+}

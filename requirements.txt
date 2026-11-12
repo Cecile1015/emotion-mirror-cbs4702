@@ -22,3 +22,7 @@ torch>=2.2
 # load the model from models/bert/ (or download it from the Hugging Face Hub).
 transformers>=4.44
 safetensors>=0.4
+
+# LLM comparison (Step 6): DeepSeek through its OpenAI-compatible API; the key is read from .env.
+openai>=1.40
+python-dotenv>=1.0

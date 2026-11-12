@@ -1,0 +1,98 @@
+{
+  "model": "llm_fewshot",
+  "split": "test_subset300",
+  "notes": "DeepSeek deepseek-flash (served: deepseek-flash); prompt fs_random_k3; 18 demonstrations; temperature 0; JSON mode; stratified 300-text test subset (seed 42); invalid answers scored as errors",
+  "created": "2026-11-12T14:39:13+00:00",
+  "n": 300,
+  "accuracy": 0.7533333333333333,
+  "macro_f1": 0.7129400836672843,
+  "weighted_f1": 0.7528700499486699,
+  "per_class": {
+    "sadness": {
+      "precision": 0.8021978021978022,
+      "recall": 0.8390804597701149,
+      "f1": 0.8202247191011236,
+      "support": 87
+    },
+    "joy": {
+      "precision": 0.8352941176470589,
+      "recall": 0.6826923076923077,
+      "f1": 0.7513227513227513,
+      "support": 104
+    },
+    "love": {
+      "precision": 0.56,
+      "recall": 0.5833333333333334,
+      "f1": 0.5714285714285714,
+      "support": 24
+    },
+    "anger": {
+      "precision": 0.7380952380952381,
+      "recall": 0.7560975609756098,
+      "f1": 0.7469879518072289,
+      "support": 41
+    },
+    "fear": {
+      "precision": 0.6458333333333334,
+      "recall": 0.9117647058823529,
+      "f1": 0.7560975609756098,
+      "support": 34
+    },
+    "surprise": {
+      "precision": 0.6666666666666666,
+      "recall": 0.6,
+      "f1": 0.631578947368421,
+      "support": 10
+    }
+  },
+  "confusion_matrix": [
+    [
+      73,
+      5,
+      0,
+      5,
+      4,
+      0
+    ],
+    [
+      11,
+      71,
+      9,
+      3,
+      9,
+      1
+    ],
+    [
+      4,
+      4,
+      14,
+      2,
+      0,
+      0
+    ],
+    [
+      3,
+      2,
+      2,
+      31,
+      3,
+      0
+    ],
+    [
+      0,
+      1,
+      0,
+      0,
+      31,
+      2
+    ],
+    [
+      0,
+      2,
+      0,
+      1,
+      1,
+      6
+    ]
+  ]
+}

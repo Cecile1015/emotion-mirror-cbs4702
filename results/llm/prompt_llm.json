@@ -1,0 +1,79 @@
+{
+  "prompt_id": "fs_random_k3",
+  "description": "zs_lexicon + 18 demonstrations (random)",
+  "system": "You are an emotion classifier for short English texts written by social-media users. Decide which emotion the writer expresses. Choose exactly one label from this list: sadness, joy, love, anger, fear, surprise.\nAnswer with a JSON object of the form {\"label\": \"<label>\"} and nothing else.\n\nLabel definitions:\n- sadness: unhappiness, grief, loneliness, disappointment, hurt, feeling low or worthless.\n- joy: happiness, contentment, pride, relief, enthusiasm, feeling good, calm or confident.\n- love: affection, tenderness, caring, fondness, longing, romantic or sentimental warmth.\n- anger: irritation, annoyance, resentment, frustration, hostility, feeling wronged.\n- fear: anxiety, worry, nervousness, insecurity, feeling threatened, unsure or helpless.\n- surprise: amazement, astonishment, shock, curiosity, being impressed by something unexpected.\n\nNotes on the texts:\n- The texts are lower-cased and have no punctuation; contractions may appear as 'im', 'dont' or 'don t'.\n- Most texts report the writer's own feeling, often as 'i feel ...' or 'i am feeling ...'. When the writer names a feeling, let the named feeling word decide the label, even if the rest of the text suggests a different mood.\n- Feeling words that are typical of each label in this collection:\n  - sadness: lethargic, melancholy, punished, unfortunate, missed, disturbed, unwelcome, burdened, awkward, troubled\n  - joy: superior, satisfied, innocent, sincere, divine, convinced, resolved, successful, pleasant, respected\n  - love: sympathetic, caring, nostalgic, longing, naughty, tender, supportive, loving, hot, liked\n  - anger: offended, resentful, dangerous, greedy, rude, irritable, distracted, rushed, dissatisfied, bothered\n  - fear: pressured, terrified, shaken, reluctant, vulnerable, uncertain, paranoid, apprehensive, unsure, intimidated\n  - surprise: impressed, amazed, curious, surprised, funny, shocked, dazed, overwhelmed, amazing, strange",
+  "demos": [
+    {
+      "text": "i feel excited about something that is soley for me here is the video about it",
+      "label": "joy"
+    },
+    {
+      "text": "i feel like its a lifestyle change i could genuinely live with without feeling deprived",
+      "label": "sadness"
+    },
+    {
+      "text": "i believe in you moment we all feel til then it s one more skeptical song",
+      "label": "fear"
+    },
+    {
+      "text": "i am appalled that i feel violent toward another human being",
+      "label": "anger"
+    },
+    {
+      "text": "i am so burdened to be a spiritual father to all generations and i really feel impressed that each and every believer should do so",
+      "label": "surprise"
+    },
+    {
+      "text": "i use this as a ugh its been a long week lets make myself feel pretty mask and ive honestly been loving the effects",
+      "label": "love"
+    },
+    {
+      "text": "i feel this is a useful tool in a couples quest to start a family",
+      "label": "joy"
+    },
+    {
+      "text": "i am in no way complaining or whining or feeling ungrateful",
+      "label": "sadness"
+    },
+    {
+      "text": "i feel all shaken up and im waiting for things to settle",
+      "label": "fear"
+    },
+    {
+      "text": "i feel greedy with my thoughts and it is a relief to let them linger",
+      "label": "anger"
+    },
+    {
+      "text": "i don t know how sasha fierce feels i m definitely curious about the future of beyonc s sound",
+      "label": "surprise"
+    },
+    {
+      "text": "i cant shake the feeling that i wouldnt have liked this book if i hadnt already felt a connection to these characters",
+      "label": "love"
+    },
+    {
+      "text": "i feel shame but i never change it it s sweet a la la la la long i ve been watching you jajaja s",
+      "label": "joy"
+    },
+    {
+      "text": "i still feel a little shitty right now as i type this",
+      "label": "sadness"
+    },
+    {
+      "text": "im lying in bed feeling very anxious and have a knot in my stomach",
+      "label": "fear"
+    },
+    {
+      "text": "i loathe it as a gamer said molyneux adding that it just makes me feel insulted",
+      "label": "anger"
+    },
+    {
+      "text": "i feel almost weird that someone i didnt know has impacted me emotionally these last few days",
+      "label": "surprise"
+    },
+    {
+      "text": "i and kiyoshi for sharing your feelings and memories from such a delicate personal time in your lives",
+      "label": "love"
+    }
+  ]
+}

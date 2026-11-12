@@ -1,0 +1,98 @@
+{
+  "model": "bert_frozen_mean",
+  "split": "test_subset300",
+  "notes": "saved test predictions of bert_frozen_mean, restricted to the stratified 300-text test subset (seed 42)",
+  "created": "2026-11-12T14:39:13+00:00",
+  "n": 300,
+  "accuracy": 0.6266666666666667,
+  "macro_f1": 0.5720155631382053,
+  "weighted_f1": 0.6291506344277591,
+  "per_class": {
+    "sadness": {
+      "precision": 0.6590909090909091,
+      "recall": 0.6666666666666666,
+      "f1": 0.6628571428571428,
+      "support": 87
+    },
+    "joy": {
+      "precision": 0.7684210526315789,
+      "recall": 0.7019230769230769,
+      "f1": 0.7336683417085427,
+      "support": 104
+    },
+    "love": {
+      "precision": 0.4666666666666667,
+      "recall": 0.5833333333333334,
+      "f1": 0.5185185185185185,
+      "support": 24
+    },
+    "anger": {
+      "precision": 0.5,
+      "recall": 0.43902439024390244,
+      "f1": 0.4675324675324675,
+      "support": 41
+    },
+    "fear": {
+      "precision": 0.5,
+      "recall": 0.5588235294117647,
+      "f1": 0.5277777777777778,
+      "support": 34
+    },
+    "surprise": {
+      "precision": 0.46153846153846156,
+      "recall": 0.6,
+      "f1": 0.5217391304347826,
+      "support": 10
+    }
+  },
+  "confusion_matrix": [
+    [
+      58,
+      9,
+      5,
+      9,
+      5,
+      1
+    ],
+    [
+      11,
+      73,
+      10,
+      4,
+      6,
+      0
+    ],
+    [
+      1,
+      5,
+      14,
+      4,
+      0,
+      0
+    ],
+    [
+      7,
+      5,
+      1,
+      18,
+      7,
+      3
+    ],
+    [
+      9,
+      3,
+      0,
+      0,
+      19,
+      3
+    ],
+    [
+      2,
+      0,
+      0,
+      1,
+      1,
+      6
+    ]
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "model": "llm",
+  "split": "validation_subset300",
+  "notes": "DeepSeek deepseek-flash (served: deepseek-flash); prompt fs_random_k3; 18 demonstrations; temperature 0; JSON mode; stratified 300-text validation subset (seed 42); invalid answers scored as errors",
+  "created": "2026-11-12T14:39:13+00:00",
+  "n": 300,
+  "accuracy": 0.69,
+  "macro_f1": 0.6656143530637458,
+  "weighted_f1": 0.6950345368725935,
+  "per_class": {
+    "sadness": {
+      "precision": 0.6896551724137931,
+      "recall": 0.7317073170731707,
+      "f1": 0.7100591715976331,
+      "support": 82
+    },
+    "joy": {
+      "precision": 0.8651685393258427,
+      "recall": 0.7264150943396226,
+      "f1": 0.7897435897435897,
+      "support": 106
+    },
+    "love": {
+      "precision": 0.5,
+      "recall": 0.5555555555555556,
+      "f1": 0.5263157894736842,
+      "support": 27
+    },
+    "anger": {
+      "precision": 0.6153846153846154,
+      "recall": 0.5853658536585366,
+      "f1": 0.6,
+      "support": 41
+    },
+    "fear": {
+      "precision": 0.5,
+      "recall": 0.65625,
+      "f1": 0.5675675675675675,
+      "support": 32
+    },
+    "surprise": {
+      "precision": 0.7692307692307693,
+      "recall": 0.8333333333333334,
+      "f1": 0.8,
+      "support": 12
+    }
+  },
+  "confusion_matrix": [
+    [
+      60,
+      4,
+      5,
+      6,
+      7,
+      0
+    ],
+    [
+      9,
+      77,
+      6,
+      5,
+      7,
+      2
+    ],
+    [
+      5,
+      4,
+      15,
+      1,
+      2,
+      0
+    ],
+    [
+      10,
+      1,
+      2,
+      24,
+      4,
+      0
+    ],
+    [
+      2,
+      3,
+      2,
+      3,
+      21,
+      1
+    ],
+    [
+      1,
+      0,
+      0,
+      0,
+      1,
+      10
+    ]
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "requested_model": "deepseek-flash",
+  "served_models": [
+    "deepseek-flash"
+  ],
+  "decoding": {
+    "model": "deepseek-flash",
+    "temperature": 0.0,
+    "max_tokens": 32,
+    "response_format": {
+      "type": "json_object"
+    },
+    "thinking": {
+      "type": "disabled"
+    }
+  },
+  "selected_prompts": {
+    "llm_zeroshot": "zs_lexicon",
+    "llm_fewshot": "fs_random_k3"
+  },
+  "role_llm": "llm_fewshot",
+  "validation_macro_f1": {
+    "llm_zeroshot": 0.6220484141741701,
+    "llm_fewshot": 0.6656143530637458
+  },
+  "prices_usd_per_million_tokens": {
+    "cache_hit_input": 0.006,
+    "cache_miss_input": 0.3,
+    "output": 1.2
+  },
+  "total_cost_usd_all_runs": 0.237816354
+}

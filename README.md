@@ -18,7 +18,8 @@ emotion-mirror-cbs4702/
 │   ├── 03_improved_classical.ipynb  word + character n-gram TF-IDF, class weights, ablation study
 │   ├── 04_static_embeddings.ipynb   GloVe coverage, averaged word vectors + LR, Twitter vs Wikipedia GloVe
 │   ├── 05_bilstm.ipynb              bidirectional LSTM on GloVe, frozen vs fine-tuned embeddings
-│   └── 06_bert.ipynb                fine-tuned bert-base-uncased (Colab GPU), frozen-BERT control, attention
+│   ├── 06_bert.ipynb                fine-tuned bert-base-uncased (Colab GPU), frozen-BERT control, attention
+│   └── 07_llm_deepseek.ipynb        zero-/few-shot DeepSeek LLM vs all trained models on a 300-text test subset
 ├── src/                  code shared by all notebooks and the web service
 │   ├── config.py         paths, label set, colours, random seed
 │   ├── data.py           dataset loading and caching
@@ -26,13 +27,15 @@ emotion-mirror-cbs4702/
 │   ├── slices.py         diagnostic subsets (unseen words, negation, 'feel' template)
 │   ├── embeddings.py     GloVe download/cache and the averaged-vector transformer
 │   ├── bilstm.py         BiLSTM vocabulary, dataset, model, training loop, checkpoints
-│   └── bert_infer.py     BERT loading (local or Hugging Face Hub), prediction, attention weights
+│   ├── bert_infer.py     BERT loading (local or Hugging Face Hub), prediction, attention weights
+│   └── llm.py            DeepSeek prompts, output validation, cached API calls, token cost
 ├── models/               saved model files
 │   ├── classical/        fitted scikit-learn pipelines (*.joblib, vectoriser + classifier)
 │   ├── bilstm/           BiLSTM checkpoints (only bilstm.pt, the selected model, is committed)
 │   └── bert/             fine-tuned BERT (weights on the Hugging Face Hub; model card and training info committed)
 ├── results/
 │   ├── figures/          figures used in the report and the web app
+│   ├── llm/              evaluation subsets, selected prompts and the cache of every DeepSeek response
 │   ├── metrics/          one JSON file per model and split
 │   └── predictions/      one CSV file per model and split (used for error analysis)
 ├── docs/                 AI-assistance log and screenshots
@@ -87,6 +90,23 @@ temperature-calibrated probabilities and the self-attention weights of every lay
 and head (`BertEmotionClassifier.predict` / `.explain`). The Hub repository name is
 `BERT_HUB_REPO` in `src/config.py`.
 
+### DeepSeek LLM (`07_llm_deepseek.ipynb`)
+
+The notebook calls the DeepSeek API, which needs an API key (platform.deepseek.com → API keys;
+the account needs a small prepaid balance). Store the key in a file `.env` in the project root;
+`.env` is listed in `.gitignore`, so the key is never committed:
+
+```bash
+cp .env.example .env      # then replace sk-your-key-here with your key
+```
+
+All runs together make about 3,300 short requests (seven prompts on 300 validation texts, a repeat
+of the two selected prompts, and the two final prompts on 300 test texts); at DeepSeek's list prices
+this costs well under one US dollar and takes about 10–15 minutes with 8 parallel requests. Check
+the current prices on the DeepSeek pricing page and update `PRICE_USD_PER_MILLION` in `src/llm.py`
+if they have changed. Every response is stored in `results/llm/cache/`; commit this folder, so that
+the notebook can be re-run by anyone, without a key and at no cost, with identical results.
+
 ## Running on Google Colab
 
 Every notebook starts with a setup cell that detects Colab, clones this
@@ -102,6 +122,7 @@ notebook directly from GitHub:
 | `04_static_embeddings.ipynb` | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Cecile1015/emotion-mirror-cbs4702/blob/main/notebooks/04_static_embeddings.ipynb) |
 | `05_bilstm.ipynb` | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Cecile1015/emotion-mirror-cbs4702/blob/main/notebooks/05_bilstm.ipynb) |
 | `06_bert.ipynb` (GPU) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Cecile1015/emotion-mirror-cbs4702/blob/main/notebooks/06_bert.ipynb) |
+| `07_llm_deepseek.ipynb` | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Cecile1015/emotion-mirror-cbs4702/blob/main/notebooks/07_llm_deepseek.ipynb) |
 
 The repository must be public for Colab to clone it without credentials.
 Files written on Colab (figures, metrics, models) are lost when the runtime
@@ -177,6 +198,12 @@ of all models (test log-loss 0.149 after temperature scaling) and is published
 on the Hugging Face Hub as
 [`Cecile1015/emotion-mirror-bert`](https://huggingface.co/Cecile1015/emotion-mirror-bert).
 
+Step 6 (`07_llm_deepseek.ipynb`) prompts a decoder-only LLM (DeepSeek, temperature 0,
+JSON output) without any training: zero-shot with an instruction, and few-shot with labelled
+training texts as demonstrations. Prompts are developed on a stratified 300-text validation
+subset; all trained models are re-scored on the same stratified 300-text test subset and
+compared with McNemar's test and a paired bootstrap. Results: see the notebook (§11).
+
 ## Reproducibility
 
 * All randomness is controlled by `SEED = 42` in `src/config.py`.
@@ -197,6 +224,9 @@ Hochreiter, S., & Schmidhuber, J. (1997). Long Short-Term Memory.
 Devlin, J., Chang, M.-W., Lee, K., & Toutanova, K. (2019). BERT: Pre-training of
 Deep Bidirectional Transformers for Language Understanding. *Proceedings of
 NAACL-HLT 2019*, 4171–4186.
+
+Brown, T. B., et al. (2020). Language Models are Few-Shot Learners.
+*Advances in Neural Information Processing Systems 33*, 1877–1901.
 
 Guo, C., Pleiss, G., Sun, Y., & Weinberger, K. Q. (2017). On Calibration of
 Modern Neural Networks. *Proceedings of ICML 2017*, 1321–1330.
