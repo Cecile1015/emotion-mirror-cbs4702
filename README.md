@@ -17,17 +17,20 @@ emotion-mirror-cbs4702/
 │   ├── 02_baselines.ipynb  bag-of-words baselines (Naive Bayes, logistic regression, TF-IDF)
 │   ├── 03_improved_classical.ipynb  word + character n-gram TF-IDF, class weights, ablation study
 │   ├── 04_static_embeddings.ipynb   GloVe coverage, averaged word vectors + LR, Twitter vs Wikipedia GloVe
-│   └── 05_bilstm.ipynb              bidirectional LSTM on GloVe, frozen vs fine-tuned embeddings
+│   ├── 05_bilstm.ipynb              bidirectional LSTM on GloVe, frozen vs fine-tuned embeddings
+│   └── 06_bert.ipynb                fine-tuned bert-base-uncased (Colab GPU), frozen-BERT control, attention
 ├── src/                  code shared by all notebooks and the web service
 │   ├── config.py         paths, label set, colours, random seed
 │   ├── data.py           dataset loading and caching
 │   ├── evaluate.py       metrics, summary tables, confusion matrices, significance tests
 │   ├── slices.py         diagnostic subsets (unseen words, negation, 'feel' template)
 │   ├── embeddings.py     GloVe download/cache and the averaged-vector transformer
-│   └── bilstm.py         BiLSTM vocabulary, dataset, model, training loop, checkpoints
+│   ├── bilstm.py         BiLSTM vocabulary, dataset, model, training loop, checkpoints
+│   └── bert_infer.py     BERT loading (local or Hugging Face Hub), prediction, attention weights
 ├── models/               saved model files
 │   ├── classical/        fitted scikit-learn pipelines (*.joblib, vectoriser + classifier)
-│   └── bilstm/           BiLSTM checkpoints (only bilstm.pt, the selected model, is committed)
+│   ├── bilstm/           BiLSTM checkpoints (only bilstm.pt, the selected model, is committed)
+│   └── bert/             fine-tuned BERT (weights on the Hugging Face Hub; model card and training info committed)
 ├── results/
 │   ├── figures/          figures used in the report and the web app
 │   ├── metrics/          one JSON file per model and split
@@ -60,6 +63,28 @@ models (`glove_*_lr`, `bilstm`) load the vectors from this cache.
 (CUDA on Colab, otherwise the CPU). It trains six models (two settings × three
 seeds); with `RETRAIN = False`, a re-run loads the saved checkpoints instead.
 
+### Fine-tuned BERT (`06_bert.ipynb`)
+
+BERT is fine-tuned on a Google Colab T4 GPU (about 30–40 minutes for the whole
+notebook). Before opening it in Colab, push the current `src/` to GitHub, because
+Colab clones the repository. The notebook mounts Google Drive to keep finished
+training runs (a disconnected runtime resumes from them), uploads the model to the
+Hugging Face Hub (§14, needs a `HF_TOKEN` Colab secret) and downloads
+`bert_results.zip` with all metrics, predictions and figures (§15).
+
+On the Mac, unzip the results in the project root and fetch the weights (about 440 MB):
+
+```bash
+unzip -o ~/Downloads/bert_results.zip
+hf download Cecile1015/emotion-mirror-bert --local-dir models/bert   # or let src/bert_infer.py download them
+python -m src.bert_infer "i feel so lonely without you" "i was shocked by the news"
+```
+
+`src/bert_infer.py` runs on the CPU or the Apple-silicon GPU and returns
+temperature-calibrated probabilities and the self-attention weights of every layer
+and head (`BertEmotionClassifier.predict` / `.explain`). The Hub repository name is
+`BERT_HUB_REPO` in `src/config.py`.
+
 ## Running on Google Colab
 
 Every notebook starts with a setup cell that detects Colab, clones this
@@ -74,6 +99,7 @@ notebook directly from GitHub:
 | `03_improved_classical.ipynb` | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Cecile1015/emotion-mirror-cbs4702/blob/main/notebooks/03_improved_classical.ipynb) |
 | `04_static_embeddings.ipynb` | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Cecile1015/emotion-mirror-cbs4702/blob/main/notebooks/04_static_embeddings.ipynb) |
 | `05_bilstm.ipynb` | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Cecile1015/emotion-mirror-cbs4702/blob/main/notebooks/05_bilstm.ipynb) |
+| `06_bert.ipynb` (GPU) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Cecile1015/emotion-mirror-cbs4702/blob/main/notebooks/06_bert.ipynb) |
 
 The repository must be public for Colab to clone it without credentials.
 Files written on Colab (figures, metrics, models) are lost when the runtime
@@ -130,6 +156,16 @@ Saved models, which accept raw strings:
 * `models/bilstm/bilstm.pt` (33 MB): the selected BiLSTM; load it with
   `src.bilstm.load_checkpoint` and apply the temperature in
   `results/metrics/temperature_bilstm.json` to its probabilities.
+* `models/bert/` (Hugging Face Hub): the fine-tuned BERT; load it with
+  `src.bert_infer.BertEmotionClassifier`, which applies the temperature stored in
+  `models/bert/training_info.json`.
+
+Improvement 3 (`06_bert.ipynb`) fine-tunes `bert-base-uncased` following Case 1
+of Lecture 9 (`[CLS]` → linear classifier), selects the learning rate and the
+checkpoint by validation macro-F1, repeats the selected setting with three seeds,
+and compares full fine-tuning with a frozen BERT whose classification layer alone
+is trained. It is tested against `improved_lr` and the BiLSTM with McNemar's test
+and the paired bootstrap. *Test results are added after the Colab run.*
 
 ## Reproducibility
 
@@ -147,6 +183,10 @@ Word Representation. *Proceedings of EMNLP 2014*, 1532–1543.
 
 Hochreiter, S., & Schmidhuber, J. (1997). Long Short-Term Memory.
 *Neural Computation*, 9(8), 1735–1780.
+
+Devlin, J., Chang, M.-W., Lee, K., & Toutanova, K. (2019). BERT: Pre-training of
+Deep Bidirectional Transformers for Language Understanding. *Proceedings of
+NAACL-HLT 2019*, 4171–4186.
 
 Guo, C., Pleiss, G., Sun, Y., & Weinberger, K. Q. (2017). On Calibration of
 Modern Neural Networks. *Proceedings of ICML 2017*, 1321–1330.

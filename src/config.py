@@ -51,6 +51,18 @@ EMOTION_COLORS = {
 }
 
 # ---------------------------------------------------------------------------
+# Fine-tuned BERT (Step 5)
+# ---------------------------------------------------------------------------
+# The model is fine-tuned on Google Colab and saved to models/bert/. Its weights
+# (about 440 MB) exceed the GitHub file limit, so they are backed up on the
+# Hugging Face Hub; src/bert_infer.py downloads them when the local copy is missing.
+# Replace the user name with your own Hugging Face account, or set the
+# EMOTION_BERT_REPO environment variable.
+BERT_BASE_MODEL = "bert-base-uncased"
+BERT_DIR = MODELS_DIR / "bert"
+BERT_HUB_REPO = os.environ.get("EMOTION_BERT_REPO", "Cecile1015/emotion-mirror-bert")
+
+# ---------------------------------------------------------------------------
 # Reproducibility
 # ---------------------------------------------------------------------------
 SEED = 42

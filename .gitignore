@@ -14,3 +14,9 @@ models/**/*.pt
 node_modules/
 .next/
 .DS_Store
+# BERT: the weights live on the Hugging Face Hub; only the model card and training info are committed
+models/bert/*
+!models/bert/README.md
+!models/bert/training_info.json
+models/bert_runs/
+bert_results.zip
