@@ -1,0 +1,9 @@
+model,word representation,pre-trained,word order,contextual,composition,val macro-F1,test macro-F1,test 95% CI
+TF-IDF + LR,TF-IDF,no,no,no,LR,0.8650224568462815,0.8320499326579842,"[0.808, 0.853]"
+Improved sparse LR,"TF-IDF, sublinear tf",no,no,no,"LR, class weights",0.8777903059810237,0.8428654754506616,"[0.820, 0.862]"
+GloVe + LR,"GloVe vectors, averaged",yes (static),no,no,mean + LR,0.6424279001853503,0.6014939941035525,"[0.573, 0.629]"
+BiLSTM (frozen GloVe),"GloVe vectors, fixed",yes (static),yes,no,"BiLSTM + linear, class weights",0.906883926629524,0.8876310791145356,"[0.867, 0.905]"
+BiLSTM (fine-tuned GloVe),"GloVe vectors, fine-tuned",yes (adapted),yes,no,"BiLSTM + linear, class weights",0.9147762186040915,0.8938785451539365,"[0.873, 0.911]"
+BERT frozen (token mean) + linear,"BERT WordPiece, frozen",yes (contextual),yes,yes,"token mean + linear, class weights",0.5415410179654191,0.5296244323180926,"[0.503, 0.555]"
+BERT frozen ([CLS] pooler) + linear,"BERT WordPiece, frozen",yes (contextual),yes,yes,"[CLS] pooler + linear, class weights",0.41959007580113156,0.41835096976095626,"[0.394, 0.441]"
+BERT fine-tuned,"BERT WordPiece, fine-tuned",yes (adapted),yes,yes,"[CLS] pooler + linear, class weights",0.9224263017794692,0.8962374727691719,"[0.877, 0.911]"

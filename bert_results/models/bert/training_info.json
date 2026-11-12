@@ -1,0 +1,51 @@
+{
+  "model_id": "bert_finetuned",
+  "base_model": "bert-base-uncased",
+  "labels": [
+    "sadness",
+    "joy",
+    "love",
+    "anger",
+    "fear",
+    "surprise"
+  ],
+  "max_length": 128,
+  "fine_tuning": {
+    "lr": 5e-05,
+    "batch_size": 32,
+    "epochs": 4,
+    "warmup_ratio": 0.1,
+    "weight_decay": 0.01,
+    "clip_norm": 1.0,
+    "evals_per_epoch": 2,
+    "seed": 42,
+    "lr_grid": [
+      2e-05,
+      3e-05,
+      5e-05
+    ],
+    "loss": "class-weighted cross-entropy (balanced)",
+    "optimizer": "AdamW",
+    "schedule": "linear warm-up + linear decay",
+    "mixed_precision": true
+  },
+  "selection": {
+    "metric": "validation macro-F1",
+    "best_epoch": 3.0,
+    "best_step": 1500,
+    "validation_macro_f1": 0.9224263017794692,
+    "validation_accuracy": 0.9425
+  },
+  "test": {
+    "macro_f1": 0.8962374727691719,
+    "accuracy": 0.93
+  },
+  "temperature": 1.3199029127890984,
+  "seed": 42,
+  "trained_on": "Tesla T4",
+  "versions": {
+    "torch": "2.14.1+cu130",
+    "transformers": "5.22.1"
+  },
+  "created": "2026-11-12T07:06:07+00:00"
+}
