@@ -165,8 +165,8 @@ Saved models, which accept raw strings:
   `src.bert_infer.BertEmotionClassifier`, which applies the temperature stored in
   `models/bert/training_info.json`.
 
-Improvement 3 (`06_bert.ipynb`) fine-tunes `bert-base-uncased` following Case 1
-of Lecture 9 (`[CLS]` → linear classifier); the learning rate (5e-5) and the
+Improvement 3 (`06_bert.ipynb`) fine-tunes `bert-base-uncased` with a linear
+classifier on the `[CLS]` vector; the learning rate (5e-5) and the
 checkpoint (epoch 3) were selected by validation macro-F1. BERT is significantly
 better than `improved_lr` (Δ macro-F1 = +0.053 [+0.035, +0.072], McNemar
 p ≈ 3e-11) but statistically tied with the BiLSTM (Δ = +0.002 [−0.013, +0.017],
