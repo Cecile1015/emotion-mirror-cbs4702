@@ -1,0 +1,913 @@
+{
+  "detector": "OpenCV YuNet 2023mar; confidence 0.9, NMS 0.3; excludes ambiguous frames",
+  "evaluation_note": "Regression re-evaluation of the existing fixed sample after a detector repair; not an independent held-out model-selection test.",
+  "dataset": "CREMA-D",
+  "source": "https://github.com/CheyneyComputerScience/CREMA-D",
+  "revision": "1658cd342dff90010aa843eaeebd53610a08b1dc",
+  "license": "ODbL-1.0 / DbCL-1.0",
+  "protocol": "Fixed external smoke benchmark, not training or model selection on test data.\n\nCREMA-D: actors 1001..1006, sentence DFA, all six acted labels, XX intensity.\nFace: 36 clips / six represented classes. Acoustic: 24 / four supported classes.\nNo score-based example selection or tuning. Raw media are ignored by Git.\n",
+  "selection": "Predeclared actors 1001\u20131006, DFA, XX; no tuning. Intended/acted filename labels, not crowd-perceived majority labels.",
+  "face": {
+    "attempted": 36,
+    "predicted": 36,
+    "coverage": 1.0,
+    "accuracy_on_predicted": 0.4444444444444444,
+    "accuracy_counting_failures_incorrect": 0.4444444444444444,
+    "macro_f1_on_predicted_represented_classes": 0.3434523809523809,
+    "labels": [
+      "angry",
+      "disgust",
+      "fear",
+      "happy",
+      "neutral",
+      "sad"
+    ],
+    "confusion_labels": [
+      "angry",
+      "disgust",
+      "fear",
+      "happy",
+      "neutral",
+      "sad",
+      "surprise"
+    ],
+    "confusion_matrix": [
+      [
+        3,
+        0,
+        0,
+        2,
+        1,
+        0,
+        0
+      ],
+      [
+        5,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      [
+        1,
+        0,
+        0,
+        1,
+        3,
+        0,
+        1
+      ],
+      [
+        0,
+        0,
+        0,
+        6,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        6,
+        0,
+        0
+      ],
+      [
+        1,
+        0,
+        1,
+        0,
+        3,
+        1,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    ],
+    "warning": "Small fixed convenience sample of acted clips; labels are intended expressions, not inner feelings. Not a deployment accuracy estimate."
+  },
+  "acoustic": {
+    "attempted": 24,
+    "predicted": 23,
+    "coverage": 0.9583333333333334,
+    "accuracy_on_predicted": 0.43478260869565216,
+    "accuracy_counting_failures_incorrect": 0.4166666666666667,
+    "macro_f1_on_predicted_represented_classes": 0.3422222222222222,
+    "labels": [
+      "ang",
+      "hap",
+      "neu",
+      "sad"
+    ],
+    "confusion_labels": [
+      "ang",
+      "hap",
+      "neu",
+      "sad"
+    ],
+    "confusion_matrix": [
+      [
+        6,
+        0,
+        0,
+        0
+      ],
+      [
+        6,
+        0,
+        0,
+        0
+      ],
+      [
+        6,
+        0,
+        0,
+        0
+      ],
+      [
+        1,
+        0,
+        0,
+        4
+      ]
+    ],
+    "warning": "Small fixed convenience sample of acted clips; labels are intended expressions, not inner feelings. Not a deployment accuracy estimate."
+  },
+  "limitations": [
+    "No surprise reference examples in CREMA-D; surprise predictions are still possible.",
+    "Six actors, one sentence, acted English speech; not representative of users, spontaneous speech or all demographic groups.",
+    "Face model trained on FER2013; acoustic model on IEMOCAP. Camera crop and chunking differ from their original benchmarks.",
+    "Abstentions/errors counted separately; F1 only uses successfully predicted examples."
+  ],
+  "predictions": [
+    {
+      "clip": "1001_DFA_ANG_XX",
+      "channel": "face",
+      "gold": "angry",
+      "prediction": "angry",
+      "confidence": 0.5777883529663086,
+      "frames_used": 3
+    },
+    {
+      "clip": "1001_DFA_ANG_XX",
+      "channel": "acoustic",
+      "gold": "ang",
+      "prediction": "ang",
+      "confidence": 0.9999748468399048
+    },
+    {
+      "clip": "1001_DFA_DIS_XX",
+      "channel": "face",
+      "gold": "disgust",
+      "prediction": "angry",
+      "confidence": 0.945475161075592,
+      "frames_used": 3
+    },
+    {
+      "clip": "1001_DFA_FEA_XX",
+      "channel": "face",
+      "gold": "fear",
+      "prediction": "angry",
+      "confidence": 0.3649112284183502,
+      "frames_used": 3
+    },
+    {
+      "clip": "1001_DFA_HAP_XX",
+      "channel": "face",
+      "gold": "happy",
+      "prediction": "happy",
+      "confidence": 0.6117545962333679,
+      "frames_used": 3
+    },
+    {
+      "clip": "1001_DFA_HAP_XX",
+      "channel": "acoustic",
+      "gold": "hap",
+      "prediction": "ang",
+      "confidence": 0.9999638795852661
+    },
+    {
+      "clip": "1001_DFA_NEU_XX",
+      "channel": "face",
+      "gold": "neutral",
+      "prediction": "neutral",
+      "confidence": 0.9126244187355042,
+      "frames_used": 3
+    },
+    {
+      "clip": "1001_DFA_NEU_XX",
+      "channel": "acoustic",
+      "gold": "neu",
+      "prediction": "ang",
+      "confidence": 0.9942504167556763
+    },
+    {
+      "clip": "1001_DFA_SAD_XX",
+      "channel": "face",
+      "gold": "sad",
+      "prediction": "angry",
+      "confidence": 0.5960776209831238,
+      "frames_used": 3
+    },
+    {
+      "clip": "1001_DFA_SAD_XX",
+      "channel": "acoustic",
+      "gold": "sad",
+      "error": "Insufficient voiced signal. Try a clear sentence in a quiet room."
+    },
+    {
+      "clip": "1002_DFA_ANG_XX",
+      "channel": "face",
+      "gold": "angry",
+      "prediction": "angry",
+      "confidence": 0.3900749981403351,
+      "frames_used": 3
+    },
+    {
+      "clip": "1002_DFA_ANG_XX",
+      "channel": "acoustic",
+      "gold": "ang",
+      "prediction": "ang",
+      "confidence": 0.9991776347160339
+    },
+    {
+      "clip": "1002_DFA_DIS_XX",
+      "channel": "face",
+      "gold": "disgust",
+      "prediction": "angry",
+      "confidence": 0.8135687708854675,
+      "frames_used": 3
+    },
+    {
+      "clip": "1002_DFA_FEA_XX",
+      "channel": "face",
+      "gold": "fear",
+      "prediction": "happy",
+      "confidence": 0.41538000106811523,
+      "frames_used": 3
+    },
+    {
+      "clip": "1002_DFA_HAP_XX",
+      "channel": "face",
+      "gold": "happy",
+      "prediction": "happy",
+      "confidence": 0.8624113202095032,
+      "frames_used": 3
+    },
+    {
+      "clip": "1002_DFA_HAP_XX",
+      "channel": "acoustic",
+      "gold": "hap",
+      "prediction": "ang",
+      "confidence": 0.9999635219573975
+    },
+    {
+      "clip": "1002_DFA_NEU_XX",
+      "channel": "face",
+      "gold": "neutral",
+      "prediction": "neutral",
+      "confidence": 0.6674981713294983,
+      "frames_used": 3
+    },
+    {
+      "clip": "1002_DFA_NEU_XX",
+      "channel": "acoustic",
+      "gold": "neu",
+      "prediction": "ang",
+      "confidence": 0.9581179022789001
+    },
+    {
+      "clip": "1002_DFA_SAD_XX",
+      "channel": "face",
+      "gold": "sad",
+      "prediction": "neutral",
+      "confidence": 0.6391012668609619,
+      "frames_used": 3
+    },
+    {
+      "clip": "1002_DFA_SAD_XX",
+      "channel": "acoustic",
+      "gold": "sad",
+      "prediction": "sad",
+      "confidence": 0.6789442896842957
+    },
+    {
+      "clip": "1003_DFA_ANG_XX",
+      "channel": "face",
+      "gold": "angry",
+      "prediction": "happy",
+      "confidence": 0.6116799712181091,
+      "frames_used": 3
+    },
+    {
+      "clip": "1003_DFA_ANG_XX",
+      "channel": "acoustic",
+      "gold": "ang",
+      "prediction": "ang",
+      "confidence": 0.9999434947967529
+    },
+    {
+      "clip": "1003_DFA_DIS_XX",
+      "channel": "face",
+      "gold": "disgust",
+      "prediction": "angry",
+      "confidence": 0.6483753323554993,
+      "frames_used": 3
+    },
+    {
+      "clip": "1003_DFA_FEA_XX",
+      "channel": "face",
+      "gold": "fear",
+      "prediction": "surprise",
+      "confidence": 0.5969332456588745,
+      "frames_used": 3
+    },
+    {
+      "clip": "1003_DFA_HAP_XX",
+      "channel": "face",
+      "gold": "happy",
+      "prediction": "happy",
+      "confidence": 0.9934846758842468,
+      "frames_used": 3
+    },
+    {
+      "clip": "1003_DFA_HAP_XX",
+      "channel": "acoustic",
+      "gold": "hap",
+      "prediction": "ang",
+      "confidence": 0.9996843338012695
+    },
+    {
+      "clip": "1003_DFA_NEU_XX",
+      "channel": "face",
+      "gold": "neutral",
+      "prediction": "neutral",
+      "confidence": 0.7465103268623352,
+      "frames_used": 3
+    },
+    {
+      "clip": "1003_DFA_NEU_XX",
+      "channel": "acoustic",
+      "gold": "neu",
+      "prediction": "ang",
+      "confidence": 0.9860233068466187
+    },
+    {
+      "clip": "1003_DFA_SAD_XX",
+      "channel": "face",
+      "gold": "sad",
+      "prediction": "neutral",
+      "confidence": 0.8432965278625488,
+      "frames_used": 3
+    },
+    {
+      "clip": "1003_DFA_SAD_XX",
+      "channel": "acoustic",
+      "gold": "sad",
+      "prediction": "sad",
+      "confidence": 0.8347225189208984
+    },
+    {
+      "clip": "1004_DFA_ANG_XX",
+      "channel": "face",
+      "gold": "angry",
+      "prediction": "happy",
+      "confidence": 0.6620282530784607,
+      "frames_used": 3
+    },
+    {
+      "clip": "1004_DFA_ANG_XX",
+      "channel": "acoustic",
+      "gold": "ang",
+      "prediction": "ang",
+      "confidence": 0.9999971389770508
+    },
+    {
+      "clip": "1004_DFA_DIS_XX",
+      "channel": "face",
+      "gold": "disgust",
+      "prediction": "angry",
+      "confidence": 0.38928744196891785,
+      "frames_used": 3
+    },
+    {
+      "clip": "1004_DFA_FEA_XX",
+      "channel": "face",
+      "gold": "fear",
+      "prediction": "neutral",
+      "confidence": 0.6717181205749512,
+      "frames_used": 3
+    },
+    {
+      "clip": "1004_DFA_HAP_XX",
+      "channel": "face",
+      "gold": "happy",
+      "prediction": "happy",
+      "confidence": 0.9944470524787903,
+      "frames_used": 3
+    },
+    {
+      "clip": "1004_DFA_HAP_XX",
+      "channel": "acoustic",
+      "gold": "hap",
+      "prediction": "ang",
+      "confidence": 0.999839186668396
+    },
+    {
+      "clip": "1004_DFA_NEU_XX",
+      "channel": "face",
+      "gold": "neutral",
+      "prediction": "neutral",
+      "confidence": 0.45576998591423035,
+      "frames_used": 3
+    },
+    {
+      "clip": "1004_DFA_NEU_XX",
+      "channel": "acoustic",
+      "gold": "neu",
+      "prediction": "ang",
+      "confidence": 0.9992145299911499
+    },
+    {
+      "clip": "1004_DFA_SAD_XX",
+      "channel": "face",
+      "gold": "sad",
+      "prediction": "fear",
+      "confidence": 0.3896661698818207,
+      "frames_used": 3
+    },
+    {
+      "clip": "1004_DFA_SAD_XX",
+      "channel": "acoustic",
+      "gold": "sad",
+      "prediction": "sad",
+      "confidence": 0.9216517806053162
+    },
+    {
+      "clip": "1005_DFA_ANG_XX",
+      "channel": "face",
+      "gold": "angry",
+      "prediction": "neutral",
+      "confidence": 0.9619696736335754,
+      "frames_used": 3
+    },
+    {
+      "clip": "1005_DFA_ANG_XX",
+      "channel": "acoustic",
+      "gold": "ang",
+      "prediction": "ang",
+      "confidence": 0.9997184872627258
+    },
+    {
+      "clip": "1005_DFA_DIS_XX",
+      "channel": "face",
+      "gold": "disgust",
+      "prediction": "neutral",
+      "confidence": 0.9867561459541321,
+      "frames_used": 3
+    },
+    {
+      "clip": "1005_DFA_FEA_XX",
+      "channel": "face",
+      "gold": "fear",
+      "prediction": "neutral",
+      "confidence": 0.9780735969543457,
+      "frames_used": 3
+    },
+    {
+      "clip": "1005_DFA_HAP_XX",
+      "channel": "face",
+      "gold": "happy",
+      "prediction": "happy",
+      "confidence": 0.6560500860214233,
+      "frames_used": 3
+    },
+    {
+      "clip": "1005_DFA_HAP_XX",
+      "channel": "acoustic",
+      "gold": "hap",
+      "prediction": "ang",
+      "confidence": 0.9972403049468994
+    },
+    {
+      "clip": "1005_DFA_NEU_XX",
+      "channel": "face",
+      "gold": "neutral",
+      "prediction": "neutral",
+      "confidence": 0.9893838763237,
+      "frames_used": 3
+    },
+    {
+      "clip": "1005_DFA_NEU_XX",
+      "channel": "acoustic",
+      "gold": "neu",
+      "prediction": "ang",
+      "confidence": 0.9628193378448486
+    },
+    {
+      "clip": "1005_DFA_SAD_XX",
+      "channel": "face",
+      "gold": "sad",
+      "prediction": "neutral",
+      "confidence": 0.9884310364723206,
+      "frames_used": 3
+    },
+    {
+      "clip": "1005_DFA_SAD_XX",
+      "channel": "acoustic",
+      "gold": "sad",
+      "prediction": "ang",
+      "confidence": 0.5027323961257935
+    },
+    {
+      "clip": "1006_DFA_ANG_XX",
+      "channel": "face",
+      "gold": "angry",
+      "prediction": "angry",
+      "confidence": 0.523926317691803,
+      "frames_used": 3
+    },
+    {
+      "clip": "1006_DFA_ANG_XX",
+      "channel": "acoustic",
+      "gold": "ang",
+      "prediction": "ang",
+      "confidence": 0.9996278285980225
+    },
+    {
+      "clip": "1006_DFA_DIS_XX",
+      "channel": "face",
+      "gold": "disgust",
+      "prediction": "angry",
+      "confidence": 0.4629195034503937,
+      "frames_used": 3
+    },
+    {
+      "clip": "1006_DFA_FEA_XX",
+      "channel": "face",
+      "gold": "fear",
+      "prediction": "neutral",
+      "confidence": 0.3454515039920807,
+      "frames_used": 3
+    },
+    {
+      "clip": "1006_DFA_HAP_XX",
+      "channel": "face",
+      "gold": "happy",
+      "prediction": "happy",
+      "confidence": 0.5027356743812561,
+      "frames_used": 3
+    },
+    {
+      "clip": "1006_DFA_HAP_XX",
+      "channel": "acoustic",
+      "gold": "hap",
+      "prediction": "ang",
+      "confidence": 0.9760950803756714
+    },
+    {
+      "clip": "1006_DFA_NEU_XX",
+      "channel": "face",
+      "gold": "neutral",
+      "prediction": "neutral",
+      "confidence": 0.7737995982170105,
+      "frames_used": 3
+    },
+    {
+      "clip": "1006_DFA_NEU_XX",
+      "channel": "acoustic",
+      "gold": "neu",
+      "prediction": "ang",
+      "confidence": 0.7687577605247498
+    },
+    {
+      "clip": "1006_DFA_SAD_XX",
+      "channel": "face",
+      "gold": "sad",
+      "prediction": "sad",
+      "confidence": 0.7142143249511719,
+      "frames_used": 3
+    },
+    {
+      "clip": "1006_DFA_SAD_XX",
+      "channel": "acoustic",
+      "gold": "sad",
+      "prediction": "sad",
+      "confidence": 0.8226796984672546
+    }
+  ],
+  "files": [
+    {
+      "path": "VideoFlash/1001_DFA_ANG_XX.flv",
+      "bytes": 265922,
+      "sha256": "10dc3fd1f2bc8203657431598bd7dc9312462008f93d08fda786043ae6a8d2f4"
+    },
+    {
+      "path": "VideoFlash/1001_DFA_DIS_XX.flv",
+      "bytes": 290553,
+      "sha256": "cb6db35d6e666076ae736850d48e97fa2ba61d9490724eb1f62d711bea994d3c"
+    },
+    {
+      "path": "VideoFlash/1001_DFA_FEA_XX.flv",
+      "bytes": 266703,
+      "sha256": "9869c4b9169a805b2c637ff5752947311111736eceb16abd276a890b97dcd57e"
+    },
+    {
+      "path": "VideoFlash/1001_DFA_HAP_XX.flv",
+      "bytes": 233278,
+      "sha256": "e72a1221a240f2e6c232b871734ec6ea367228f3feb076dfe448941731752b14"
+    },
+    {
+      "path": "VideoFlash/1001_DFA_NEU_XX.flv",
+      "bytes": 251524,
+      "sha256": "a2b374bcd195d7320437c944eef2208dedd2c22725d09d65e8c31bf6c1eeb286"
+    },
+    {
+      "path": "VideoFlash/1001_DFA_SAD_XX.flv",
+      "bytes": 249426,
+      "sha256": "8fb9c1b08ef3edd03816208fb17fcc0d1ab3e3b8dd2e4a989695191f672bc40d"
+    },
+    {
+      "path": "VideoFlash/1002_DFA_ANG_XX.flv",
+      "bytes": 342981,
+      "sha256": "a52ffd181bdba96805956fb627960fe47cade90988cdb1688d1f86be1e71e366"
+    },
+    {
+      "path": "VideoFlash/1002_DFA_DIS_XX.flv",
+      "bytes": 339192,
+      "sha256": "288bf3670fb82572692f75b23b03a5b97a6c74ea562f37a58fd7fbb6ff8603ce"
+    },
+    {
+      "path": "VideoFlash/1002_DFA_FEA_XX.flv",
+      "bytes": 362054,
+      "sha256": "f532a9a49af4c86137cfc678c0a6a5cc65015717e74d94a85d4787a5f6d9bfd2"
+    },
+    {
+      "path": "VideoFlash/1002_DFA_HAP_XX.flv",
+      "bytes": 287510,
+      "sha256": "e280e690d4c299e243ae45275fca0f3437d032900818042e09fcca5a29ca54b8"
+    },
+    {
+      "path": "VideoFlash/1002_DFA_NEU_XX.flv",
+      "bytes": 327201,
+      "sha256": "1dcc7dd3a460f4bdecedbcff5d026bd99f72f3ff0e05f41298c093759c0fd220"
+    },
+    {
+      "path": "VideoFlash/1002_DFA_SAD_XX.flv",
+      "bytes": 301381,
+      "sha256": "81ae5fb6d2fb7967d212baf769b3ccfeaa4042a2b279c145073756f175335d1c"
+    },
+    {
+      "path": "VideoFlash/1003_DFA_ANG_XX.flv",
+      "bytes": 399368,
+      "sha256": "b69c5dadb66748481c8dba2e03dde00d0cba731ef0f9121c44c50353d88e8cf5"
+    },
+    {
+      "path": "VideoFlash/1003_DFA_DIS_XX.flv",
+      "bytes": 428112,
+      "sha256": "dc22315afb89f9a15155548f65b089ccd0fa6f897d0f8c9f933bc55804ca1e0c"
+    },
+    {
+      "path": "VideoFlash/1003_DFA_FEA_XX.flv",
+      "bytes": 399634,
+      "sha256": "a8090609abca99483246bee7fa75dc63109023575b1c6daeffea8053961bf23b"
+    },
+    {
+      "path": "VideoFlash/1003_DFA_HAP_XX.flv",
+      "bytes": 420269,
+      "sha256": "7fe434888f6f12cc83087427637ac6770b0a6595111333f66d0d60716765f0c5"
+    },
+    {
+      "path": "VideoFlash/1003_DFA_NEU_XX.flv",
+      "bytes": 413714,
+      "sha256": "b57046431372b84a19db3480f19411f43550b7232aee76115854c3080b860fe8"
+    },
+    {
+      "path": "VideoFlash/1003_DFA_SAD_XX.flv",
+      "bytes": 401805,
+      "sha256": "0fd2ec4bf793eaf6100d73da15f642271487a556ee04ea1c5cf8151c1b36cee6"
+    },
+    {
+      "path": "VideoFlash/1004_DFA_ANG_XX.flv",
+      "bytes": 398712,
+      "sha256": "f8af41dbc1a81af5cd1d98bc9a661c25aad33705ec2a88999a333066a79301e4"
+    },
+    {
+      "path": "VideoFlash/1004_DFA_DIS_XX.flv",
+      "bytes": 377457,
+      "sha256": "4ae060be27a9e44edd41e1c6e2db877b2236b5535636fb64e3a45788986fa1e8"
+    },
+    {
+      "path": "VideoFlash/1004_DFA_FEA_XX.flv",
+      "bytes": 384107,
+      "sha256": "b253498ced2b9ae0cd16d797f30ce19011a114eb69f46ec1812fdf933793f209"
+    },
+    {
+      "path": "VideoFlash/1004_DFA_HAP_XX.flv",
+      "bytes": 352514,
+      "sha256": "f4562249f8e4825b5ff6d039f231caca7bcb26fd675166302521ee29f4edfdc8"
+    },
+    {
+      "path": "VideoFlash/1004_DFA_NEU_XX.flv",
+      "bytes": 398264,
+      "sha256": "f9e3ab618c585f891645ffbc631896e1623ad739de4cec37ad7c74666ccc9346"
+    },
+    {
+      "path": "VideoFlash/1004_DFA_SAD_XX.flv",
+      "bytes": 367676,
+      "sha256": "e7152bc670dc1c57d52efc0c7d12c9a8c02fa0deca161c5245aed0df55556a82"
+    },
+    {
+      "path": "VideoFlash/1005_DFA_ANG_XX.flv",
+      "bytes": 342815,
+      "sha256": "95e5515821610883f6777496a08a0008278fa4eeef626143bbf7ed1c92540556"
+    },
+    {
+      "path": "VideoFlash/1005_DFA_DIS_XX.flv",
+      "bytes": 355631,
+      "sha256": "6a545f73935277585149d88cf4216e239f88a30891d1c7bcc9cbc3a654ed66ae"
+    },
+    {
+      "path": "VideoFlash/1005_DFA_FEA_XX.flv",
+      "bytes": 330537,
+      "sha256": "ce588ea24b670c103d2f59d75c7af458f54d43932600b90fd1da5911280652db"
+    },
+    {
+      "path": "VideoFlash/1005_DFA_HAP_XX.flv",
+      "bytes": 340334,
+      "sha256": "b49d8129699d63d663b67dede3ac22602eaa2d50116eef04aa25e5485142ea31"
+    },
+    {
+      "path": "VideoFlash/1005_DFA_NEU_XX.flv",
+      "bytes": 403328,
+      "sha256": "861c34aa5a0964b71cfe7ec5e5881cc5a1935756d7812b01524d63de79a56433"
+    },
+    {
+      "path": "VideoFlash/1005_DFA_SAD_XX.flv",
+      "bytes": 393287,
+      "sha256": "13af3ddf2c1107e4440fb612e3a6e2e968ceb3680c2854b16630a2218730a8ae"
+    },
+    {
+      "path": "VideoFlash/1006_DFA_ANG_XX.flv",
+      "bytes": 345267,
+      "sha256": "2d9e4c6e14217c05037cfc55b2041458a2cd3e3946d5de36a4604bba05c83874"
+    },
+    {
+      "path": "VideoFlash/1006_DFA_DIS_XX.flv",
+      "bytes": 360687,
+      "sha256": "f65c3cdf7f9046273929025085d409b164da57ac2f7904595c53173e623b066c"
+    },
+    {
+      "path": "VideoFlash/1006_DFA_FEA_XX.flv",
+      "bytes": 303478,
+      "sha256": "d139402492135d98b0f7bf81efe876e2baee49f9a8be2b03242906b4560862eb"
+    },
+    {
+      "path": "VideoFlash/1006_DFA_HAP_XX.flv",
+      "bytes": 296111,
+      "sha256": "2a8b22422e0d254f11b7574dba9cda9db1553bb02a7997f4854f23568497e3a3"
+    },
+    {
+      "path": "VideoFlash/1006_DFA_NEU_XX.flv",
+      "bytes": 350396,
+      "sha256": "92476ad25880670e9985396caaecc4f57c6cbb722b94321867ee5a20fb0e97b9"
+    },
+    {
+      "path": "VideoFlash/1006_DFA_SAD_XX.flv",
+      "bytes": 353869,
+      "sha256": "ef6f6017d1897fddb49c67b19344e490d6300438baf2e15461b88554771ad1f8"
+    },
+    {
+      "path": "AudioWAV/1001_DFA_ANG_XX.wav",
+      "bytes": 72862,
+      "sha256": "c6f94b2592487c7556bd86df7df6e8f4420d1b9c11414aeec9d8e5e640b51495"
+    },
+    {
+      "path": "AudioWAV/1001_DFA_HAP_XX.wav",
+      "bytes": 59836,
+      "sha256": "91d63d7a792a37b2ff8ac6267d3e5364bc1b10d5b0e0be288c0af0534d4fdae5"
+    },
+    {
+      "path": "AudioWAV/1001_DFA_NEU_XX.wav",
+      "bytes": 65176,
+      "sha256": "95e32bd83c449d26afb653c5451fa0389a83b1245c24385778cd02a18cb50cb6"
+    },
+    {
+      "path": "AudioWAV/1001_DFA_SAD_XX.wav",
+      "bytes": 64108,
+      "sha256": "c75f74e03ae5783830733519c806c85996ca0bd833e17b535f8830166bc002e9"
+    },
+    {
+      "path": "AudioWAV/1002_DFA_ANG_XX.wav",
+      "bytes": 82260,
+      "sha256": "31eda0c90ebd72b7f311ab3b980258c6d094e08be96da3d15fbd6a7e19ff91d8"
+    },
+    {
+      "path": "AudioWAV/1002_DFA_HAP_XX.wav",
+      "bytes": 70514,
+      "sha256": "f94a5f827691550aa0afaf5415e28e281c2beeb413245326aa650446dd0d7289"
+    },
+    {
+      "path": "AudioWAV/1002_DFA_NEU_XX.wav",
+      "bytes": 80124,
+      "sha256": "3ee31d38d8e2a3216975505fe111faef333b02adfe508d0567ae4d31b9911799"
+    },
+    {
+      "path": "AudioWAV/1002_DFA_SAD_XX.wav",
+      "bytes": 75852,
+      "sha256": "c875b32f45ba7c98b048985321e75a6d3eac2d5e3d0beca5aee1eb0c79c0b12c"
+    },
+    {
+      "path": "AudioWAV/1003_DFA_ANG_XX.wav",
+      "bytes": 100410,
+      "sha256": "ff499b82dc7d37e73c7b6ee45fefe04cbad21c8d5cf64f81fdc6eb92b2c4ad1b"
+    },
+    {
+      "path": "AudioWAV/1003_DFA_HAP_XX.wav",
+      "bytes": 104682,
+      "sha256": "3d7dbb8ae0429218722a78a3182f04e652bdce82359f8ff563ede1ceccb09013"
+    },
+    {
+      "path": "AudioWAV/1003_DFA_NEU_XX.wav",
+      "bytes": 103614,
+      "sha256": "fab10bae2babdb395f996495fe584d5777087009de4df65086b8f391b720e71f"
+    },
+    {
+      "path": "AudioWAV/1003_DFA_SAD_XX.wav",
+      "bytes": 102546,
+      "sha256": "c611cb037909dd0dbb3a8e892ff109e71f2bea0c0d09750e4cfb43b9399f5600"
+    },
+    {
+      "path": "AudioWAV/1004_DFA_ANG_XX.wav",
+      "bytes": 98276,
+      "sha256": "8d472e0203c59bda4cb2062d32a3b719029048aef85e8326c7d9100ac6730f95"
+    },
+    {
+      "path": "AudioWAV/1004_DFA_HAP_XX.wav",
+      "bytes": 87598,
+      "sha256": "76a164bf558b556e76e3b12ef359c71132ca648ae2a78e76a4b2fdc1d76d4897"
+    },
+    {
+      "path": "AudioWAV/1004_DFA_NEU_XX.wav",
+      "bytes": 99344,
+      "sha256": "eb04a9df5d8f38101685965c704352dd7fa8d662087002fcc2b5f0a5bf2f1a8b"
+    },
+    {
+      "path": "AudioWAV/1004_DFA_SAD_XX.wav",
+      "bytes": 90802,
+      "sha256": "e937c72551290f4df34065e7863881f93c53518cb9f13055daeeda0f5ab04428"
+    },
+    {
+      "path": "AudioWAV/1005_DFA_ANG_XX.wav",
+      "bytes": 83328,
+      "sha256": "50c380fe2542a3ba6e3b4a0c6659a0c04859924ed89085300c55801ceb90cb8f"
+    },
+    {
+      "path": "AudioWAV/1005_DFA_HAP_XX.wav",
+      "bytes": 82260,
+      "sha256": "ce3624c8291017f09ecb24528429b058c51d968be9c62594d680c079350cea71"
+    },
+    {
+      "path": "AudioWAV/1005_DFA_NEU_XX.wav",
+      "bytes": 99344,
+      "sha256": "88ce40526f75cb7e2e107a424eff79fc440666b43e240db42544485be37edba0"
+    },
+    {
+      "path": "AudioWAV/1005_DFA_SAD_XX.wav",
+      "bytes": 97208,
+      "sha256": "c869ff1d7f539fd1160012f768c502d5728b2a77f1eeba8992b3abb4d7153ba3"
+    },
+    {
+      "path": "AudioWAV/1006_DFA_ANG_XX.wav",
+      "bytes": 83328,
+      "sha256": "c8be1f334bd7f4007585c26b47be93a4630b92114d8ed8ea5b18bf9792b1964a"
+    },
+    {
+      "path": "AudioWAV/1006_DFA_HAP_XX.wav",
+      "bytes": 73718,
+      "sha256": "2dc2fcf35696175951c9039af94255b90ea2fcd3609f5e26ad4973df103dca2a"
+    },
+    {
+      "path": "AudioWAV/1006_DFA_NEU_XX.wav",
+      "bytes": 82260,
+      "sha256": "400318dbc83d5d4382d7bd0e3ad43c0c30fe53c6de22426b48259b83aec11d1a"
+    },
+    {
+      "path": "AudioWAV/1006_DFA_SAD_XX.wav",
+      "bytes": 85462,
+      "sha256": "78bcfe4b5321e88ed051cf4d4a6d4bf19858b064b0584f775835b35784dc26d0"
+    }
+  ]
+}

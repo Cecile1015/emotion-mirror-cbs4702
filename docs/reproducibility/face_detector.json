@@ -1,0 +1,28 @@
+{
+  "model": "OpenCV YuNet 2023mar",
+  "revision": "48b10fa505aeb51fbd127fc60a5c660040e823b7",
+  "score_threshold": 0.9,
+  "nms_threshold": 0.3,
+  "input_max_dimension": 640,
+  "reason": "Replace Haar false-positive-prone face counting; expression classifier unchanged.",
+  "files": [
+    {
+      "path": "models/multimodal/detector/yunet.onnx",
+      "url": "https://media.githubusercontent.com/media/opencv/opencv_zoo/48b10fa505aeb51fbd127fc60a5c660040e823b7/models/face_detection_yunet/face_detection_yunet_2023mar.onnx",
+      "bytes": 232589,
+      "sha256": "8f2383e4dd3cfbb4553ea8718107fc0423210dc964f9f4280604804ed2552fa4"
+    },
+    {
+      "path": "models/multimodal/detector/LICENSE",
+      "url": "https://raw.githubusercontent.com/opencv/opencv_zoo/48b10fa505aeb51fbd127fc60a5c660040e823b7/models/face_detection_yunet/LICENSE",
+      "bytes": 1085,
+      "sha256": "c83b8120c50ccbd4c4f96edf53141bdd566ebb8f8e9227e415326aa1b1aba958"
+    },
+    {
+      "path": "models/multimodal/detector/README.md",
+      "url": "https://raw.githubusercontent.com/opencv/opencv_zoo/48b10fa505aeb51fbd127fc60a5c660040e823b7/models/face_detection_yunet/README.md",
+      "bytes": 3221,
+      "sha256": "a140c9e9574ff99d3dc1c435d5e8b5e60690dc91597e66387cbbb52be12cce4c"
+    }
+  ]
+}

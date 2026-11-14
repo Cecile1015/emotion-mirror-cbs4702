@@ -10,6 +10,10 @@ MODELS = {
 }
 
 def prepare():
+    import sys
+    sys.path.insert(0,str(ROOT))
+    from deployment.render.fetch_models import prepare as fetch_pinned
+    fetch_pinned(ROOT,only_prefix='models/multimodal/detector/')
     records = {}
     for channel, (repo, revision, files) in MODELS.items():
         dest = ROOT / 'models/multimodal' / channel

@@ -10,8 +10,9 @@ import urllib.request
 MANIFEST=Path(__file__).with_name('model_downloads.json')
 def digest(path):
     with path.open('rb') as f:return hashlib.file_digest(f,'sha256').hexdigest()
-def prepare(root,verify_only=False):
+def prepare(root,verify_only=False,only_prefix=None):
     for row in json.loads(MANIFEST.read_text()):
+        if only_prefix and not row['path'].startswith(only_prefix):continue
         path=root/row['path']
         if path.is_file() and digest(path)==row['sha256']:continue
         if verify_only:raise RuntimeError('Missing or mismatched artifact: '+row['path'])

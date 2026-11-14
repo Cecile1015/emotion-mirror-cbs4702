@@ -82,29 +82,45 @@ class MultimodalService:
     def health(self):
         return {'experimental': True, 'max_seconds': 20, 'channels': {
             'face': {'model': 'trpakov/vit-face-expression', 'labels': FACE_LABELS,
-                     'configured': (MODEL_ROOT/'face/model.safetensors').is_file(), 'loaded': self.face_model is not None},
+                     'configured': (MODEL_ROOT/'face/model.safetensors').is_file() and (MODEL_ROOT/'detector/yunet.onnx').is_file(), 'loaded': self.face_model is not None},
             'acoustic': {'model': 'superb/wav2vec2-base-superb-er', 'labels': AUDIO_LABELS,
                          'configured': (MODEL_ROOT/'acoustic/pytorch_model.bin').is_file(), 'loaded': self.audio_model is not None}}}
+
+    def face_boxes(self, img):
+        """YuNet with confidence filtering and NMS; detection is not emotion inference."""
+        import cv2
+        scale = min(1.0, 640 / max(img.size))
+        size = (max(1, round(img.width * scale)), max(1, round(img.height * scale)))
+        pixels = cv2.cvtColor(np.asarray(img.resize(size)), cv2.COLOR_RGB2BGR)
+        if self.detector is None:
+            self.detector = cv2.FaceDetectorYN.create(str(MODEL_ROOT/'detector/yunet.onnx'), '', size, .9, .3, 5000)
+        self.detector.setInputSize(size)
+        _, detected = self.detector.detect(pixels)
+        if detected is None:
+            return []
+        return [tuple(float(v) / scale for v in row[:4]) for row in detected
+                if float(row[-1]) >= .9 and min(row[2:4]) / scale >= 32]
 
     def face(self, frames):
         import cv2
         import torch
         from transformers import ViTForImageClassification, ViTImageProcessorPil
         if not frames: raise ValueError('No camera frames from this recording. Turn on the mirror camera and record again.')
-        if self.detector is None:
-            self.detector = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
-        crops, offsets, skipped = [], [], []
+        crops, offsets, skipped, ambiguous = [], [], [], []
         for frame in frames:
             img = image_from_bytes(decode64(frame.image, 512 * 1024))
-            gray = cv2.cvtColor(np.asarray(img), cv2.COLOR_RGB2GRAY)
-            faces = self.detector.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=5, minSize=(48, 48))
-            if len(faces) > 1: raise ValueError('Multiple faces detected. Keep only one person in view and record again.')
+            faces = self.face_boxes(img)
+            if len(faces) > 1:
+                ambiguous.append(frame.offset_ms); continue
             if len(faces) != 1:
                 skipped.append(frame.offset_ms); continue
             x, y, w, h = map(int, faces[0]); pad = int(max(w, h) * .1)
             crops.append(img.crop((max(0,x-pad), max(0,y-pad), min(img.width,x+w+pad), min(img.height,y+h+pad))))
             offsets.append(frame.offset_ms)
-        if not crops: raise ValueError('No clear frontal face detected. Face the camera in good light and record again.')
+        if not crops:
+            if ambiguous:
+                raise ValueError('The detector found more than one possible face region in the usable snapshots. This can be a false alarm from a reflection, poster or background. Use a plain background, face the camera and record again. No person count has been confirmed.')
+            raise ValueError('No clear frontal face detected. Face the camera in good light and record again.')
         if self.face_model is None:
             self.face_processor = ViTImageProcessorPil.from_pretrained(MODEL_ROOT/'face', local_files_only=True)
             self.face_model = ViTForImageClassification.from_pretrained(MODEL_ROOT/'face', local_files_only=True).eval()
@@ -112,8 +128,10 @@ class MultimodalService:
             logits = self.face_model(**self.face_processor(images=crops, return_tensors='pt')).logits
             scores = logits.softmax(-1).mean(0).cpu().numpy()
         result = self.result('face', scores, FACE_LABELS)
-        result.update({'frames_used': len(crops), 'frame_offsets_ms': offsets, 'frames_without_face': skipped,
-                       'aggregation': 'Mean of frame softmax scores after frontal-face cropping.'})
+        if ambiguous:
+            result['warnings'].append(f'{len(ambiguous)} ambiguous snapshot(s) were excluded; only clear single-face snapshots were classified.')
+        result.update({'detector': 'OpenCV YuNet 2023mar', 'frames_ambiguous': ambiguous, 'frames_used': len(crops), 'frame_offsets_ms': offsets, 'frames_without_face': skipped,
+                       'aggregation': 'Mean of frame softmax scores after YuNet single-face cropping; ambiguous snapshots excluded.'})
         return result
 
     def acoustic(self, data):

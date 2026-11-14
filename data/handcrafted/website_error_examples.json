@@ -1,0 +1,152 @@
+{
+  "note": "Balanced educational gallery: three saved test errors per rule category, drawn from five local models. Qualitative selection is not a prevalence estimate; original notebook 08 exports and metrics are unchanged. New annotations are AI-assisted and require group review.",
+  "examples": [
+    {
+      "idx": 188,
+      "focus_model": "bert",
+      "category_code": "A1",
+      "phenomenon": "Split keyword",
+      "explanation": "weird is labelled fear 43 times and surprise 34 times in the training split. The context (an awkward conversation about another person) fits either reading, so neither label can be derived from the text: the gold label is effectively a coin flip between the two classes the annotation assigns to this word."
+    },
+    {
+      "idx": 336,
+      "focus_model": "bert",
+      "category_code": "A1",
+      "phenomenon": "Split keyword without context",
+      "explanation": "Three words. stressed is labelled sadness 53 times and anger 37 times in training, and there is no context to disambiguate. Emphatic do adds intensity, not a direction. The best possible strategy is to guess the majority label, which is what TF-IDF + LR does; BERT and the BiLSTM guess the minority label."
+    },
+    {
+      "idx": 546,
+      "focus_model": "bert",
+      "category_code": "A1",
+      "phenomenon": "Split keyword (joy / love)",
+      "explanation": "blessed is labelled joy 45 times and love 38 times. Gratitude towards readers ('share it with you all') lies on the boundary between the two classes; the label set does not say where gratitude belongs, and the annotation treats it inconsistently."
+    },
+    {
+      "idx": 1195,
+      "focus_model": "bert",
+      "category_code": "A2",
+      "phenomenon": "Positive wording, sadness annotation",
+      "explanation": "The writer explicitly names hope and excitement, whereas the saved gold label is sadness. BERT predicts joy, the dominant training label for hopeful. Under the fixed coding rules this is A2: a keyword\u2013gold mismatch. The sentence supports questioning the annotation, but lexical agreement alone cannot prove which emotion the writer experienced."
+    },
+    {
+      "idx": 1440,
+      "focus_model": "improved_lr",
+      "category_code": "A2",
+      "phenomenon": "Explicit anxiety against a joy label",
+      "explanation": "The clause nervous as hell on the inside contrasts an outward claim of feeling OK with anxiety about a scan. Improved LR predicts fear, consistent with nervous, while the gold label is joy. The fixed five-token scope rule assigns A2. The later dont want clause should not be mistaken for a negation of nervous; this example also illustrates why scope requires reading the whole sentence."
+    },
+    {
+      "idx": 1756,
+      "focus_model": "tfidf_lr",
+      "category_code": "A2",
+      "phenomenon": "A keyword rule can miss parental affection",
+      "explanation": "TF-IDF + LR predicts joy, matching the reliable keyword smart, but the gold label is love. The automatic rule therefore flags A2. Here compassionate and the parental perspective make love plausible: this is a useful counterexample to treating every A2 flag as annotation error. The heuristic captures a keyword\u2013gold mismatch, not a definitive correction to the gold label."
+    },
+    {
+      "idx": 1383,
+      "focus_model": "bert",
+      "category_code": "B",
+      "phenomenon": "Implicit emotion",
+      "explanation": "No emotion word: the writer reports failing a test for the second time. Recognising sadness requires appraisal knowledge (failure at a valued goal). flunked never occurs in training. Occlusion shows that BERT's joy rests mainly on bs; the BiLSTM is correct."
+    },
+    {
+      "idx": 660,
+      "focus_model": "bert",
+      "category_code": "B",
+      "phenomenon": "Implicit emotion in an event description",
+      "explanation": "A situation is described without an emotion word, in the style of the 'when ...' event descriptions in the dataset. The anger arises from appraising other people's lack of skill as an obstacle; the surface vocabulary (playing, sport, advanced) is neutral or positive, so BERT, the BiLSTM and TF-IDF + LR all predict joy with high confidence."
+    },
+    {
+      "idx": 1977,
+      "focus_model": "bert",
+      "category_code": "B",
+      "phenomenon": "Ironic positive word",
+      "explanation": "The house 'remained at a balmy' (the temperature that followed has been cut off) after the writer felt like 'suffering from hypothermia': balmy is ironic. Occlusion shows that BERT's joy depends on balmy (drop 0.66); the word-level models follow suffering and are correct."
+    },
+    {
+      "idx": 611,
+      "focus_model": "bert",
+      "category_code": "C",
+      "phenomenon": "Competing emotion cues in a long text",
+      "explanation": "The text contains cues of four classes: feeling for him (sympathy), awful predicament (sadness), so glad (joy) and disgusted (anger). The annotator chose sadness, BERT joy with 0.51 confidence (almost a tie). A single-label scheme forces one emotion where the discourse expresses a sequence of emotions."
+    },
+    {
+      "idx": 36,
+      "focus_model": "bilstm",
+      "category_code": "C",
+      "phenomenon": "Honour and curiosity in one sentence",
+      "explanation": "The writer feels honoured about inclusion in a magazine and then asks a curious question. BiLSTM predicts surprise while the gold label is joy. Honoured and curious supply cues from different classes, so the fixed rule assigns C. The output is consistent with competing cues; it does not by itself prove which token caused the model decision."
+    },
+    {
+      "idx": 867,
+      "focus_model": "bilstm",
+      "category_code": "C",
+      "phenomenon": "Surprised and honoured together",
+      "explanation": "Both surprised and honored are explicit in this short sentence. The gold label chooses joy, while BiLSTM chooses surprise. A single-label benchmark cannot retain both readings. This is a compact competing-cue example rather than evidence that the surprise reading is linguistically unreasonable."
+    },
+    {
+      "idx": 816,
+      "focus_model": "bert",
+      "category_code": "D",
+      "phenomenon": "Emotion word with a different experiencer",
+      "explanation": "happy describes the other person ('make the person happy'), not the writer: the experiencer of the emotion word is not the speaker. Models that map emotion words to labels without identifying the experiencer predict joy (BERT 1.00). The gold anger cannot be recovered from this fragment alone."
+    },
+    {
+      "idx": 1372,
+      "focus_model": "tfidf_lr",
+      "category_code": "D",
+      "phenomenon": "Not despairing does not mean joyful",
+      "explanation": "TF-IDF + LR predicts joy for a sentence describing the first sign of improvement. The gold label is sadness. Not negates despairing, and the first-step wording suggests relief without necessarily establishing joy. The fixed scope rule assigns D; neither a keyword lookup nor simple polarity reversal fully resolves this graded change in feeling."
+    },
+    {
+      "idx": 592,
+      "focus_model": "improved_lr",
+      "category_code": "D",
+      "phenomenon": "No energy to get angry",
+      "explanation": "Improved LR predicts anger, while the gold label is sadness. Angry occurs inside no energy to get angry, and the final resigned describes exhaustion or resignation. The emotion named in the infinitive is not asserted as the current state. The no cue triggers D; the contrast explains why word presence is insufficient."
+    },
+    {
+      "idx": 150,
+      "focus_model": "bert",
+      "category_code": "E",
+      "phenomenon": "Rare word split into misleading subwords",
+      "explanation": "angsty occurs in only 2 training texts. BERT's WordPiece tokenizer splits it into ang + ##sty; deleting angsty lowers P(anger) by 0.99 (occlusion), so the anger prediction comes from this word, plausibly through the piece ang shared with angry. Without it BERT predicts sadness from listless, a reliable sadness keyword (45 of 45 training texts), which the word-level models follow."
+    },
+    {
+      "idx": 426,
+      "focus_model": "bert",
+      "category_code": "E",
+      "phenomenon": "Scraping residue and an inconsistent label",
+      "explanation": "After 'i feel unprotected' the text continues with HTML residue (a class post count link href http). unprotected occurs in 3 training texts, all labelled fear, so BERT, the BiLSTM and TF-IDF + LR all predict fear with near certainty. The gold sadness conflicts with how the same word is labelled in training."
+    },
+    {
+      "idx": 1382,
+      "focus_model": "bert",
+      "category_code": "E",
+      "phenomenon": "Mock-solemn hyperbole with an unsupported label",
+      "explanation": "'The depth of sorrow' is a humorous exaggeration about not having posted 'ludicrous rants'. BERT and TF-IDF + LR read sorrow literally (sadness, BERT 0.99); the BiLSTM predicts surprise. The gold surprise is not supported by any emotion word in the text (ludicrous is labelled sadness 6 times and surprise 3 times in training)."
+    },
+    {
+      "idx": 657,
+      "focus_model": "bilstm",
+      "category_code": "F",
+      "phenomenon": "Anger cue within self-critical context",
+      "explanation": "BiLSTM predicts sadness although the gold label is anger and hateful is a reliable anger keyword. The surrounding withdrawal and self-criticism could support sadness, but the fixed lexicon finds no competing reliable cue and no scope marker before hateful. F is the residual rule category; it should not be read as proof that this sentence has no linguistic complexity."
+    },
+    {
+      "idx": 1252,
+      "focus_model": "tfidf_lr",
+      "category_code": "F",
+      "phenomenon": "A clear grumpy cue missed by the linear baseline",
+      "explanation": "The gold label is anger, consistent with generally feeling grumpy, but TF-IDF + LR predicts fear. The rule system finds one reliable cue and no relevant preceding scope marker, placing the case in F. The sleep disturbance and physical discomfort provide context; attributing the error to a specific feature would require a separate contribution analysis."
+    },
+    {
+      "idx": 1625,
+      "focus_model": "tfidf_lr",
+      "category_code": "F",
+      "phenomenon": "Insulted, but predicted sadness",
+      "explanation": "TF-IDF + LR predicts sadness instead of the gold anger label. Insulted is the reliable emotion cue, with no competing reliable keyword or scope marker under the fixed rules, so this is F. The emphatic address to an ex-partner is compatible with anger; the saved prediction documents the error without claiming an unmeasured causal explanation."
+    }
+  ]
+}

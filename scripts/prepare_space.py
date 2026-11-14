@@ -26,6 +26,8 @@ def prepare():
         'results/llm/selection.json', 'results/llm/prompt_llm.json',
         'docs/MULTIMODAL.md', 'docs/reproducibility/multimodal_models.json',
         'docs/reproducibility/multimodal_validation.json',
+        'docs/reproducibility/multimodal_yunet_validation.json', 'docs/reproducibility/face_detector.json',
+        'docs/reproducibility/error_gallery.json', 'docs/reproducibility/face_detector_regression.json',
         'deployment/render/fetch_models.py', 'deployment/render/model_downloads.json',
         'deployment/render/next-export.config.mjs', 'deployment/render/start.py', '.dockerignore',
     ])
@@ -41,7 +43,7 @@ def prepare():
     shutil.copy2(ROOT / 'deployment/render/Dockerfile', DEST / 'Dockerfile')
     shutil.copy2(ROOT / 'deployment/huggingface/README.md', DEST / 'README.md')
     commit = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip()
-    (DEST / 'SOURCE.json').write_text(json.dumps({'github_repository': 'Cecile1015/emotion-mirror-cbs4702', 'base_commit': commit, 'deployment_overlay': 'Docker Space metadata and preparation scripts; source hashes recorded in upload manifest'}, indent=2) + '\n')
+    (DEST / 'SOURCE.json').write_text(json.dumps({'github_repository': 'Cecile1015/emotion-mirror-cbs4702', 'base_commit': commit, 'deployment_overlay': 'Working-tree release: balanced 21-case gallery, Boo Darlings cover, YuNet face detector and validation; exact uploaded source hashes recorded in upload manifest'}, indent=2) + '\n')
     rows = []
     for p in sorted(DEST.rglob('*')):
         if not p.is_file():

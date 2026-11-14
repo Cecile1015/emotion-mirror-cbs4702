@@ -1,5 +1,5 @@
 ---
-title: Emotion Mirror CBS4702
+title: Boo, Darlings emotion mirror
 emoji: 🪞
 colorFrom: red
 colorTo: yellow
@@ -8,7 +8,7 @@ app_port: 10000
 suggested_hardware: cpu-basic
 pinned: false
 ---
-# Emotion Mirror · CBS4702
+# Boo, Darlings: emotion mirror · CBS4702
 
 Speak, review the transcript and compare five saved text classifiers and the selected DeepSeek few-shot prompt. An optional **Mind-reading** control independently enables facial-expression and acoustic models. It does **not** reveal hidden feelings.
 
@@ -36,3 +36,5 @@ Source is a deployment subset of the course repository. No training dataset, not
 Docker Space on CPU Basic (2 vCPU / 16 GB). Personal PRO subscription is required under the current hosting policy; no hourly paid hardware is selected. The image builds the React interface and downloads model artifacts at pinned revisions with SHA-256 verification. Readiness: `/healthz`. DeepSeek remains unavailable until the owner adds `DEEPSEEK_API_KEY` in Settings → Variables and secrets → New secret.
 
 The source repository is https://github.com/Cecile1015/emotion-mirror-cbs4702 . A GitHub push alone does not update this Space: run `scripts/prepare_space.py` and `scripts/deploy_space.py` from the updated checkout. No automatic GitHub synchronization is configured.
+
+The Crypt of Errors presents a balanced teaching selection of 21 real saved test errors (three per rule category), with the failing model identified. This selection does not estimate category prevalence. Face detection uses pinned OpenCV YuNet; ambiguous frames are excluded without claiming a verified person count. The expression classifier remains experimental. See docs/reproducibility/multimodal_yunet_validation.json for the repeated fixed-sample check.

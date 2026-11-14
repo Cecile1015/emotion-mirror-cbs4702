@@ -58,8 +58,16 @@ Restart the website launcher after installing these services. Existing running P
 Public deployment uses a static export of the same React UI with FastAPI routes and an actual Gradio service inspector at `/service`. The deployment subset is built by `scripts/prepare_space.py`; it excludes `.env`, datasets, notebooks, dependency caches and backups. Hugging Face credentials are used only by the uploader; the running Space does not receive the deployment token. DeepSeek belongs in a Space Secret.
 
 
-## Deployment eligibility checked on 2026-11-13
+## Public deployment
 
-The selected Hugging Face account is free and was created on 2026-11-12. Current Hub rules require a verified account older than 30 days to host up to two free ZeroGPU Gradio Spaces; regular compute Spaces require PRO (personal) or an eligible organization plan. Therefore a new free account cannot yet host this backend. A static-only Space would not run the Python models. See https://huggingface.co/docs/hub/spaces-overview and https://huggingface.co/docs/hub/spaces-zerogpu .
+The user has activated Hugging Face PRO. The complete Docker application is deployed on CPU Basic at https://cecile1015-emotion-mirror-cbs4702.hf.space ; it runs independently of the development computer. The DeepSeek key is configured as a Space Secret. Deployment revisions and public integration checks are recorded in `reproducibility/space_deployment.json` and `reproducibility/space_public_smoke.json`. Hardware was not upgraded for the detector repair.
 
-The complete local deployment subset has been tested, but public deployment is pending the user's choice of an eligible account, user-purchased PRO plan, or explicitly temporary tunnel that requires the local computer to remain online. A tunnel must not be described as independent cloud hosting.
+## 2026-11-14 detector repair
+
+The original evaluation above describes the Haar-based pipeline. The deployed pipeline now uses OpenCV YuNet 2023mar (MIT), confidence threshold 0.9, NMS threshold 0.3 and maximum detection image dimension 640. No expression or acoustic classifier weights changed. The detector artifact and license are pinned and SHA-256 checked in the build manifest.
+
+Ambiguous multi-region snapshots are skipped rather than aborting the entire recording. If none remain, the response explains that detected regions do not establish a person count and may reflect background/reflection false alarms. Distinct detected faces are not silently replaced by the largest face. The result reports valid and excluded snapshot offsets; it does not track identity across snapshots.
+
+Regression checks found one face in a public single-person frame, two faces in a side-by-side composite of that frame and zero in a blank image. Re-evaluation on the original 36 CREMA-D clips returned predictions for all 36, compared with 35 previously, but expression correctness remained 16/36. Acoustic results remained 10/24 with one abstention. This is reuse of the same small convenience sample after a repair, not an independent held-out accuracy study. Original results remain in `reproducibility/multimodal_validation.json`; revised results are in `reproducibility/multimodal_yunet_validation.json`.
+
+Detector confidence concerns whether a region resembles a face. Classifier softmax scores concern expression labels and are uncalibrated. Neither establishes an inner emotional state. Lighting, pose, motion and a mismatch between FER2013 training images and webcam video can affect classification. User-device retesting is still needed; the reported single-person false alarm cannot be reconstructed without its original frame.

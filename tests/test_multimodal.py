@@ -50,14 +50,23 @@ def test_model_busy_rejected():
 
 
 def test_no_face_and_multiple_faces(monkeypatch):
-    class Detector:
-        def __init__(self,n):self.n=n
-        def detectMultiScale(self,*args,**kwargs):return np.array([[2,2,50,50]]*self.n)
-    image=BytesIO();Image.new('RGB',(100,100)).save(image,format='JPEG');frame=Frame(offset_ms=0,image=base64.b64encode(image.getvalue()).decode())
+    image=BytesIO();Image.new('RGB',(200,100)).save(image,format='JPEG')
+    frame=Frame(offset_ms=0,image=base64.b64encode(image.getvalue()).decode())
     service=MultimodalService()
-    for count,message in [(0,'No clear'),(2,'Multiple faces')]:
-        service.detector=Detector(count)
+    for boxes,message in [([], 'No clear'), ([(2,2,50,50),(100,2,50,50)], 'possible face region')]:
+        monkeypatch.setattr(service,'face_boxes',lambda img:boxes)
         with pytest.raises(ValueError,match=message):service.face([frame])
+
+
+def test_yunet_rejects_weak_detections(monkeypatch):
+    class Detector:
+        def setInputSize(self,size):self.size=size
+        def detect(self,pixels):
+            rows=np.zeros((3,15)); rows[:,:4]=[[10,10,80,80],[150,10,80,80],[250,10,10,10]]
+            rows[:,-1]=[.95,.5,.99]
+            return None,rows
+    service=MultimodalService();service.detector=Detector()
+    assert len(service.face_boxes(Image.new('RGB',(640,480))))==1
 
 
 def test_silent_audio_abstains():
@@ -95,3 +104,19 @@ def test_public_size_and_origin_guards():
     assert client.post('/api/predict',headers={'origin':'https://example.com'}).status_code==403
     for _ in range(20):assert client.post('/api/predict',content='{}').status_code==200
     assert client.post('/api/predict',content='{}').status_code==429
+
+
+def test_ambiguous_frame_does_not_discard_clear_frame(monkeypatch):
+    import torch
+    from types import SimpleNamespace
+    image=BytesIO();Image.new('RGB',(200,100)).save(image,format='JPEG')
+    payload=base64.b64encode(image.getvalue()).decode()
+    frames=[Frame(offset_ms=i*1000,image=payload) for i in range(2)]
+    service=MultimodalService()
+    boxes=iter([[(2,2,50,50),(100,2,50,50)],[(40,10,60,60)]])
+    monkeypatch.setattr(service,'face_boxes',lambda img:next(boxes))
+    service.face_processor=lambda **kwargs:{}
+    service.face_model=lambda **kwargs:SimpleNamespace(logits=torch.tensor([[0.,0.,0.,3.,0.,0.,0.]]))
+    result=service.face(frames)
+    assert result['frames_used']==1 and result['frame_offsets_ms']==[1000]
+    assert result['frames_ambiguous']==[0] and any('excluded'in w for w in result['warnings'])

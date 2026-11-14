@@ -34,7 +34,7 @@
         },
         "temperature": 0.8992,
         "calibrated": true,
-        "elapsed_ms": 1.814,
+        "elapsed_ms": 1.951,
         "device": "cpu",
         "provider": "local",
         "served_model": null,
@@ -62,7 +62,7 @@
         },
         "temperature": 1.3199029127890984,
         "calibrated": true,
-        "elapsed_ms": 39.114,
+        "elapsed_ms": 54.399,
         "device": "cpu",
         "provider": "local",
         "served_model": null,
@@ -87,20 +87,22 @@
         "channel": "face",
         "model": "trpakov/vit-face-expression",
         "label": "happy",
-        "confidence": 0.35921502113342285,
+        "confidence": 0.6117531657218933,
         "probabilities": {
-          "angry": 0.3082239329814911,
-          "disgust": 0.0013700517592951655,
-          "fear": 0.023523522540926933,
-          "happy": 0.35921502113342285,
-          "neutral": 0.2994077503681183,
-          "sad": 0.004660901613533497,
-          "surprise": 0.0035988574381917715
+          "angry": 0.15421612560749054,
+          "disgust": 0.002428195672109723,
+          "fear": 0.0026632642839103937,
+          "happy": 0.6117531657218933,
+          "neutral": 0.2157665491104126,
+          "sad": 0.005481828469783068,
+          "surprise": 0.007690918166190386
         },
         "calibrated": false,
         "warnings": [
           "Experimental, uncalibrated model scores; not a measure of emotional intensity or inner feelings."
         ],
+        "detector": "OpenCV YuNet 2023mar",
+        "frames_ambiguous": [],
         "frames_used": 3,
         "frame_offsets_ms": [
           494,
@@ -108,8 +110,8 @@
           1428
         ],
         "frames_without_face": [],
-        "aggregation": "Mean of frame softmax scores after frontal-face cropping.",
-        "elapsed_ms": 821.8
+        "aggregation": "Mean of frame softmax scores after YuNet single-face cropping; ambiguous snapshots excluded.",
+        "elapsed_ms": 764.2
       },
       {
         "channel": "acoustic",
@@ -117,10 +119,10 @@
         "label": "ang",
         "confidence": 0.9999639987945557,
         "probabilities": {
-          "neu": 1.17518347906298e-05,
-          "hap": 7.720355824858416e-06,
+          "neu": 1.1751902093237732e-05,
+          "hap": 7.720348548900802e-06,
           "ang": 0.9999639987945557,
-          "sad": 1.6568823411944322e-05
+          "sad": 1.656877611821983e-05
         },
         "calibrated": false,
         "warnings": [
@@ -141,7 +143,7 @@
           "ang": "angry",
           "sad": "sad"
         },
-        "elapsed_ms": 402.8
+        "elapsed_ms": 473.1
       }
     ],
     "errors": [],

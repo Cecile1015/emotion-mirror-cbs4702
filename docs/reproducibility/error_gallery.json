@@ -1,0 +1,21 @@
+{
+  "counts": {
+    "A1": 3,
+    "A2": 3,
+    "B": 3,
+    "C": 3,
+    "D": 3,
+    "E": 3,
+    "F": 3
+  },
+  "unique_cases": 21,
+  "source_sha256": {
+    "data/handcrafted/website_error_examples.json": "819c53a7d0f9f666a991b553525283d329d12633c49d38f83b61cf50bf98591c",
+    "results/predictions/bert__test.csv": "2e254d206ee5cbd9faa15a6b65b83baf7aa015d59035bcdc4fa7f1f28b0081a1",
+    "results/predictions/bilstm__test.csv": "d93c803c343c8e498da6921f9dfb2fb5a523a1338bdf6b620962390bdc4e105e",
+    "results/predictions/tfidf_lr__test.csv": "9403af236f2146368ab6f9ce7c01ea1a9a0f948ec10918ae71a9275caf7e2490",
+    "results/predictions/improved_lr__test.csv": "af23c7688b2de0b2cada46eb958b92ea9da5852b43b8984c24a75341d0975cf8",
+    "results/predictions/bow_nb__test.csv": "ebef137e83bbad89acc357d850b32d63cb984bcd029dbae0d356e10cfc567213"
+  },
+  "selection_note": "Balanced educational gallery: three saved test errors per rule category, drawn from five local models. Qualitative selection is not a prevalence estimate; original notebook 08 exports and metrics are unchanged. New annotations are AI-assisted and require group review."
+}

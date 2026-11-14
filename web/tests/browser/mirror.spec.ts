@@ -11,7 +11,7 @@ async function fakeSpeech(page: Page, mode='normal') {
 }
 test('real local API comparison and responsive results', async ({page}) => {
   const errors: string[]=[];page.on('pageerror',e=>errors.push(e.message));
-  await page.goto('/');await expect(page.getByRole('button',{name:/models configured/})).toBeVisible();
+  await page.goto('/');await page.getByRole('button',{name:'Open the emotion mirror'}).click();await expect(page.getByRole('button',{name:/models configured/})).toBeVisible();
   await page.getByLabel('Your words').fill('i feel lonely today');
   await page.getByRole('button',{name:'Compare emotions',exact:true}).click();
   await expect(page.getByRole('heading',{name:'One sentence. Different readings.'})).toBeVisible();
@@ -23,7 +23,7 @@ test('real local API comparison and responsive results', async ({page}) => {
 });
 test('speech is reviewable and never automatically submits', async ({page}) => {
   await fakeSpeech(page);let requests=0;page.on('request',r=>{if(r.url().endsWith('/api/predict')) requests++;});
-  await page.goto('/');await page.getByLabel('Transcription',{exact:true}).selectOption('browser');await page.getByRole('button',{name:/Start speaking/}).click();
+  await page.goto('/');await page.getByRole('button',{name:'Open the emotion mirror'}).click();await page.getByLabel('Transcription',{exact:true}).selectOption('browser');await page.getByRole('button',{name:/Start speaking/}).click();
   await expect(page.getByLabel('Your words')).toHaveValue('I feel happy today');
   await expect(page.getByRole('button',{name:'Compare emotions',exact:true})).toBeDisabled();
   await page.getByRole('button',{name:/Stop & review/}).click();
@@ -33,13 +33,13 @@ test('speech is reviewable and never automatically submits', async ({page}) => {
   await expect(page.locator('.emotion').first()).toHaveText('sadness');expect(requests).toBe(1);
 });
 for(const mode of ['denied','silent']) test(`speech ${mode} leaves text fallback usable`, async ({page}) => {
-  await fakeSpeech(page,mode);await page.goto('/');await page.getByLabel('Transcription',{exact:true}).selectOption('browser');await page.getByRole('button',{name:/Start speaking/}).click();
+  await fakeSpeech(page,mode);await page.goto('/');await page.getByRole('button',{name:'Open the emotion mirror'}).click();await page.getByLabel('Transcription',{exact:true}).selectOption('browser');await page.getByRole('button',{name:/Start speaking/}).click();
   await expect(page.locator('.speech-status')).toContainText(mode==='denied'?'Microphone access was denied':'No speech was detected');
   await page.getByLabel('Your words').fill('I feel happy today');await expect(page.getByLabel('Your words')).toBeEditable();
 });
 test('unsupported speech and rejected camera keep classification available', async ({page}) => {
   await page.addInitScript(()=>{Object.defineProperty(window,'SpeechRecognition',{value:undefined});Object.defineProperty(window,'webkitSpeechRecognition',{value:undefined});navigator.mediaDevices.getUserMedia=async()=>{throw new DOMException('denied','NotAllowedError');};});
-  await page.goto('/');await page.getByLabel('Transcription',{exact:true}).selectOption('browser');await expect(page.getByRole('button',{name:/Start speaking/})).toBeDisabled();
+  await page.goto('/');await page.getByRole('button',{name:'Open the emotion mirror'}).click();await page.getByLabel('Transcription',{exact:true}).selectOption('browser');await expect(page.getByRole('button',{name:/Start speaking/})).toBeDisabled();
   await page.getByRole('button',{name:'Turn mirror camera on'}).click();await expect(page.getByText('Camera unavailable or permission denied.',{exact:false})).toBeVisible();
   await page.getByLabel('Your words').fill('I feel happy today');await expect(page.getByRole('button',{name:'Compare emotions',exact:true})).toBeEnabled();
 });
@@ -48,18 +48,18 @@ test('pending camera permission can be cancelled and late tracks are stopped', a
     const w=window as unknown as {releaseCamera:()=>void; stoppedTrack:boolean};w.stoppedTrack=false;
     navigator.mediaDevices.getUserMedia=()=>new Promise(resolve=>{w.releaseCamera=()=>resolve({getTracks:()=>[{stop:()=>{w.stoppedTrack=true;}}]} as unknown as MediaStream);});
   });
-  await page.goto('/');await page.getByRole('button',{name:'Turn mirror camera on'}).click();await page.getByRole('button',{name:'Cancel camera request'}).click();
+  await page.goto('/');await page.getByRole('button',{name:'Open the emotion mirror'}).click();await page.getByRole('button',{name:'Turn mirror camera on'}).click();await page.getByRole('button',{name:'Cancel camera request'}).click();
   await page.evaluate(()=>(window as unknown as {releaseCamera:()=>void}).releaseCamera());
   await expect.poll(()=>page.evaluate(()=>(window as unknown as {stoppedTrack:boolean}).stoppedTrack)).toBe(true);
 });
 test('partial DeepSeek failure preserves real local result rendering', async ({page}) => {
   await page.route('**/api/predict',async route=>{const response=await page.request.post('/api/predict',{data:{text:'I feel happy today',models:['tfidf_lr']}});const d=await response.json();d.errors=[{model_id:'llm',code:'prediction_failed',message:'DeepSeek temporarily unavailable.'}];d.all_agree=null;await route.fulfill({json:d});});
-  await page.goto('/');await expect(page.getByRole('button',{name:/models configured/})).toBeVisible();
+  await page.goto('/');await page.getByRole('button',{name:'Open the emotion mirror'}).click();await expect(page.getByRole('button',{name:/models configured/})).toBeVisible();
   await page.getByLabel('Your words').fill('I feel happy today');await page.getByRole('button',{name:'Compare emotions',exact:true}).click();
   await expect(page.locator('.emotion')).toHaveText('joy');await expect(page.getByRole('heading',{name:'No prediction'})).toBeVisible();await expect(page.getByText('Comparison incomplete')).toBeVisible();
 });
 test('research population switch and error-to-mirror transfer', async ({page}) => {
-  await page.goto('/');await page.getByRole('button',{name:'The Ledger',exact:true}).click();
+  await page.goto('/');await page.getByRole('button',{name:'Open the emotion mirror'}).click();await page.getByRole('button',{name:'The Ledger',exact:true}).click();
   await expect(page.getByRole('table').first()).toContainText('0.7129');
   await page.getByRole('button',{name:'Full test set · 2,000 texts'}).click();await expect(page.getByRole('table').first()).toContainText('Not evaluated');
   await page.getByRole('button',{name:'Crypt of Errors',exact:true}).click();await expect(page.locator('.case-card').first()).toBeVisible();
@@ -78,7 +78,7 @@ test('local recording releases the microphone and waits for transcript review', 
   });
   let predictions=0;page.on('request',r=>{if(r.url().endsWith('/api/predict'))predictions++;});
   await page.route('**/api/transcribe',route=>route.fulfill({json:{text:'I feel happy today',provider:'local'}}));
-  await page.goto('/');await expect(page.getByLabel('Transcription',{exact:true})).toHaveValue('local');
+  await page.goto('/');await page.getByRole('button',{name:'Open the emotion mirror'}).click();await expect(page.getByLabel('Transcription',{exact:true})).toHaveValue('local');
   await page.getByRole('button',{name:/Start speaking/}).click();await expect(page.getByRole('button',{name:'Compare emotions',exact:true})).toBeDisabled();
   await page.getByRole('button',{name:/Stop & review/}).click();await expect(page.getByLabel('Your words')).toHaveValue('I feel happy today');
   expect(await page.evaluate(()=>(window as unknown as {microphoneStopped:boolean}).microphoneStopped)).toBe(true);expect(predictions).toBe(0);

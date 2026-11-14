@@ -54,6 +54,8 @@ def metrics(rows,channel,labels):
             'warning':'Small fixed convenience sample of acted clips; labels are intended expressions, not inner feelings. Not a deployment accuracy estimate.'}
 
 def main():
+    import argparse
+    parser=argparse.ArgumentParser();parser.add_argument('--output',type=Path,default=ROOT/'docs/reproducibility/multimodal_validation.json');args=parser.parse_args()
     DEST.mkdir(parents=True,exist_ok=True)
     names=[f'{actor}_DFA_{emotion}_XX'for actor in range(1001,1007)for emotion in FACE]
     paths=[f'VideoFlash/{n}.flv'for n in names]+[f'AudioWAV/{n}.wav'for n in names if n.split('_')[2]in AUDIO]
@@ -70,11 +72,11 @@ def main():
                 if channel=='face':row['frames_used']=r['frames_used']
             except Exception as e:row['error']=str(e)
             rows.append(row);print(n,channel,row.get('prediction',row.get('error')),flush=True)
-    report={'dataset':'CREMA-D','source':'https://github.com/CheyneyComputerScience/CREMA-D','revision':REV,'license':'ODbL-1.0 / DbCL-1.0',
+    report={'detector':'OpenCV YuNet 2023mar; confidence 0.9, NMS 0.3; excludes ambiguous frames', 'evaluation_note':'Regression re-evaluation of the existing fixed sample after a detector repair; not an independent held-out model-selection test.', 'dataset':'CREMA-D','source':'https://github.com/CheyneyComputerScience/CREMA-D','revision':REV,'license':'ODbL-1.0 / DbCL-1.0',
             'protocol':__doc__,'selection':'Predeclared actors 1001–1006, DFA, XX; no tuning. Intended/acted filename labels, not crowd-perceived majority labels.',
             'face':metrics(rows,'face',list(FACE.values())), 'acoustic':metrics(rows,'acoustic',list(AUDIO.values())),
             'limitations':['No surprise reference examples in CREMA-D; surprise predictions are still possible.','Six actors, one sentence, acted English speech; not representative of users, spontaneous speech or all demographic groups.','Face model trained on FER2013; acoustic model on IEMOCAP. Camera crop and chunking differ from their original benchmarks.','Abstentions/errors counted separately; F1 only uses successfully predicted examples.'],
             'predictions':rows,'files':files}
-    (ROOT/'docs/reproducibility/multimodal_validation.json').write_text(json.dumps(report,indent=2)+'\n')
+    args.output.write_text(json.dumps(report,indent=2)+'\n')
     print(json.dumps({k:report[k]for k in ('face','acoustic')},indent=2))
 if __name__=='__main__':main()

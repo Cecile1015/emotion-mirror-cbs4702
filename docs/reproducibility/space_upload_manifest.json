@@ -11,13 +11,13 @@
   },
   {
     "path": "README.md",
-    "bytes": 3141,
-    "sha256": "5fa91a0f750df5818cc49cae00610aa3bc7672237db75c13cb25a4952994410c"
+    "bytes": 3623,
+    "sha256": "271d3a2b32cda55c9b264caf214ecc26cae9507ccb15eadb694056d3d6bf8e0d"
   },
   {
     "path": "SOURCE.json",
-    "bytes": 240,
-    "sha256": "7c89e3727bf6080390f343fb0161aaf42cbf6d482dc862a03a029fd302796433"
+    "bytes": 312,
+    "sha256": "73d99567c96b8d29edb7636aa99741d8bca85d1ef21cd66bab44a28523a2e421"
   },
   {
     "path": "api/__init__.py",
@@ -46,8 +46,8 @@
   },
   {
     "path": "api/multimodal.py",
-    "bytes": 10578,
-    "sha256": "734550da66f352cc49f7eb1542b8193766daa795fa0f11f4e9fbf2a28a98547a"
+    "bytes": 11707,
+    "sha256": "f4eb28d80e2eba7dfe9a08ff434909768ca05f0f337f4a4c9301848c2a93c7c1"
   },
   {
     "path": "api/public_guard.py",
@@ -66,13 +66,13 @@
   },
   {
     "path": "deployment/render/fetch_models.py",
-    "bytes": 1774,
-    "sha256": "2bd35f1665f85f2886a872dd1bb7ec24ded55899a8d4e3217048510693936405"
+    "bytes": 1867,
+    "sha256": "cacae43b3aaecba39be148376c4a93da5cac6a632c941ab3e40c7fa36da98b70"
   },
   {
     "path": "deployment/render/model_downloads.json",
-    "bytes": 5534,
-    "sha256": "6f281f8851fb11ee71e03f2e36f95cc234ef2fd5dc08184b32657c90fc602523"
+    "bytes": 6483,
+    "sha256": "6b0a1c2c7f3cbf3e687909e2f8ff1f993bb9f1a42687525f3a82974dd70016c2"
   },
   {
     "path": "deployment/render/next-export.config.mjs",
@@ -86,8 +86,23 @@
   },
   {
     "path": "docs/MULTIMODAL.md",
-    "bytes": 8003,
-    "sha256": "cf77b68e667328a1a8fe9690393b587d35470c0a7798ea8e450bdb0d74b4c3bf"
+    "bytes": 9487,
+    "sha256": "f6372bf66226685753cf65fe2b01b78f6f26ef57f0b18435866bf5ca6b46c228"
+  },
+  {
+    "path": "docs/reproducibility/error_gallery.json",
+    "bytes": 1131,
+    "sha256": "0918f2cb4174d238516255907a216ec3924e1c72d11df9974dd86367672b4948"
+  },
+  {
+    "path": "docs/reproducibility/face_detector.json",
+    "bytes": 1275,
+    "sha256": "306f598fcf14dfec31371e77d93eca5eaf92ec47dd6a944f5c5f2057597762eb"
+  },
+  {
+    "path": "docs/reproducibility/face_detector_regression.json",
+    "bytes": 260,
+    "sha256": "a4d87a7afe7de2b2fab6fd148d945d0bb28b8d6d13c3adad77006022d4924246"
   },
   {
     "path": "docs/reproducibility/multimodal_models.json",
@@ -98,6 +113,11 @@
     "path": "docs/reproducibility/multimodal_validation.json",
     "bytes": 23997,
     "sha256": "8ae8d7f9dda2669fa9c2e019a47a2a2f262f4b3907b1339b92ca6d145eb065aa"
+  },
+  {
+    "path": "docs/reproducibility/multimodal_yunet_validation.json",
+    "bytes": 24212,
+    "sha256": "0363c2bbb438bfd491151ecee11ed16f614ed23e804bfa5737c4fcccd8a8c5c5"
   },
   {
     "path": "models/bert/training_info.json",
@@ -251,8 +271,8 @@
   },
   {
     "path": "web/THIRD_PARTY_NOTICES.md",
-    "bytes": 1298,
-    "sha256": "d802c9650216b8b003ebd7b140f48e28fcfcedbf6d8d1b4240f85252a65e0b23"
+    "bytes": 1736,
+    "sha256": "ea2841663de0866e305080dcaa10e49fbf8ff022a7fc085e045aaa00c78e7dfc"
   },
   {
     "path": "web/app/api/evidence/route.ts",
@@ -291,13 +311,13 @@
   },
   {
     "path": "web/app/globals.css",
-    "bytes": 23968,
-    "sha256": "c61d7d68112f09cf908dbaa8bc5a40256064531df14c180817d7901bad1f4094"
+    "bytes": 27040,
+    "sha256": "3f9fa4580f1603e9a4737e0dc0db2c3ac251d174c2081438a933c0d3657b70a2"
   },
   {
     "path": "web/app/layout.tsx",
-    "bytes": 414,
-    "sha256": "60e73e7c454f431a4f9ad5bae3a8327139882bf39d5bd887f1241eafd138cee4"
+    "bytes": 402,
+    "sha256": "c7410fa595777715cf231b2b6f95be9e470017315b9e91f9aea54313affe2a09"
   },
   {
     "path": "web/app/page.tsx",
@@ -306,18 +326,18 @@
   },
   {
     "path": "web/components/Bonus.tsx",
-    "bytes": 4433,
-    "sha256": "063ec1d5afc7da667e6b3da26ce1e77f57db7570b271d52cb5265e248420be3f"
+    "bytes": 4758,
+    "sha256": "73257acd8805c623b3f80e8c990025c5d7562cb747ccd4af48cee0b88da05d6c"
   },
   {
     "path": "web/components/Evidence.tsx",
-    "bytes": 6898,
-    "sha256": "a01e6ab9e9f571a5f06c62f12aac453233abf74bdbff615ff4631c1335fdd1df"
+    "bytes": 7382,
+    "sha256": "eed835e0d98d0aa2b49f13215b6e7cb24cdba2a1259d1db96976bf5e1ea24bb3"
   },
   {
     "path": "web/components/Experience.tsx",
-    "bytes": 3000,
-    "sha256": "7a486d66480b305539e425354c7dd2c6a9f26e1724c174d482e268d480e74939"
+    "bytes": 4153,
+    "sha256": "1ff2d550a4816c15cb4bb6aa1117aac4fee7089bf25c5fbc79a8dc91cf1b24b7"
   },
   {
     "path": "web/components/Icon.tsx",
@@ -336,8 +356,8 @@
   },
   {
     "path": "web/data/error_analysis.json",
-    "bytes": 21098,
-    "sha256": "9c77336d579aa22e8f217a487bcefa20ebfb31495698b5a200db77118004f5f3"
+    "bytes": 35386,
+    "sha256": "dadc9b83ae033d2996a47d57842fd28f212fadcacd2626ac2b6a8853908d2d89"
   },
   {
     "path": "web/data/ledger.json",
@@ -451,13 +471,13 @@
   },
   {
     "path": "web/scripts/sync-evidence.mjs",
-    "bytes": 389,
-    "sha256": "9f6d9fe8357c730bf691fdbd749d0a37ace7230f0664d759aa2b5175bf66c09e"
+    "bytes": 698,
+    "sha256": "6dbd242105d61af8d15ab15662d6c13450ff14c224bfa6b17061bf5321fcccf4"
   },
   {
     "path": "web/tests/browser/mirror.spec.ts",
-    "bytes": 8446,
-    "sha256": "36bf95a096d9e0b32f510df509cdd651a59c96e3646ed6c4a1a8f8842b3af515"
+    "bytes": 9022,
+    "sha256": "5f43add3e2474e863b9f0c24c7c623636d15fb6186338e19c300c2b0e7b02af8"
   },
   {
     "path": "web/tests/contracts.test.ts",

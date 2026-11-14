@@ -1,0 +1,9 @@
+{
+  "fixture": "1001_DFA_HAP_XX middle frame; doubled side-by-side for two-face control",
+  "counts": {
+    "single_public_face": 1,
+    "two_public_faces": 2,
+    "blank_background": 0
+  },
+  "limit": "Synthetic control, not a real webcam acceptance test."
+}

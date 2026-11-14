@@ -21,3 +21,7 @@ The converted model is Systran/faster-whisper-tiny.en (MIT), pinned in
 `docs/reproducibility/speech_model.json` in the parent project. It is downloaded
 separately into the ignored `models/speech/` directory. Original model:
 https://huggingface.co/openai/whisper-tiny.en .
+
+The cover also adapts the original operator gate, dark vignette and RGB-split title; the visible name is Boo, Darlings: emotion mirror. The original MIT copyright notice remains in licenses/BooDarling-MIT.txt.
+
+Face detection uses OpenCV YuNet 2023mar (MIT), pinned in the deployment model manifest. Its LICENSE and model README are downloaded with the detector. This replaces Haar detection; the ViT expression classifier is unchanged.
