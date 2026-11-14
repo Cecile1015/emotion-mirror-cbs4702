@@ -43,12 +43,16 @@ Codex 对话中的交互 checklist 可直接勾选；本文件是便于 GitHub �
 
 - [x] 本机完成静态部署包启动、真实录音转写→文字／表情／声学 API 流程；40 个 Python 测试和前端构建通过。
 - [ ] 在另一台设备照 README 复现，准备所需模型及依赖。
-- [ ] 在 Render 部署同源 HTTPS 网站和模型 API，验证本机关闭后公开网址仍可预测。
+- [x] 在 Hugging Face Docker Space 部署同源 HTTPS 网站和模型 API，六模型与语音／表情／声学公网测试通过。
+- [ ] 关闭开发电脑后，用另一台设备访问公开网址并完成预测验收。
 - [x] 实现请求频率／输入大小限制、错误提示和 DeepSeek 单进程用量控制。
 - [x] 完成 Render Docker 配置、19 个远程模型文件校验、Linux 依赖解析及本地托管流程测试。
 - [x] 测量内存峰值 2268.2 MiB；准备 4 GB / 2 CPU（85 美元／月）的部署表单。
-- [ ] 确认付费规格、推送 GitHub 并配置 Render 私密环境变量。
-- [ ] 完成实际 Docker 构建、公开部署测试、Linux 内存／延迟检查和手机验收。
+- [x] 选择 Hugging Face PRO（9 美元／月）+ CPU Basic；用户已推送既有代码到 GitHub。
+- [x] 准备 Docker Space 文件包，检查固定端口、文件清单及密钥排除。
+- [x] 完成 PRO 开通并由用户填写 Space 的 DeepSeek Secret。
+- [x] 完成实际 Docker 构建、公开部署测试及一次六模型 API 延迟记录。
+- [ ] 完成 Linux 内存监测和真实手机麦克风／摄像头验收。
 
 ## 6. 小组分析与报告
 

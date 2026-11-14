@@ -1,0 +1,25 @@
+{
+  "repo": "Cecile1015/emotion-mirror-cbs4702",
+  "commit": "a0bd03a5a25938e3c1f64a0c4855262817d6fdb0",
+  "space_url": "https://huggingface.co/spaces/Cecile1015/emotion-mirror-cbs4702",
+  "runtime": "RUNNING",
+  "hardware_requested": "cpu-basic",
+  "deepseek_secret_requested": false,
+  "validation": "Cloud smoke tests pending",
+  "hardware_current": "cpu-basic",
+  "direct_url": "https://cecile1015-emotion-mirror-cbs4702.hf.space",
+  "public_validation": "passed: readiness, five local text models, two six-model comparisons including DeepSeek, transcription, expression, acoustic, origin and input limits, browser rendering",
+  "owner_managed_deepseek_secret": true,
+  "device_microphone_camera_tested": false,
+  "development_computer_shutdown_tested": false,
+  "linux_resource_usage_measured": false,
+  "base_github_commit": "5ca403aab7c15b035cb2e88994835c40a5dbc606",
+  "final_models": {
+    "bow_nb": true,
+    "tfidf_lr": true,
+    "improved_lr": true,
+    "bilstm": true,
+    "bert": true,
+    "llm": true
+  }
+}

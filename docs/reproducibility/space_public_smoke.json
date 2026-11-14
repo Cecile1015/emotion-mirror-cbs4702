@@ -1,0 +1,152 @@
+{
+  "base": "https://cecile1015-emotion-mirror-cbs4702.hf.space",
+  "fixture": "1001_DFA_HAP_XX",
+  "transcript": {
+    "text": "Don't forget to check it",
+    "language": "en",
+    "model": "whisper-tiny.en",
+    "duration_seconds": 1.87,
+    "provider": "local",
+    "warning": "Review and correct the transcript before emotion comparison."
+  },
+  "text": {
+    "text": "Don't forget to check it",
+    "labels": [
+      "sadness",
+      "joy",
+      "love",
+      "anger",
+      "fear",
+      "surprise"
+    ],
+    "results": [
+      {
+        "model_id": "tfidf_lr",
+        "label": "joy",
+        "confidence": 0.3991552697531502,
+        "probabilities": {
+          "sadness": 0.16527080099233699,
+          "joy": 0.3991552697531502,
+          "love": 0.034113462952191934,
+          "anger": 0.0451638612626568,
+          "fear": 0.266508448999978,
+          "surprise": 0.08978815603968596
+        },
+        "temperature": 0.8992,
+        "calibrated": true,
+        "elapsed_ms": 1.814,
+        "device": "cpu",
+        "provider": "local",
+        "served_model": null,
+        "prompt_id": null,
+        "n_shots": null,
+        "parsing_status": null,
+        "usage": null,
+        "decoding_temperature": null,
+        "truncated": false,
+        "input_tokens": null,
+        "token_limit": null,
+        "warnings": []
+      },
+      {
+        "model_id": "bert",
+        "label": "joy",
+        "confidence": 0.8550954209625722,
+        "probabilities": {
+          "sadness": 0.029533865070041795,
+          "joy": 0.8550954209625722,
+          "love": 0.05222093854029601,
+          "anger": 0.053367220641521856,
+          "fear": 0.006735271798992679,
+          "surprise": 0.003047282986575501
+        },
+        "temperature": 1.3199029127890984,
+        "calibrated": true,
+        "elapsed_ms": 39.114,
+        "device": "cpu",
+        "provider": "local",
+        "served_model": null,
+        "prompt_id": null,
+        "n_shots": null,
+        "parsing_status": null,
+        "usage": null,
+        "decoding_temperature": null,
+        "truncated": false,
+        "input_tokens": 9,
+        "token_limit": 128,
+        "warnings": []
+      }
+    ],
+    "errors": [],
+    "all_agree": true
+  },
+  "multimodal": {
+    "capture_id": "cremad-public-fixture",
+    "results": [
+      {
+        "channel": "face",
+        "model": "trpakov/vit-face-expression",
+        "label": "happy",
+        "confidence": 0.35921502113342285,
+        "probabilities": {
+          "angry": 0.3082239329814911,
+          "disgust": 0.0013700517592951655,
+          "fear": 0.023523522540926933,
+          "happy": 0.35921502113342285,
+          "neutral": 0.2994077503681183,
+          "sad": 0.004660901613533497,
+          "surprise": 0.0035988574381917715
+        },
+        "calibrated": false,
+        "warnings": [
+          "Experimental, uncalibrated model scores; not a measure of emotional intensity or inner feelings."
+        ],
+        "frames_used": 3,
+        "frame_offsets_ms": [
+          494,
+          961,
+          1428
+        ],
+        "frames_without_face": [],
+        "aggregation": "Mean of frame softmax scores after frontal-face cropping.",
+        "elapsed_ms": 821.8
+      },
+      {
+        "channel": "acoustic",
+        "model": "superb/wav2vec2-base-superb-er",
+        "label": "ang",
+        "confidence": 0.9999639987945557,
+        "probabilities": {
+          "neu": 1.17518347906298e-05,
+          "hap": 7.720355824858416e-06,
+          "ang": 0.9999639987945557,
+          "sad": 1.6568823411944322e-05
+        },
+        "calibrated": false,
+        "warnings": [
+          "Experimental, uncalibrated model scores; not a measure of emotional intensity or inner feelings."
+        ],
+        "duration_seconds": 1.87,
+        "features": {
+          "rms_dbfs": -23.83,
+          "median_f0_hz": null,
+          "voiced_fraction": 0.098,
+          "clipping_fraction": 0.0
+        },
+        "chunks": 1,
+        "aggregation": "Duration-weighted mean of contiguous chunk softmax scores (up to 8 s each).",
+        "label_names": {
+          "neu": "neutral",
+          "hap": "happy",
+          "ang": "angry",
+          "sad": "sad"
+        },
+        "elapsed_ms": 402.8
+      }
+    ],
+    "errors": [],
+    "fusion": null,
+    "note": "Channels have different label sets and training data. No combined truth score or cross-channel confidence ranking is computed."
+  },
+  "note": "Public acted fixture used for API integration, not a live browser microphone/camera test."
+}

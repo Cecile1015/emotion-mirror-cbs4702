@@ -362,3 +362,13 @@ Restart the local website launcher after installing. Public deployment artifacts
 ## Render deployment (prepared, not yet public)
 
 The complete CPU deployment uses one Docker service for the static website and all APIs. Configuration, measured resource requirements, costs and release checks are documented in [docs/RENDER.md](docs/RENDER.md). The proposed 4 GB / 2 CPU plan is paid; deployment awaits cost approval, a reviewed GitHub push and the server-side DeepSeek secret. No public Render URL has been created.
+
+## Selected hosting: Hugging Face Docker Space
+
+The selected public deployment target is now Hugging Face PRO with CPU Basic, preserving the complete interface and all prediction channels. See [docs/HUGGINGFACE.md](docs/HUGGINGFACE.md) for deployment, updates and owner-managed DeepSeek Secrets. The Render files remain an optional alternative; no Render service was created.
+
+### Live application
+
+[Open Emotion Mirror](https://cecile1015-emotion-mirror-cbs4702.hf.space) · [Hugging Face Space](https://huggingface.co/spaces/Cecile1015/emotion-mirror-cbs4702)
+
+Deployed and checked on 2026-11-14: six text models including real DeepSeek, Whisper transcription and both optional bonus channels. Open the direct application link for microphone/camera permissions. Device capture acceptance remains manual. See `docs/HUGGINGFACE.md` for reproducible release details and update instructions.

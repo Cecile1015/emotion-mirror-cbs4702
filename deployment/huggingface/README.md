@@ -3,17 +3,16 @@ title: Emotion Mirror CBS4702
 emoji: 🪞
 colorFrom: red
 colorTo: yellow
-sdk: gradio
-sdk_version: 6.32.0
-python_version: 3.12
-app_file: app.py
+sdk: docker
+app_port: 10000
+suggested_hardware: cpu-basic
 pinned: false
 ---
 # Emotion Mirror · CBS4702
 
 Speak, review the transcript and compare five saved text classifiers and the selected DeepSeek few-shot prompt. An optional **Mind-reading** control independently enables facial-expression and acoustic models. It does **not** reveal hidden feelings.
 
-Open this Space's **direct `.hf.space` URL** for phone/browser microphone and camera permissions. The BooDarling-inspired React interface is served at `/`; the Gradio service inspector is at `/service`.
+Open this Space's **direct `.hf.space` URL** for phone/browser microphone and camera permissions. The BooDarling-inspired React interface is served at `/`; all prediction APIs share this origin.
 
 - Text: BoW + NB, TF-IDF + LR, improved LR, BiLSTM, BERT, optional DeepSeek.
 - Transcription: Whisper tiny.en on this server (English).
@@ -28,6 +27,12 @@ Open this Space's **direct `.hf.space` URL** for phone/browser microphone and ca
 
 See `docs/MULTIMODAL.md` and `docs/reproducibility/multimodal_validation.json` for the fixed external smoke evaluation. These bonus results are not comparable with the six-class text benchmark. No fusion or cross-channel confidence ranking is performed.
 
-See `web/licenses/BooDarling-MIT.txt` and `web/THIRD_PARTY_NOTICES.md` for visual design attribution. Bonus models are Apache-2.0; Whisper is MIT. Validation fixtures derive from CREMA-D (ODbL-1.0 / DbCL-1.0) and are not redistributed here. Third-party model licenses and original cards are retained with weights.
+See `web/licenses/BooDarling-MIT.txt` and `web/THIRD_PARTY_NOTICES.md` for visual design attribution. Bonus models are Apache-2.0; Whisper is MIT. Validation fixtures derive from CREMA-D (ODbL-1.0 / DbCL-1.0) and are not redistributed here. Third-party model licenses and original cards are retained with downloaded weights.
 
 Source is a deployment subset of the course repository. No training dataset, notebook outputs, `.env`, browser data or local research backups are uploaded.
+
+## Deployment
+
+Docker Space on CPU Basic (2 vCPU / 16 GB). Personal PRO subscription is required under the current hosting policy; no hourly paid hardware is selected. The image builds the React interface and downloads model artifacts at pinned revisions with SHA-256 verification. Readiness: `/healthz`. DeepSeek remains unavailable until the owner adds `DEEPSEEK_API_KEY` in Settings → Variables and secrets → New secret.
+
+The source repository is https://github.com/Cecile1015/emotion-mirror-cbs4702 . A GitHub push alone does not update this Space: run `scripts/prepare_space.py` and `scripts/deploy_space.py` from the updated checkout. No automatic GitHub synchronization is configured.

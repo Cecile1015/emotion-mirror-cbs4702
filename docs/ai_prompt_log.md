@@ -29,3 +29,11 @@ User request: add an optional Mind-reading button, independently select and vali
 ## 2026-11-14 · Render deployment preparation
 
 User selected Render and connected Chrome. Codex prepared a single-origin Docker service, CPU-only dependency installation, pinned and hashed public model downloads, a non-root runtime, readiness checks and a Render manifest. A fresh process peaked at 2268.2 MiB on macOS ARM; Linux dependency resolution and the local hosted ASR/text/expression/acoustic fixture flow passed. The 4 GB / 2 CPU draft costs US$85/month and was left unsubmitted pending the user’s cost decision, GitHub publication and secret-transfer approval. Docker itself was unavailable locally; no Linux image execution or public deployment is claimed. Original research notebook 08 was not edited.
+
+## 2026-11-14 · Hugging Face Docker target
+
+User selected the US$9/month PRO alternative and confirmed a GitHub push. GitHub main and local HEAD matched 5ca403aab7c15b035cb2e88994835c40a5dbc606. Codex adapted the deployment bundle to Docker CPU Basic, retained all inference channels, removed automated secret transfer at the user’s request, and verified a 95-file / 37.2 MiB allowlisted source bundle. Membership activation and actual cloud build verification are recorded separately; preparation alone is not evidence of a successful deployment.
+
+## 2026-11-14 · Public Hugging Face release verification
+
+After the owner activated PRO, Codex created `Cecile1015/emotion-mirror-cbs4702` as a public Docker Space with CPU Basic and uploaded the reviewed source subset (commit a0bd03a5a25938e3c1f64a0c4855262817d6fdb0). The owner entered the DeepSeek Secret. The Linux image built successfully; public fixture ASR/expression/acoustic checks, five saved-model predictions, a real six-model API comparison and a separate Chrome six-model comparison all succeeded. Origin/size restrictions and static isolation were checked. Browser result screenshots and machine-readable reports were saved. Live microphone/camera capture, a physical phone, actual development-computer shutdown and Linux memory measurement were not tested; these remain explicit checklist items. GitHub was not pushed by Codex and no paid hardware upgrade was selected.
