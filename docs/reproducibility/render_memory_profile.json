@@ -1,0 +1,64 @@
+{
+  "platform": "macOS-26.6-arm64-arm-64bit",
+  "python": "3.11.9",
+  "torch": "2.15.0",
+  "cpu_threads": 2,
+  "peak_sampled_rss_mib": 2268.2,
+  "os_high_water_rss_mib": 2268.2,
+  "phases": [
+    {
+      "phase": "load_five_text_models",
+      "seconds": 1.991,
+      "peak_rss_mib": 624.1,
+      "end_rss_mib": 625.8
+    },
+    {
+      "phase": "text_2000_characters",
+      "seconds": 1.095,
+      "peak_rss_mib": 994.9,
+      "end_rss_mib": 1005.9
+    },
+    {
+      "phase": "expression_three_frames_cold",
+      "seconds": 1.882,
+      "peak_rss_mib": 1260.5,
+      "end_rss_mib": 1274.7
+    },
+    {
+      "phase": "acoustic_20_seconds_cold",
+      "seconds": 1.855,
+      "peak_rss_mib": 1902.2,
+      "end_rss_mib": 1902.2
+    },
+    {
+      "phase": "whisper_60_seconds_cold",
+      "seconds": 2.038,
+      "peak_rss_mib": 2178.7,
+      "end_rss_mib": 2178.9
+    },
+    {
+      "phase": "two_requests_text_and_acoustic",
+      "seconds": 0.476,
+      "peak_rss_mib": 2224.0,
+      "end_rss_mib": 2220.4
+    },
+    {
+      "phase": "two_requests_whisper_and_acoustic",
+      "seconds": 1.923,
+      "peak_rss_mib": 2251.8,
+      "end_rss_mib": 2251.4
+    },
+    {
+      "phase": "two_requests_whisper_and_expression",
+      "seconds": 1.733,
+      "peak_rss_mib": 2268.2,
+      "end_rss_mib": 2268.1
+    }
+  ],
+  "limitations": [
+    "macOS ARM measurement, not a Linux container memory guarantee.",
+    "Two simultaneous inferences match the hosted admission limit; repeat on chosen Render instance.",
+    "No DeepSeek calls made; no training or calibration changes.",
+    "Repeated public acted audio exercises input limits, not recognition accuracy."
+  ]
+}

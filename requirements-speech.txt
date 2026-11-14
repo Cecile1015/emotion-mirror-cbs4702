@@ -1,0 +1,7 @@
+# Add-on for local English transcription. Existing emotion-model pins stay unchanged.
+faster-whisper==1.2.1
+ctranslate2==4.9.0
+av==18.1.0
+onnxruntime==1.32.0
+flatbuffers==25.12.19
+protobuf==7.36.2

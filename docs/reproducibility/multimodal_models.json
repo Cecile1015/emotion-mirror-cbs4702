@@ -1,0 +1,56 @@
+{
+  "face": {
+    "repository": "trpakov/vit-face-expression",
+    "revision": "ef0bc6fc34241b6587e7e009e7711357be28c024",
+    "license": "Apache-2.0",
+    "files": [
+      {
+        "file": "config.json",
+        "bytes": 915,
+        "sha256": "41a4c8a0f7408831d2d815e1ca99d4613ce81047532b2b421ea7c47f401e4b60"
+      },
+      {
+        "file": "preprocessor_config.json",
+        "bytes": 228,
+        "sha256": "af4eb4d79cf61b47010fc0bc9352ee967579c417423b4917188d809b7e048948"
+      },
+      {
+        "file": "model.safetensors",
+        "bytes": 343239356,
+        "sha256": "48acf03b1fd90ea45c5e91eb3be2f364cee1c1342639962bd4eae1eac2ad2f93"
+      },
+      {
+        "file": "README.md",
+        "bytes": 1603,
+        "sha256": "a98503eb1fc0bc0ab5cbc918c971caa8f0ca6617b38d448a6f2ca6c6bd999d3e"
+      }
+    ]
+  },
+  "acoustic": {
+    "repository": "superb/wav2vec2-base-superb-er",
+    "revision": "441a7599c3b22107314dcbd9166621c5c83f2cc5",
+    "license": "Apache-2.0",
+    "files": [
+      {
+        "file": "config.json",
+        "bytes": 2153,
+        "sha256": "631bd282ad58492a69cf870c2917bae90ef963079ed2d6e0611eee9e40a19894"
+      },
+      {
+        "file": "preprocessor_config.json",
+        "bytes": 215,
+        "sha256": "99272fe8ccfab114b68b478681ea47ee3a1ce62bb788cb92dd6e4f69fb1f1da2"
+      },
+      {
+        "file": "pytorch_model.bin",
+        "bytes": 378361105,
+        "sha256": "dac0f46128deec048751ce33eb1a9caecb570904d3d6cf732d6ec345cd6c2e1b"
+      },
+      {
+        "file": "README.md",
+        "bytes": 3499,
+        "sha256": "99985cae3f746d8d11e758cd2c5d8d2918b457f6e1117191003d27656ba4d29b"
+      }
+    ]
+  }
+}

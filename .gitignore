@@ -20,3 +20,19 @@ models/bert/*
 !models/bert/training_info.json
 models/bert_runs/
 bert_results.zip
+
+# Step 8: local snapshots, test caches and service logs
+local_backups/
+.pytest_cache/
+*.log
+
+# Local frontend package cache
+.pnpm-store/
+models/speech/
+
+models/multimodal/
+data/bonus_validation/
+.hf-deploy/
+.hf-export-build/
+.render-export-build/
+web/out/

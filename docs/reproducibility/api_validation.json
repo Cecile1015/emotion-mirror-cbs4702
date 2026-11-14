@@ -1,0 +1,65 @@
+{
+  "date": "2026-11-13",
+  "pytest": "17 passed (including real saved-model integration)",
+  "notebook_code_cells": 9,
+  "live_http": {
+    "health": {
+      "status": "ready",
+      "ready": true,
+      "available_models": [
+        "bow_nb",
+        "tfidf_lr",
+        "improved_lr",
+        "bilstm",
+        "bert"
+      ],
+      "errors": {}
+    },
+    "request": {
+      "text": "i feel excited about our presentation",
+      "models": [
+        "bow_nb",
+        "tfidf_lr",
+        "improved_lr",
+        "bilstm",
+        "bert"
+      ]
+    },
+    "predictions": [
+      {
+        "model_id": "bow_nb",
+        "label": "joy",
+        "confidence": 0.7282502466707118,
+        "elapsed_ms": 4.186
+      },
+      {
+        "model_id": "tfidf_lr",
+        "label": "joy",
+        "confidence": 0.9956691504640164,
+        "elapsed_ms": 0.599
+      },
+      {
+        "model_id": "improved_lr",
+        "label": "joy",
+        "confidence": 0.9899255024743232,
+        "elapsed_ms": 0.817
+      },
+      {
+        "model_id": "bilstm",
+        "label": "joy",
+        "confidence": 0.9973308946190658,
+        "elapsed_ms": 1.305
+      },
+      {
+        "model_id": "bert",
+        "label": "joy",
+        "confidence": 0.9924440981671158,
+        "elapsed_ms": 50.637
+      }
+    ]
+  },
+  "notes": [
+    "Tested on local CPU. No cloud deployment or frontend has been implemented.",
+    "Test Uvicorn process stopped after verification."
+  ]
+}

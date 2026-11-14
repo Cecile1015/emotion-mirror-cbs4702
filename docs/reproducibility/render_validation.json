@@ -1,0 +1,16 @@
+{
+  "date": "2026-11-14",
+  "python_tests": {
+    "default_suite_passed": 39,
+    "default_suite_skipped": 1,
+    "separate_opt_in_saved_model_test_passed": 1,
+    "total_passed": 40
+  },
+  "static_export": "passed",
+  "pinned_remote_files_verified": 19,
+  "linux_dependency_resolution": "passed; not container execution",
+  "hosted_fixture_integration": "passed; no paid DeepSeek call",
+  "docker_image_build": "pending; Docker unavailable locally",
+  "render_public_deployment": "pending cost approval, code publication and secret configuration",
+  "live_device_microphone_camera": "pending"
+}

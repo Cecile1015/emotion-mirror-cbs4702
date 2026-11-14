@@ -1,0 +1,105 @@
+{
+  "observed_at_utc": "2026-11-13T13:21:57.483256+00:00",
+  "method": "In-process HTTP route with real local inference and real DeepSeek network request",
+  "response": {
+    "text": "i do not feel happy today",
+    "labels": [
+      "sadness",
+      "joy",
+      "love",
+      "anger",
+      "fear",
+      "surprise"
+    ],
+    "results": [
+      {
+        "model_id": "tfidf_lr",
+        "label": "joy",
+        "confidence": 0.9966447917691549,
+        "probabilities": {
+          "sadness": 0.002304288983222746,
+          "joy": 0.9966447917691549,
+          "love": 0.0001297312699010355,
+          "anger": 0.00035692041654297344,
+          "fear": 0.0005514572490365355,
+          "surprise": 1.2810312141843812e-05
+        },
+        "temperature": 0.8992,
+        "calibrated": true,
+        "elapsed_ms": 0.446,
+        "device": "cpu",
+        "provider": "local",
+        "served_model": null,
+        "prompt_id": null,
+        "n_shots": null,
+        "parsing_status": null,
+        "usage": null,
+        "decoding_temperature": null,
+        "truncated": false,
+        "input_tokens": null,
+        "token_limit": null,
+        "warnings": []
+      },
+      {
+        "model_id": "bert",
+        "label": "joy",
+        "confidence": 0.9935255381849265,
+        "probabilities": {
+          "sadness": 0.0009293135903407992,
+          "joy": 0.9935255381849265,
+          "love": 0.0023024850478032175,
+          "anger": 0.0013025932076105534,
+          "fear": 0.0006644009380729642,
+          "surprise": 0.0012756690312461557
+        },
+        "temperature": 1.3199029127890984,
+        "calibrated": true,
+        "elapsed_ms": 45.391,
+        "device": "cpu",
+        "provider": "local",
+        "served_model": null,
+        "prompt_id": null,
+        "n_shots": null,
+        "parsing_status": null,
+        "usage": null,
+        "decoding_temperature": null,
+        "truncated": false,
+        "input_tokens": 8,
+        "token_limit": 128,
+        "warnings": []
+      },
+      {
+        "model_id": "llm",
+        "label": "sadness",
+        "confidence": null,
+        "probabilities": null,
+        "temperature": null,
+        "calibrated": false,
+        "elapsed_ms": 1551.981,
+        "device": "remote",
+        "provider": "deepseek",
+        "served_model": "deepseek-flash",
+        "prompt_id": "fs_random_k3",
+        "n_shots": 18,
+        "parsing_status": "valid",
+        "usage": {
+          "prompt_tokens": 1012,
+          "cache_hit_tokens": 768,
+          "cache_miss_tokens": 244,
+          "completion_tokens": 8,
+          "n_requests": 1
+        },
+        "decoding_temperature": 0.0,
+        "truncated": false,
+        "input_tokens": null,
+        "token_limit": null,
+        "warnings": [
+          "No validated six-class probability distribution is available; confidence is not reported.",
+          "Selected text is sent to DeepSeek and billed to the server API account."
+        ]
+      }
+    ],
+    "errors": [],
+    "all_agree": false
+  }
+}

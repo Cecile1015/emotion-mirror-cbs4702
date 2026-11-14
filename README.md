@@ -276,3 +276,89 @@ EMNLP 2018*, 3687–3697.
 Saravia, E., Liu, H.-C. T., Huang, Y.-H., Wu, J., & Chen, Y.-S. (2018).
 CARER: Contextualized Affect Representations for Emotion Recognition.
 *Proceedings of EMNLP 2018*, 3687–3697.
+
+
+## Step 8 · Saved-model API (`09_model_api.ipynb`)
+
+The API reuses five saved models: `bow_nb`, `tfidf_lr`, `improved_lr`, `bilstm`
+and `bert`, plus the selected DeepSeek few-shot configuration as `llm`.
+TF-IDF + LR and BERT remain the default comparison. No retraining is performed;
+DeepSeek is called only when a request explicitly selects `llm`. `notebooks/09_model_api.ipynb` explains selection,
+calibration, contract tests, local inference and an opt-in live DeepSeek comparison in the same style as
+the analysis notebooks. Full instructions: [docs/API.md](docs/API.md).
+
+From the project root, using the existing Python 3.11 environment:
+
+```bash
+source .venv/bin/activate
+python -m pip install -r requirements-test.txt
+python -m uvicorn api.main:app --host 127.0.0.1 --port 8000
+```
+
+Open `http://127.0.0.1:8000/docs` for the interactive API form. `GET /health`
+reports model readiness; `GET /models` lists the actual available models.
+The service defaults to CPU and loads once per process. Use one worker locally.
+The saved weights and temperatures must be present before startup; the API
+never downloads models automatically. Optional `llm` predictions require
+`DEEPSEEK_API_KEY` in the server environment or ignored project `.env`.
+The provider model and prompt reuse notebook 07’s selected configuration.
+DeepSeek returns labels and usage, with N/A confidence; use the shared 300-text
+subset for historical comparisons across all six models.
+
+```bash
+curl -X POST http://127.0.0.1:8000/predict \
+  -H 'Content-Type: application/json' \
+  -d '{"text":"i feel happy today","models":["tfidf_lr","bert","llm"]}'
+
+python -m pytest -q
+EMOTION_RUN_MODEL_TESTS=1 python -m pytest -q
+```
+
+Before changing artifacts, `python scripts/freeze_artifacts.py` makes a
+SHA-256-verified local archive under `local_backups/` (Git-ignored). It includes
+ignored BERT weights and BiLSTM checkpoints, but excludes credentials, virtual
+environments and re-downloadable GloVe caches. The initial pre-API manifest is
+recorded in `docs/reproducibility/baseline_manifest.json`; the environment
+inventory is in the same directory. Keep a copy of the backup on another disk
+for protection against disk loss; the local copy alone is not an off-device backup.
+
+The remaining work is tracked in [docs/PROJECT_CHECKLIST.md](docs/PROJECT_CHECKLIST.md).
+The API milestone above is followed by the implemented local website below.
+Optional face/acoustic comparison and public deployment remain later stages.
+
+
+## Step 9 · Voice-first website (`web/`)
+
+A Next.js website now adapts BooDarling’s mirror design and calls the real API.
+The main flow records English speech, transcribes it with local Whisper, lets
+the visitor edit the text, and compares selected models (including DeepSeek).
+The optional camera is a live mirror only. The Ledger and Crypt of Errors read
+the existing research exports. No emotion model is retrained.
+
+On the prepared Mac, double-click **Start Emotion Mirror.command**, or run:
+
+```bash
+.venv/bin/python scripts/run_website.py
+```
+
+Open **http://127.0.0.1:3000** in Chrome. The launcher starts the website and
+local speech service and reuses an existing model API. Stop an older website
+process on port 3000 first. Keep the terminal open; Ctrl+C stops owned processes.
+Setup, architecture, privacy, validation and manual device checks:
+[docs/WEBSITE.md](docs/WEBSITE.md). Public deployment is not yet complete.
+
+
+### Optional expression and acoustic comparison
+
+The website now includes an opt-in **读心术 / Mind-reading** control. Expression (ViT) and vocal delivery (wav2vec 2.0) can be selected separately. These experimental outputs use native labels and are not fused with the six-class text predictions. See [multimodal methods and validation](docs/MULTIMODAL.md).
+
+```bash
+.venv/bin/python -m pip install -r requirements-multimodal.txt
+.venv/bin/python scripts/prepare_multimodal.py
+```
+
+Restart the local website launcher after installing. Public deployment artifacts are prepared with `scripts/prepare_space.py`; Hugging Face publishing uses `scripts/deploy_space.py` after CLI login. The deployment token is never included in the app.
+
+## Render deployment (prepared, not yet public)
+
+The complete CPU deployment uses one Docker service for the static website and all APIs. Configuration, measured resource requirements, costs and release checks are documented in [docs/RENDER.md](docs/RENDER.md). The proposed 4 GB / 2 CPU plan is paid; deployment awaits cost approval, a reviewed GitHub push and the server-side DeepSeek secret. No public Render URL has been created.

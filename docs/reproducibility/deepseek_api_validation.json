@@ -1,0 +1,28 @@
+{
+  "date": "2026-11-13",
+  "api_version": "1.1.0",
+  "pytest": {
+    "passed": 24,
+    "failed": 0,
+    "skipped": 0,
+    "paid_requests": 0
+  },
+  "notebook": {
+    "file": "notebooks/09_model_api.ipynb",
+    "executed_code_cells": 12,
+    "errors": 0
+  },
+  "live_check": {
+    "evidence": "docs/reproducibility/deepseek_live_validation.json",
+    "provider_requests": 1,
+    "served_model": "deepseek-flash",
+    "http_route": "POST /predict via TestClient, real provider network call",
+    "all_requested_models_succeeded": true
+  },
+  "protected_research_files_matching_baseline": 287,
+  "limitations": [
+    "Website and public deployment are not implemented by this change.",
+    "A live transaction is not a sustained availability or accuracy evaluation.",
+    "The existing Uvicorn process must be restarted to import changed code."
+  ]
+}

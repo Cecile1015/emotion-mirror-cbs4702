@@ -1,0 +1,11 @@
+# Existing saved-model environment, tested on Python 3.11 / macOS arm64.
+# Pin serialization/inference dependencies; cloud platforms need separate verification.
+numpy==2.4.6
+pandas==3.1.1
+scipy==1.17.1
+scikit-learn==1.9.1
+joblib==1.6.0
+torch==2.15.0
+transformers==5.22.2
+safetensors==0.8.0
+huggingface_hub==2.4.0

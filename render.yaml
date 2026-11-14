@@ -1,0 +1,20 @@
+# Creating this service incurs charges. Review the current Render price first.
+# 2c-4g is the current 4 GB / 2 CPU web-service plan ($85/month, checked 2026-11-14).
+services:
+  - type: web
+    name: emotion-mirror-cbs4702
+    runtime: docker
+    region: singapore
+    plan: 2c-4g
+    numInstances: 1
+    dockerfilePath: ./deployment/render/Dockerfile
+    dockerContext: .
+    healthCheckPath: /healthz
+    autoDeployTrigger: "off"
+    envVars:
+      - key: DEEPSEEK_API_KEY
+        sync: false
+      - key: EMOTION_DEEPSEEK_SESSION_CALL_LIMIT
+        value: "100"
+      - key: EMOTION_CPU_THREADS
+        value: "2"

@@ -1,0 +1,81 @@
+{
+  "checked_files": [
+    {
+      "path": "models/bert/config.json",
+      "matches_remote_revision": true
+    },
+    {
+      "path": "models/bert/model.safetensors",
+      "matches_remote_revision": true
+    },
+    {
+      "path": "models/bert/tokenizer.json",
+      "matches_remote_revision": true
+    },
+    {
+      "path": "models/bert/tokenizer_config.json",
+      "matches_remote_revision": true
+    },
+    {
+      "path": "models/bert/vocab.txt",
+      "matches_remote_revision": true
+    },
+    {
+      "path": "models/bert/README.md",
+      "matches_remote_revision": true
+    },
+    {
+      "path": "models/speech/tiny.en/config.json",
+      "matches_remote_revision": true
+    },
+    {
+      "path": "models/speech/tiny.en/model.bin",
+      "matches_remote_revision": true
+    },
+    {
+      "path": "models/speech/tiny.en/tokenizer.json",
+      "matches_remote_revision": true
+    },
+    {
+      "path": "models/speech/tiny.en/vocabulary.txt",
+      "matches_remote_revision": true
+    },
+    {
+      "path": "models/speech/tiny.en/README.md",
+      "matches_remote_revision": true
+    },
+    {
+      "path": "models/multimodal/face/config.json",
+      "matches_remote_revision": true
+    },
+    {
+      "path": "models/multimodal/face/preprocessor_config.json",
+      "matches_remote_revision": true
+    },
+    {
+      "path": "models/multimodal/face/model.safetensors",
+      "matches_remote_revision": true
+    },
+    {
+      "path": "models/multimodal/face/README.md",
+      "matches_remote_revision": true
+    },
+    {
+      "path": "models/multimodal/acoustic/config.json",
+      "matches_remote_revision": true
+    },
+    {
+      "path": "models/multimodal/acoustic/preprocessor_config.json",
+      "matches_remote_revision": true
+    },
+    {
+      "path": "models/multimodal/acoustic/pytorch_model.bin",
+      "matches_remote_revision": true
+    },
+    {
+      "path": "models/multimodal/acoustic/README.md",
+      "matches_remote_revision": true
+    }
+  ],
+  "local_metadata_retained": "models/bert/training_info.json differs from the Hub copy; retain the original local research metadata via Docker COPY rather than download it."
+}

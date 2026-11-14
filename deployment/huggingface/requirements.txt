@@ -1,0 +1,4 @@
+-r requirements-api.txt
+-r requirements-speech.txt
+-r requirements-multimodal.txt
+gradio==6.32.0

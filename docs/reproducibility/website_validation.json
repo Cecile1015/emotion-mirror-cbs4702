@@ -1,0 +1,53 @@
+{
+  "observed_at_utc": "2026-11-13T14:08:39.054570+00:00",
+  "milestone": "BooDarling design adaptation and voice-first website",
+  "frontend": {
+    "framework": "Next.js 16.4.6",
+    "production_build": "passed",
+    "typecheck": "passed",
+    "unit_tests": {
+      "passed": 6
+    },
+    "browser_automation": "Initial 8 scenarios could not launch standalone Chrome in the sandbox. The current 9-scenario suite is prepared, not reported as passed.",
+    "manual_browser_checks": [
+      "Six real model results including DeepSeek from POST /api/predict",
+      "Ledger common 300-text scores and full 2000-text switch",
+      "18 annotated error cases; category filtering and transfer to mirror",
+      "Draft preserved when moving between sections",
+      "390px viewport: document width equals viewport width",
+      "Local Whisper selected by default; mobile voice controls precede camera"
+    ]
+  },
+  "python_tests": {
+    "passed": 27,
+    "speech_boundary_tests_rechecked": 3
+  },
+  "real_transcription": {
+    "fixture": "https://raw.githubusercontent.com/openai/whisper/main/tests/jfk.flac",
+    "transcoded_format": "audio/webm;codecs=opus",
+    "method": "POST through Next.js /api/transcribe to the local Whisper sidecar",
+    "response": {
+      "text": "And so, my fellow Americans ask not what your country can do for you ask what you can do for your country.",
+      "language": "en",
+      "model": "whisper-tiny.en",
+      "duration_seconds": 11,
+      "provider": "local",
+      "warning": "Review and correct the transcript before emotion comparison."
+    }
+  },
+  "launcher": "Successfully started production website and speech sidecar; reused existing emotion API on 8000",
+  "protected_research_artifacts_checked": 279,
+  "protected_research_artifacts_changed": [],
+  "notebooks": "Existing notebook 08 working-tree edits were left untouched. Notebook 09 retains its earlier API validation milestone.",
+  "not_verified": [
+    "Real user microphone transcription and accents/noise",
+    "Real camera permissions and device indicator",
+    "Standalone automated browser integration suite",
+    "Public deployment"
+  ],
+  "user_feedback": "User is temporarily unable to try the microphone.",
+  "screenshots": [
+    "emotion-mirror-desktop.jpg",
+    "emotion-mirror-mobile.jpg"
+  ]
+}

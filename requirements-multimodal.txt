@@ -1,0 +1,4 @@
+# Retain the trained-model environment in requirements-models.txt.
+# OpenCV is used only for frontal face detection, never identity recognition.
+opencv-python-headless==4.14.0.94
+Pillow==13.0.0

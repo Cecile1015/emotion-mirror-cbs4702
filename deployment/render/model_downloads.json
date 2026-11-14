@@ -1,0 +1,116 @@
+[
+  {
+    "path": "models/bert/config.json",
+    "url": "https://huggingface.co/Cecile1015/emotion-mirror-bert/resolve/39e10ca65d28ca7977c2082f61e0769073cc9a5e/config.json",
+    "sha256": "c460754d690b4f70400a5c7ddca388be4691bcdac341ad15fbc997fe97681979",
+    "bytes": 1012
+  },
+  {
+    "path": "models/bert/model.safetensors",
+    "url": "https://huggingface.co/Cecile1015/emotion-mirror-bert/resolve/39e10ca65d28ca7977c2082f61e0769073cc9a5e/model.safetensors",
+    "sha256": "969be3971f55ca89ef9dedab1ce71fbe2716c45405551226c60d16820cf25e73",
+    "bytes": 437970928
+  },
+  {
+    "path": "models/bert/tokenizer.json",
+    "url": "https://huggingface.co/Cecile1015/emotion-mirror-bert/resolve/39e10ca65d28ca7977c2082f61e0769073cc9a5e/tokenizer.json",
+    "sha256": "2fc687b11de0bc1b3d8348f92e3b49ef1089a621506c7661fbf3248fcd54947e",
+    "bytes": 711649
+  },
+  {
+    "path": "models/bert/tokenizer_config.json",
+    "url": "https://huggingface.co/Cecile1015/emotion-mirror-bert/resolve/39e10ca65d28ca7977c2082f61e0769073cc9a5e/tokenizer_config.json",
+    "sha256": "e1c2a61a99bda00f6c55303a210b30e2f92dcf8b555e215812e2eb583e177ffd",
+    "bytes": 351
+  },
+  {
+    "path": "models/bert/vocab.txt",
+    "url": "https://huggingface.co/Cecile1015/emotion-mirror-bert/resolve/39e10ca65d28ca7977c2082f61e0769073cc9a5e/vocab.txt",
+    "sha256": "07eced375cec144d27c900241f3e339478dec958f92fddbc551f295c992038a3",
+    "bytes": 231508
+  },
+  {
+    "path": "models/bert/README.md",
+    "url": "https://huggingface.co/Cecile1015/emotion-mirror-bert/resolve/39e10ca65d28ca7977c2082f61e0769073cc9a5e/README.md",
+    "sha256": "7277db4f5a316b99eb87b9e0649c34a30e66fda0ad5b915512b55020c0fabeff",
+    "bytes": 1482
+  },
+  {
+    "path": "models/speech/tiny.en/config.json",
+    "url": "https://huggingface.co/Systran/faster-whisper-tiny.en/resolve/0d3d19a32d3338f10357c0889762bd8d64bbdeba/config.json",
+    "sha256": "14b1b421a90349bc551b881461426b561a874049cb9e4c4864f2ca384f6a7cc5",
+    "bytes": 2317
+  },
+  {
+    "path": "models/speech/tiny.en/model.bin",
+    "url": "https://huggingface.co/Systran/faster-whisper-tiny.en/resolve/0d3d19a32d3338f10357c0889762bd8d64bbdeba/model.bin",
+    "sha256": "1a5afae06a4db91c975c9a9d78be5cc110ee4ea022ad57d55492e4550e936b2a",
+    "bytes": 75537502
+  },
+  {
+    "path": "models/speech/tiny.en/tokenizer.json",
+    "url": "https://huggingface.co/Systran/faster-whisper-tiny.en/resolve/0d3d19a32d3338f10357c0889762bd8d64bbdeba/tokenizer.json",
+    "sha256": "929c5252409436dce1b38a75d1abbcb5e132d170d8e324e4e04ed915fa2d22df",
+    "bytes": 2128466
+  },
+  {
+    "path": "models/speech/tiny.en/vocabulary.txt",
+    "url": "https://huggingface.co/Systran/faster-whisper-tiny.en/resolve/0d3d19a32d3338f10357c0889762bd8d64bbdeba/vocabulary.txt",
+    "sha256": "ff77588746d3a2595d32ab5b69ffd7b95ce2441ac57533cb66fc3eb575a115cf",
+    "bytes": 422309
+  },
+  {
+    "path": "models/speech/tiny.en/README.md",
+    "url": "https://huggingface.co/Systran/faster-whisper-tiny.en/resolve/0d3d19a32d3338f10357c0889762bd8d64bbdeba/README.md",
+    "sha256": "1b7816626bf0548e4b71a467f4112b4592924bc818e3117f19aefcc50ce4b6aa",
+    "bytes": 1323
+  },
+  {
+    "path": "models/multimodal/face/config.json",
+    "url": "https://huggingface.co/trpakov/vit-face-expression/resolve/ef0bc6fc34241b6587e7e009e7711357be28c024/config.json",
+    "sha256": "41a4c8a0f7408831d2d815e1ca99d4613ce81047532b2b421ea7c47f401e4b60",
+    "bytes": 915
+  },
+  {
+    "path": "models/multimodal/face/preprocessor_config.json",
+    "url": "https://huggingface.co/trpakov/vit-face-expression/resolve/ef0bc6fc34241b6587e7e009e7711357be28c024/preprocessor_config.json",
+    "sha256": "af4eb4d79cf61b47010fc0bc9352ee967579c417423b4917188d809b7e048948",
+    "bytes": 228
+  },
+  {
+    "path": "models/multimodal/face/model.safetensors",
+    "url": "https://huggingface.co/trpakov/vit-face-expression/resolve/ef0bc6fc34241b6587e7e009e7711357be28c024/model.safetensors",
+    "sha256": "48acf03b1fd90ea45c5e91eb3be2f364cee1c1342639962bd4eae1eac2ad2f93",
+    "bytes": 343239356
+  },
+  {
+    "path": "models/multimodal/face/README.md",
+    "url": "https://huggingface.co/trpakov/vit-face-expression/resolve/ef0bc6fc34241b6587e7e009e7711357be28c024/README.md",
+    "sha256": "a98503eb1fc0bc0ab5cbc918c971caa8f0ca6617b38d448a6f2ca6c6bd999d3e",
+    "bytes": 1603
+  },
+  {
+    "path": "models/multimodal/acoustic/config.json",
+    "url": "https://huggingface.co/superb/wav2vec2-base-superb-er/resolve/441a7599c3b22107314dcbd9166621c5c83f2cc5/config.json",
+    "sha256": "631bd282ad58492a69cf870c2917bae90ef963079ed2d6e0611eee9e40a19894",
+    "bytes": 2153
+  },
+  {
+    "path": "models/multimodal/acoustic/preprocessor_config.json",
+    "url": "https://huggingface.co/superb/wav2vec2-base-superb-er/resolve/441a7599c3b22107314dcbd9166621c5c83f2cc5/preprocessor_config.json",
+    "sha256": "99272fe8ccfab114b68b478681ea47ee3a1ce62bb788cb92dd6e4f69fb1f1da2",
+    "bytes": 215
+  },
+  {
+    "path": "models/multimodal/acoustic/pytorch_model.bin",
+    "url": "https://huggingface.co/superb/wav2vec2-base-superb-er/resolve/441a7599c3b22107314dcbd9166621c5c83f2cc5/pytorch_model.bin",
+    "sha256": "dac0f46128deec048751ce33eb1a9caecb570904d3d6cf732d6ec345cd6c2e1b",
+    "bytes": 378361105
+  },
+  {
+    "path": "models/multimodal/acoustic/README.md",
+    "url": "https://huggingface.co/superb/wav2vec2-base-superb-er/resolve/441a7599c3b22107314dcbd9166621c5c83f2cc5/README.md",
+    "sha256": "99985cae3f746d8d11e758cd2c5d8d2918b457f6e1117191003d27656ba4d29b",
+    "bytes": 3499
+  }
+]

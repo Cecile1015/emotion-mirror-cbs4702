@@ -1,0 +1,14 @@
+-r requirements-models.txt
+# Serving dependencies. Install the existing requirements.txt first on a new machine.
+# Exact API versions tested in Step 8; do not upgrade model libraries implicitly.
+fastapi==0.162.5
+uvicorn==0.54.0
+pydantic==2.14.3
+starlette==1.10.0
+anyio==4.16.0
+annotated-doc==0.0.6
+opentelemetry-api==1.45.2
+
+# Selected DeepSeek few-shot adapter (server-side credentials only).
+openai==3.49.0
+python-dotenv==1.2.4
